@@ -176,7 +176,10 @@ body {
   color: #5a5a5a;
 }
 
-
+/* MARGING AFTER ICON **/
+a>i[class^="glyphicon"], input[type="submit"]>i[class^="glyphicon"], button[type="submit"]>i[class^="glyphicon"], button.btn>i[class^="glyphicon"], .dropdown-menu>li>a>i[class^="glyphicon"], .btn>i[class^="glyphicon"], .nav i[class^="glyphicon"], .alert i[class^="glyphicon"], .badge i[class^="glyphicon"], .label i[class^="glyphicon"], .panel-heading i[class^="glyphicon"] {
+    margin-right: 10px;
+}
 
 
 /* CUSTOMIZE THE NAVBAR

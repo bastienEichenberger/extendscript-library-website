@@ -10,17 +10,20 @@
 cd /var/www\
 git clone https://github.com/bastienEichenberger/extendscript-library-website.git\
 \
+add the parameter.yml\
+\
 # update vendors with composer\
+cd /var/www/extendscript-library-website\
 php -dmemory_limit=1G composer.phar update\
 \
 # Pull symfony components, clear caches and set rights\
 # remove the cache prod dir if neccessary\
 rm -rf /var/www/extendscript-library-website/app/cache/prod\
 \
-# install assets\
+# install \
 cd /var/www/extendscript-library-website\
 php app/console cache:clear\
-php app/console assets:install web --symslink\
+php app/console assets:install web --symlink\
 php app/console assetic:dump --env=prod\
 \
 # set rights\

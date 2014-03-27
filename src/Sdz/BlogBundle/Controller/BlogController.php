@@ -249,7 +249,7 @@ class BlogController extends Controller {
 	    $aclProvider->updateAcl($acl);
 
             // On redirige vers la page de l'article, avec une ancre vers le nouveau commentaire
-            return $this->redirect($this->generateUrl('sdzblog_voir', array('slug' => $article->getSlug())) . '#comment' . $commentaire->getId());
+            return $this->redirect($this->generateUrl('sdzblog_voir', array('slug' => $article->getSlug() ) ) );
         }
 
         $error_message = $this->get('translator')->trans('blog.comment.error');
