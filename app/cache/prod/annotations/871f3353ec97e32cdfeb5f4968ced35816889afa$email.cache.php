@@ -1,1 +1,0 @@
-<?php return unserialize('a:2:{i:0;O:48:"Symfony\\Component\\Validator\\Constraints\\NotBlank":2:{s:7:"message";s:20:"fos_user.email.blank";s:6:"groups";a:1:{i:0;s:7:"Default";}}i:1;O:45:"Symfony\\Component\\Validator\\Constraints\\Email":4:{s:7:"message";s:22:"fos_user.email.invalid";s:7:"checkMX";b:0;s:9:"checkHost";b:0;s:6:"groups";a:1:{i:0;s:7:"Default";}}}');
