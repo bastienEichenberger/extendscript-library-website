@@ -22,8 +22,3 @@ jlfa_web_site_licencespage:
   pattern: /licences
   defaults: { _controller: JlfaWebSiteBundle:WebSite:licences}
   
-jlfa_jsdoc:
-  pattern: /jsdoc
-  defaults: { _controller: JlfaWebSiteBundle:WebSite:jsDoc}
-  
-

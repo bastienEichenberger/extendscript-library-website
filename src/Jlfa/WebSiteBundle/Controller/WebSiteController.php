@@ -29,10 +29,7 @@ class WebSiteController extends Controller
     public function licencesAction(){
         return $this->render('JlfaWebSiteBundle:webpage:licences.html.twig');
     }
-    
-    public function jsDocAction(){
-        return new Response('JlfaWebSiteBundle:jsdoc:index.html');
-    }
+   
     
     
 }

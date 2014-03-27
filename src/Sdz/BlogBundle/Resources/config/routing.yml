@@ -1,3 +1,4 @@
+# ARTICLES
 sdzblog_voir:
     pattern:   /post/{slug}
     defaults:  { _controller: SdzBlogBundle:Blog:voir }
@@ -25,16 +26,12 @@ sdzblog_supprimer:
         id:  \d+
         
         
-        
-
-
-
-
-
+# COMMENTS        
 
 sdzblog_ajouter_commentaire:
     pattern:  /ajouter/commentaire/{id}
     defaults: { _controller: SdzBlogBundle:Blog:ajouterCommentaire }
+    methods:   [POST]
     requirements:
         id:      \d+
         
