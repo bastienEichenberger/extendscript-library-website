@@ -66,14 +66,14 @@ class __TwigTemplate_ec04e9120d584586cbe4072cc52427bf8d01da3159d5336afd1eeb4b41a
         echo "  <body ";
         if (array_key_exists("onLoadEvent", $context)) {
             echo " ";
-            echo twig_escape_filter($this->env, (isset($context["onLoadEvent"]) ? $context["onLoadEvent"] : $this->getContext($context, "onLoadEvent")), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getContext($context, "onLoadEvent"), "html", null, true);
             echo " ";
         }
         echo ">
     ";
         // line 36
         echo "    ";
-        if (($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "request"), "attributes"), "get", array(0 => "_route"), "method") != "fos_user_security_login")) {
+        if (($this->getAttribute($this->getAttribute($this->getAttribute($this->getContext($context, "app"), "request"), "attributes"), "get", array(0 => "_route"), "method") != "fos_user_security_login")) {
             // line 37
             echo "          ";
             $this->env->loadTemplate("nav.html.twig")->display($context);
@@ -86,7 +86,7 @@ class __TwigTemplate_ec04e9120d584586cbe4072cc52427bf8d01da3159d5336afd1eeb4b41a
     ";
         // line 42
         echo "    ";
-        if ((($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "request"), "attributes"), "get", array(0 => "_route"), "method") == "jlfa_web_site_homepage") || ($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "request"), "attributes"), "get", array(0 => "_route"), "method") == "root"))) {
+        if ((($this->getAttribute($this->getAttribute($this->getAttribute($this->getContext($context, "app"), "request"), "attributes"), "get", array(0 => "_route"), "method") == "jlfa_web_site_homepage") || ($this->getAttribute($this->getAttribute($this->getAttribute($this->getContext($context, "app"), "request"), "attributes"), "get", array(0 => "_route"), "method") == "root"))) {
             // line 44
             echo "          ";
             $this->displayBlock('carousel', $context, $blocks);
@@ -107,7 +107,7 @@ class __TwigTemplate_ec04e9120d584586cbe4072cc52427bf8d01da3159d5336afd1eeb4b41a
       <!-- FOOTER -->
       ";
         // line 56
-        if (($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "request"), "attributes"), "get", array(0 => "_route"), "method") != "fos_user_security_login")) {
+        if (($this->getAttribute($this->getAttribute($this->getAttribute($this->getContext($context, "app"), "request"), "attributes"), "get", array(0 => "_route"), "method") != "fos_user_security_login")) {
             // line 57
             echo "        <footer>
           <p class=\"pull-right\"><a href=\"#\">Back to top</a></p>
@@ -142,20 +142,20 @@ class __TwigTemplate_ec04e9120d584586cbe4072cc52427bf8d01da3159d5336afd1eeb4b41a
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_698357f_0") : $this->env->getExtension('assets')->getAssetUrl("_controller/css/main_bootstrap_1.css");
             // line 20
             echo "        <link rel=\"stylesheet\" href=\"";
-            echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getContext($context, "asset_url"), "html", null, true);
             echo "\" type=\"text/css\" />
       ";
             // asset "698357f_1"
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_698357f_1") : $this->env->getExtension('assets')->getAssetUrl("_controller/css/main_theme_2.css");
             echo "        <link rel=\"stylesheet\" href=\"";
-            echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getContext($context, "asset_url"), "html", null, true);
             echo "\" type=\"text/css\" />
       ";
         } else {
             // asset "698357f"
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_698357f") : $this->env->getExtension('assets')->getAssetUrl("_controller/css/main.css");
             echo "        <link rel=\"stylesheet\" href=\"";
-            echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getContext($context, "asset_url"), "html", null, true);
             echo "\" type=\"text/css\" />
       ";
         }
@@ -188,32 +188,32 @@ class __TwigTemplate_ec04e9120d584586cbe4072cc52427bf8d01da3159d5336afd1eeb4b41a
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_0304230_0") : $this->env->getExtension('assets')->getAssetUrl("_controller/js/main_jquery.min_1.js");
             // line 70
             echo "        <script type=\"text/javascript\" src=\"";
-            echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getContext($context, "asset_url"), "html", null, true);
             echo "\"></script>
       ";
             // asset "0304230_1"
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_0304230_1") : $this->env->getExtension('assets')->getAssetUrl("_controller/js/main_bootstrap.min_2.js");
             echo "        <script type=\"text/javascript\" src=\"";
-            echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getContext($context, "asset_url"), "html", null, true);
             echo "\"></script>
       ";
             // asset "0304230_2"
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_0304230_2") : $this->env->getExtension('assets')->getAssetUrl("_controller/js/main_holder_3.js");
             echo "        <script type=\"text/javascript\" src=\"";
-            echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getContext($context, "asset_url"), "html", null, true);
             echo "\"></script>
       ";
             // asset "0304230_3"
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_0304230_3") : $this->env->getExtension('assets')->getAssetUrl("_controller/js/main_nav_4.js");
             echo "        <script type=\"text/javascript\" src=\"";
-            echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getContext($context, "asset_url"), "html", null, true);
             echo "\"></script>
       ";
         } else {
             // asset "0304230"
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('routing')->getPath("_assetic_0304230") : $this->env->getExtension('assets')->getAssetUrl("_controller/js/main.js");
             echo "        <script type=\"text/javascript\" src=\"";
-            echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getContext($context, "asset_url"), "html", null, true);
             echo "\"></script>
       ";
         }
@@ -234,6 +234,6 @@ class __TwigTemplate_ec04e9120d584586cbe4072cc52427bf8d01da3159d5336afd1eeb4b41a
 
     public function getDebugInfo()
     {
-        return array (  222 => 72,  190 => 70,  182 => 63,  178 => 52,  175 => 51,  171 => 45,  168 => 44,  164 => 22,  144 => 20,  139 => 16,  136 => 15,  130 => 12,  122 => 63,  119 => 62,  112 => 57,  103 => 51,  97 => 47,  91 => 44,  88 => 42,  81 => 38,  78 => 37,  75 => 36,  58 => 28,  54 => 27,  46 => 15,  40 => 12,  35 => 10,  24 => 1,  57 => 13,  41 => 9,  32 => 5,  29 => 4,  66 => 34,  62 => 11,  60 => 14,  55 => 9,  50 => 15,  48 => 23,  45 => 12,  43 => 9,  39 => 7,  37 => 6,  185 => 64,  181 => 59,  170 => 56,  163 => 55,  158 => 54,  155 => 52,  153 => 51,  149 => 49,  142 => 47,  128 => 45,  124 => 73,  121 => 42,  118 => 40,  110 => 56,  107 => 36,  105 => 53,  100 => 33,  94 => 46,  90 => 30,  86 => 28,  84 => 39,  79 => 25,  74 => 24,  72 => 23,  69 => 14,  67 => 21,  44 => 17,  33 => 4,  30 => 3,  25 => 3,);
+        return array (  222 => 72,  190 => 70,  185 => 64,  178 => 52,  175 => 51,  124 => 73,  110 => 56,  97 => 47,  84 => 39,  81 => 38,  58 => 28,  34 => 5,  172 => 70,  150 => 60,  146 => 59,  134 => 53,  118 => 46,  114 => 45,  77 => 29,  70 => 25,  480 => 162,  474 => 161,  469 => 158,  461 => 155,  457 => 153,  453 => 151,  444 => 149,  440 => 148,  437 => 147,  435 => 146,  430 => 144,  427 => 143,  423 => 142,  413 => 134,  409 => 132,  407 => 131,  402 => 130,  398 => 129,  393 => 126,  387 => 122,  384 => 121,  381 => 120,  379 => 119,  374 => 116,  368 => 112,  365 => 111,  362 => 110,  360 => 109,  355 => 106,  341 => 105,  337 => 103,  322 => 101,  314 => 99,  312 => 98,  309 => 97,  305 => 95,  298 => 91,  294 => 90,  285 => 89,  283 => 88,  278 => 86,  268 => 85,  264 => 84,  258 => 81,  252 => 80,  247 => 78,  241 => 77,  229 => 73,  220 => 70,  214 => 69,  177 => 65,  169 => 60,  140 => 55,  132 => 51,  128 => 49,  107 => 36,  61 => 22,  273 => 96,  269 => 94,  254 => 92,  243 => 88,  240 => 86,  238 => 85,  235 => 74,  230 => 82,  227 => 81,  224 => 71,  221 => 77,  219 => 76,  217 => 75,  208 => 68,  204 => 72,  179 => 69,  159 => 61,  143 => 56,  135 => 53,  119 => 62,  102 => 39,  71 => 20,  67 => 17,  63 => 15,  59 => 15,  38 => 6,  94 => 46,  89 => 20,  85 => 22,  75 => 36,  68 => 14,  56 => 9,  87 => 25,  21 => 2,  26 => 2,  93 => 36,  88 => 42,  78 => 37,  46 => 15,  27 => 4,  44 => 12,  31 => 4,  28 => 7,  201 => 92,  196 => 90,  183 => 82,  171 => 45,  166 => 67,  163 => 62,  158 => 67,  156 => 66,  151 => 63,  142 => 59,  138 => 54,  136 => 15,  121 => 46,  117 => 44,  105 => 53,  91 => 44,  62 => 16,  49 => 19,  24 => 1,  25 => 3,  19 => 1,  79 => 18,  72 => 16,  69 => 25,  47 => 9,  40 => 12,  37 => 6,  22 => 2,  246 => 90,  157 => 64,  145 => 46,  139 => 16,  131 => 52,  123 => 47,  120 => 40,  115 => 43,  111 => 37,  108 => 36,  101 => 32,  98 => 38,  96 => 31,  83 => 25,  74 => 14,  66 => 34,  55 => 15,  52 => 21,  50 => 6,  43 => 4,  41 => 9,  35 => 10,  32 => 5,  29 => 4,  209 => 82,  203 => 78,  199 => 67,  193 => 73,  189 => 71,  187 => 84,  182 => 63,  176 => 64,  173 => 65,  168 => 44,  164 => 22,  162 => 66,  154 => 58,  149 => 51,  147 => 58,  144 => 20,  141 => 57,  133 => 55,  130 => 12,  125 => 50,  122 => 63,  116 => 41,  112 => 57,  109 => 43,  106 => 36,  103 => 51,  99 => 31,  95 => 28,  92 => 24,  86 => 32,  82 => 31,  80 => 19,  73 => 19,  64 => 17,  60 => 14,  57 => 13,  54 => 27,  51 => 14,  48 => 23,  45 => 15,  42 => 7,  39 => 8,  36 => 7,  33 => 4,  30 => 3,);
     }
 }

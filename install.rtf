@@ -6,23 +6,27 @@
 \pard\pardeftab720
 
 \f0\fs24 \cf0 As root:\
-\pard\pardeftab720
-\cf0 # clone the git repo down to /var/www/jlfa2\
+# clone the git repo down to /var/www/jlfa2\
 cd /var/www\
 git clone https://github.com/bastienEichenberger/extendscript-library-website.git\
+\
+# update vendors with composer\
+php -dmemory_limit=1G composer.phar update\
 \
 # Pull symfony components, clear caches and set rights\
 # remove the cache prod dir if neccessary\
 rm -rf /var/www/extendscript-library-website/app/cache/prod\
 \
 # install assets\
+cd /var/www/extendscript-library-website\
 php app/console cache:clear\
-php app/console assets:install\
+php app/console assets:install web --symslink\
 php app/console assetic:dump --env=prod\
 \
 # set rights\
 chmod -R 777 /var/www/extendscript-library-website/app/cache\
-\pard\pardeftab720
-\cf0 chmod -R 777 /var/www/extendscript-library-website/app/logs\
+chmod -R 777 /var/www/extendscript-library-website/app/logs\
+chown -R www-data: /var/www/extendscript-library-website/web/*\
+\
 \
 }

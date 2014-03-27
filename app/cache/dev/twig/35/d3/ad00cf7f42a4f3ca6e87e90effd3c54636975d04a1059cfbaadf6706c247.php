@@ -47,7 +47,7 @@ if (jsfv == undefined) {
 
 jsfv['";
         // line 16
-        echo twig_escape_filter($this->env, (isset($context["formName"]) ? $context["formName"] : $this->getContext($context, "formName")), "js", null, true);
+        echo twig_escape_filter($this->env, $this->getContext($context, "formName"), "html", null, true);
         echo "'] = new function () {
     var self = this;
     function getComputeMessage(key, placeholders, number) {
@@ -62,21 +62,21 @@ jsfv['";
         // Default translations
         if (!Translator.has('";
         // line 22
-        echo twig_escape_filter($this->env, (isset($context["translation_group"]) ? $context["translation_group"] : $this->getContext($context, "translation_group")), "js", null, true);
+        echo twig_escape_filter($this->env, $this->getContext($context, "translation_group"), "html", null, true);
         echo ":'+key)) {
             Translator.add('";
         // line 23
-        echo twig_escape_filter($this->env, (isset($context["translation_group"]) ? $context["translation_group"] : $this->getContext($context, "translation_group")), "js", null, true);
+        echo twig_escape_filter($this->env, $this->getContext($context, "translation_group"), "html", null, true);
         echo ":'+key, key);
         }
 
         return Translator.get('";
         // line 26
-        echo twig_escape_filter($this->env, (isset($context["translation_group"]) ? $context["translation_group"] : $this->getContext($context, "translation_group")), "js", null, true);
+        echo twig_escape_filter($this->env, $this->getContext($context, "translation_group"), "html", null, true);
         echo ":'+key, placeholders, number) ||
                Translator.get('";
         // line 27
-        echo twig_escape_filter($this->env, (isset($context["translation_group"]) ? $context["translation_group"] : $this->getContext($context, "translation_group")), "js", null, true);
+        echo twig_escape_filter($this->env, $this->getContext($context, "translation_group"), "html", null, true);
         echo ":'+key, placeholders);
     }
 
@@ -115,7 +115,7 @@ jsfv['";
 ";
         // line 56
         $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["librairyCalls"]) ? $context["librairyCalls"] : $this->getContext($context, "librairyCalls")));
+        $context['_seq'] = twig_ensure_traversable($this->getContext($context, "librairyCalls"));
         $context['loop'] = array(
           'parent' => $context['_parent'],
           'index0' => 0,
@@ -134,7 +134,7 @@ jsfv['";
             echo "
 ";
             // line 58
-            $template = $this->env->resolveTemplate((isset($context["librairyCall"]) ? $context["librairyCall"] : $this->getContext($context, "librairyCall")));
+            $template = $this->env->resolveTemplate($this->getContext($context, "librairyCall"));
             $template->display($context);
             // line 59
             echo "
@@ -156,13 +156,13 @@ jsfv['";
 ";
         // line 62
         $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["getterHandlers"]) ? $context["getterHandlers"] : $this->getContext($context, "getterHandlers")));
+        $context['_seq'] = twig_ensure_traversable($this->getContext($context, "getterHandlers"));
         foreach ($context['_seq'] as $context["_key"] => $context["handler"]) {
             // line 63
             echo "
 ";
             // line 64
-            echo (isset($context["handler"]) ? $context["handler"] : $this->getContext($context, "handler"));
+            echo $this->getContext($context, "handler");
             echo "
 
 ";
@@ -193,7 +193,7 @@ jsfv['";
 ";
         // line 104
         $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["fieldConstraints"]) ? $context["fieldConstraints"] : $this->getContext($context, "fieldConstraints")));
+        $context['_seq'] = twig_ensure_traversable($this->getContext($context, "fieldConstraints"));
         $context['loop'] = array(
           'parent' => $context['_parent'],
           'index0' => 0,
@@ -210,22 +210,22 @@ jsfv['";
         foreach ($context['_seq'] as $context["fieldName"] => $context["constraints"]) {
             // line 105
             echo "    this.check_";
-            echo twig_escape_filter($this->env, (isset($context["fieldName"]) ? $context["fieldName"] : $this->getContext($context, "fieldName")), "js", null, true);
+            echo twig_escape_filter($this->env, $this->getContext($context, "fieldName"), "html", null, true);
             echo " = function() {
         var gv;
         result = true;
 ";
             // line 108
             $context['_parent'] = (array) $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["constraints"]) ? $context["constraints"] : $this->getContext($context, "constraints")));
+            $context['_seq'] = twig_ensure_traversable($this->getContext($context, "constraints"));
             foreach ($context['_seq'] as $context["_key"] => $context["constraint"]) {
                 // line 109
                 echo "        result = result && checkError('";
-                echo twig_escape_filter($this->env, (isset($context["fieldName"]) ? $context["fieldName"] : $this->getContext($context, "fieldName")), "js", null, true);
+                echo twig_escape_filter($this->env, $this->getContext($context, "fieldName"), "html", null, true);
                 echo "', ";
-                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["constraint"]) ? $context["constraint"] : $this->getContext($context, "constraint")), "name"), "js", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "constraint"), "name"), "html", null, true);
                 echo ", ";
-                echo $this->getAttribute((isset($context["constraint"]) ? $context["constraint"] : $this->getContext($context, "constraint")), "parameters");
+                echo $this->getAttribute($this->getContext($context, "constraint"), "parameters");
                 echo " );
 ";
             }
@@ -258,11 +258,11 @@ jsfv['";
 ";
         // line 129
         $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["fieldConstraints"]) ? $context["fieldConstraints"] : $this->getContext($context, "fieldConstraints")));
+        $context['_seq'] = twig_ensure_traversable($this->getContext($context, "fieldConstraints"));
         foreach ($context['_seq'] as $context["fieldName"] => $context["constraints"]) {
             // line 130
             echo "        submitForm = self.check_";
-            echo twig_escape_filter($this->env, (isset($context["fieldName"]) ? $context["fieldName"] : $this->getContext($context, "fieldName")), "js", null, true);
+            echo twig_escape_filter($this->env, $this->getContext($context, "fieldName"), "html", null, true);
             echo "() && submitForm;
 ";
         }
@@ -280,7 +280,7 @@ jsfv['";
         echo "        if(!submitForm){
             var form = self.id('";
         // line 135
-        echo twig_escape_filter($this->env, (isset($context["formName"]) ? $context["formName"] : $this->getContext($context, "formName")), "js", null, true);
+        echo twig_escape_filter($this->env, $this->getContext($context, "formName"), "html", null, true);
         echo "');
             alert('il y a une erreur');
             \$(form).removeClass('btn-primary').addClass('btn-danger')
@@ -290,12 +290,12 @@ jsfv['";
     this.onReady = function() {
 ";
         // line 142
-        if ($this->getAttribute((isset($context["check_modes"]) ? $context["check_modes"] : $this->getContext($context, "check_modes")), "submit")) {
+        if ($this->getAttribute($this->getContext($context, "check_modes"), "submit")) {
             // line 143
             echo "        // On submit checks
         var form = self.id('";
             // line 144
-            echo twig_escape_filter($this->env, (isset($context["formName"]) ? $context["formName"] : $this->getContext($context, "formName")), "js", null, true);
+            echo twig_escape_filter($this->env, $this->getContext($context, "formName"), "html", null, true);
             echo "');
 
         // Form exists ?
@@ -304,7 +304,7 @@ jsfv['";
             if ( form.nodeName.toLowerCase() != 'form') {
                 form = self.id('";
             // line 150
-            echo twig_escape_filter($this->env, (isset($context["formName"]) ? $context["formName"] : $this->getContext($context, "formName")), "js", null, true);
+            echo twig_escape_filter($this->env, $this->getContext($context, "formName"), "html", null, true);
             echo "__token').form;
             }
 
@@ -316,19 +316,19 @@ jsfv['";
         echo "
 ";
         // line 157
-        if ($this->getAttribute((isset($context["check_modes"]) ? $context["check_modes"] : $this->getContext($context, "check_modes")), "blur")) {
+        if ($this->getAttribute($this->getContext($context, "check_modes"), "blur")) {
             // line 158
             echo "        // On blur checks
 ";
             // line 159
             $context['_parent'] = (array) $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["fieldConstraints"]) ? $context["fieldConstraints"] : $this->getContext($context, "fieldConstraints")));
+            $context['_seq'] = twig_ensure_traversable($this->getContext($context, "fieldConstraints"));
             foreach ($context['_seq'] as $context["fieldName"] => $context["constraints"]) {
                 // line 160
                 echo "        self.onEvent('";
-                echo twig_escape_filter($this->env, (isset($context["fieldName"]) ? $context["fieldName"] : $this->getContext($context, "fieldName")), "js", null, true);
+                echo twig_escape_filter($this->env, $this->getContext($context, "fieldName"), "html", null, true);
                 echo "', 'blur', self.check_";
-                echo twig_escape_filter($this->env, (isset($context["fieldName"]) ? $context["fieldName"] : $this->getContext($context, "fieldName")), "js", null, true);
+                echo twig_escape_filter($this->env, $this->getContext($context, "fieldName"), "html", null, true);
                 echo ");
 ";
             }
@@ -340,19 +340,19 @@ jsfv['";
         echo "
 ";
         // line 164
-        if ($this->getAttribute((isset($context["check_modes"]) ? $context["check_modes"] : $this->getContext($context, "check_modes")), "change")) {
+        if ($this->getAttribute($this->getContext($context, "check_modes"), "change")) {
             // line 165
             echo "        // On change checks
 ";
             // line 166
             $context['_parent'] = (array) $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["fieldConstraints"]) ? $context["fieldConstraints"] : $this->getContext($context, "fieldConstraints")));
+            $context['_seq'] = twig_ensure_traversable($this->getContext($context, "fieldConstraints"));
             foreach ($context['_seq'] as $context["fieldName"] => $context["constraints"]) {
                 // line 167
                 echo "        self.onEvent('";
-                echo twig_escape_filter($this->env, (isset($context["fieldName"]) ? $context["fieldName"] : $this->getContext($context, "fieldName")), "js", null, true);
+                echo twig_escape_filter($this->env, $this->getContext($context, "fieldName"), "html", null, true);
                 echo "', 'change', self.check_";
-                echo twig_escape_filter($this->env, (isset($context["fieldName"]) ? $context["fieldName"] : $this->getContext($context, "fieldName")), "js", null, true);
+                echo twig_escape_filter($this->env, $this->getContext($context, "fieldName"), "html", null, true);
                 echo ");
 ";
             }
@@ -449,39 +449,39 @@ jsfv['";
     public function block_getters_constraints_field($context, array $blocks = array())
     {
         // line 113
-        if ($this->getAttribute((isset($context["gettersConstraints"]) ? $context["gettersConstraints"] : null), (isset($context["fieldName"]) ? $context["fieldName"] : $this->getContext($context, "fieldName")), array(), "array", true, true)) {
+        if ($this->getAttribute($this->getContext($context, "gettersConstraints", true), $this->getContext($context, "fieldName"), array(), "array", true, true)) {
             // line 114
             $context['_parent'] = (array) $context;
-            $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["gettersConstraints"]) ? $context["gettersConstraints"] : $this->getContext($context, "gettersConstraints")), (isset($context["fieldName"]) ? $context["fieldName"] : $this->getContext($context, "fieldName")), array(), "array"));
+            $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getContext($context, "gettersConstraints"), $this->getContext($context, "fieldName"), array(), "array"));
             foreach ($context['_seq'] as $context["getterHandler"] => $context["getterConstraints"]) {
                 // line 115
                 echo "            if (";
-                echo twig_escape_filter($this->env, (isset($context["resultvar"]) ? $context["resultvar"] : $this->getContext($context, "resultvar")), "js", null, true);
+                echo twig_escape_filter($this->env, $this->getContext($context, "resultvar"), "html", null, true);
                 echo ") {
                 gv = ";
                 // line 116
-                echo (isset($context["getterHandler"]) ? $context["getterHandler"] : $this->getContext($context, "getterHandler"));
+                echo $this->getContext($context, "getterHandler");
                 echo "();
 ";
                 // line 117
                 $context['_parent'] = (array) $context;
-                $context['_seq'] = twig_ensure_traversable((isset($context["getterConstraints"]) ? $context["getterConstraints"] : $this->getContext($context, "getterConstraints")));
+                $context['_seq'] = twig_ensure_traversable($this->getContext($context, "getterConstraints"));
                 foreach ($context['_seq'] as $context["_key"] => $context["constraint"]) {
                     // line 118
                     echo "                ";
-                    echo twig_escape_filter($this->env, (isset($context["resultvar"]) ? $context["resultvar"] : $this->getContext($context, "resultvar")), "js", null, true);
+                    echo twig_escape_filter($this->env, $this->getContext($context, "resultvar"), "html", null, true);
                     echo " = checkError(";
-                    if (((isset($context["fieldName"]) ? $context["fieldName"] : $this->getContext($context, "fieldName")) == ".")) {
+                    if (($this->getContext($context, "fieldName") == ".")) {
                         echo "form.id";
                     } else {
                         echo "'";
-                        echo twig_escape_filter($this->env, (isset($context["fieldName"]) ? $context["fieldName"] : $this->getContext($context, "fieldName")), "js", null, true);
+                        echo twig_escape_filter($this->env, $this->getContext($context, "fieldName"), "html", null, true);
                         echo "'";
                     }
                     echo ", ";
-                    echo twig_escape_filter($this->env, $this->getAttribute((isset($context["constraint"]) ? $context["constraint"] : $this->getContext($context, "constraint")), "name"), "js", null, true);
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "constraint"), "name"), "html", null, true);
                     echo ", ";
-                    echo $this->getAttribute((isset($context["constraint"]) ? $context["constraint"] : $this->getContext($context, "constraint")), "parameters");
+                    echo $this->getAttribute($this->getContext($context, "constraint"), "parameters");
                     echo ", gv);
 ";
                 }
@@ -509,7 +509,7 @@ jsfv['";
     {
         // line 174
         echo "\$(jsfv['";
-        echo twig_escape_filter($this->env, (isset($context["formName"]) ? $context["formName"] : $this->getContext($context, "formName")), "js", null, true);
+        echo twig_escape_filter($this->env, $this->getContext($context, "formName"), "html", null, true);
         echo "'].onReady);
 ";
     }
@@ -531,6 +531,6 @@ jsfv['";
 
     public function getDebugInfo()
     {
-        return array (  518 => 177,  511 => 174,  508 => 173,  502 => 133,  492 => 120,  471 => 118,  467 => 117,  463 => 116,  458 => 115,  454 => 114,  452 => 113,  449 => 112,  444 => 101,  441 => 100,  426 => 84,  423 => 83,  409 => 72,  406 => 71,  399 => 46,  396 => 45,  391 => 42,  383 => 37,  378 => 10,  374 => 177,  371 => 176,  369 => 173,  364 => 170,  352 => 167,  348 => 166,  345 => 165,  343 => 164,  340 => 163,  328 => 160,  324 => 159,  321 => 158,  319 => 157,  316 => 156,  307 => 150,  298 => 144,  295 => 143,  293 => 142,  283 => 135,  280 => 134,  277 => 133,  273 => 132,  264 => 130,  260 => 129,  256 => 127,  240 => 124,  238 => 112,  236 => 111,  223 => 109,  219 => 108,  212 => 105,  195 => 104,  192 => 103,  190 => 100,  184 => 96,  182 => 83,  180 => 71,  165 => 64,  162 => 63,  158 => 62,  155 => 61,  140 => 59,  137 => 58,  134 => 57,  117 => 56,  107 => 48,  105 => 45,  94 => 38,  75 => 26,  69 => 23,  65 => 22,  60 => 20,  171 => 44,  166 => 42,  163 => 41,  156 => 38,  153 => 37,  146 => 32,  138 => 28,  129 => 25,  123 => 24,  121 => 23,  115 => 20,  103 => 17,  98 => 42,  89 => 13,  86 => 12,  83 => 11,  77 => 7,  64 => 4,  61 => 3,  58 => 2,  55 => 1,  46 => 41,  41 => 10,  29 => 11,  24 => 1,  57 => 9,  54 => 8,  50 => 16,  48 => 47,  36 => 34,  92 => 37,  85 => 22,  71 => 20,  67 => 17,  62 => 16,  59 => 15,  43 => 11,  39 => 8,  34 => 31,  31 => 30,  26 => 10,  179 => 72,  174 => 67,  168 => 43,  164 => 66,  159 => 64,  152 => 60,  148 => 59,  143 => 31,  136 => 53,  132 => 26,  127 => 50,  120 => 46,  116 => 45,  111 => 19,  104 => 39,  100 => 38,  95 => 15,  88 => 23,  84 => 31,  79 => 27,  72 => 25,  68 => 5,  63 => 22,  56 => 19,  52 => 17,  47 => 15,  38 => 11,  33 => 4,  30 => 1,  25 => 4,);
+        return array (  518 => 177,  511 => 174,  508 => 173,  502 => 133,  492 => 120,  471 => 118,  467 => 117,  463 => 116,  458 => 115,  454 => 114,  452 => 113,  449 => 112,  441 => 100,  426 => 84,  406 => 71,  399 => 46,  396 => 45,  391 => 42,  383 => 37,  378 => 10,  371 => 176,  369 => 173,  364 => 170,  352 => 167,  348 => 166,  345 => 165,  343 => 164,  340 => 163,  328 => 160,  324 => 159,  321 => 158,  319 => 157,  316 => 156,  307 => 150,  295 => 143,  293 => 142,  280 => 134,  277 => 133,  260 => 129,  256 => 127,  236 => 111,  223 => 109,  212 => 105,  195 => 104,  192 => 103,  180 => 71,  165 => 64,  197 => 85,  194 => 84,  184 => 96,  113 => 52,  65 => 22,  181 => 59,  170 => 56,  155 => 61,  153 => 76,  90 => 28,  174 => 67,  152 => 60,  148 => 59,  127 => 50,  104 => 29,  100 => 39,  137 => 58,  126 => 61,  53 => 10,  23 => 3,  222 => 72,  190 => 100,  185 => 61,  178 => 85,  175 => 84,  124 => 43,  110 => 37,  97 => 44,  84 => 30,  81 => 29,  58 => 14,  34 => 11,  172 => 70,  150 => 60,  146 => 59,  134 => 57,  118 => 40,  114 => 41,  77 => 22,  70 => 29,  480 => 162,  474 => 161,  469 => 158,  461 => 155,  457 => 153,  453 => 151,  444 => 101,  440 => 148,  437 => 147,  435 => 146,  430 => 144,  427 => 143,  423 => 83,  413 => 134,  409 => 72,  407 => 131,  402 => 130,  398 => 129,  393 => 126,  387 => 122,  384 => 121,  381 => 120,  379 => 119,  374 => 177,  368 => 112,  365 => 111,  362 => 110,  360 => 109,  355 => 106,  341 => 105,  337 => 103,  322 => 101,  314 => 99,  312 => 98,  309 => 97,  305 => 95,  298 => 144,  294 => 90,  285 => 89,  283 => 135,  278 => 86,  268 => 85,  264 => 130,  258 => 81,  252 => 80,  247 => 78,  241 => 77,  229 => 73,  220 => 70,  214 => 69,  177 => 65,  169 => 85,  140 => 59,  132 => 53,  128 => 45,  107 => 48,  61 => 15,  273 => 132,  269 => 94,  254 => 92,  243 => 88,  240 => 124,  238 => 112,  235 => 74,  230 => 82,  227 => 81,  224 => 71,  221 => 77,  219 => 108,  217 => 75,  208 => 68,  204 => 72,  179 => 72,  159 => 64,  143 => 57,  135 => 67,  119 => 62,  102 => 39,  71 => 28,  67 => 24,  63 => 16,  59 => 21,  38 => 5,  94 => 38,  89 => 40,  85 => 33,  75 => 26,  68 => 19,  56 => 19,  87 => 25,  21 => 1,  26 => 3,  93 => 41,  88 => 32,  78 => 37,  46 => 15,  27 => 2,  44 => 9,  31 => 4,  28 => 6,  201 => 92,  196 => 90,  183 => 82,  171 => 45,  166 => 84,  163 => 55,  158 => 62,  156 => 66,  151 => 47,  142 => 72,  138 => 54,  136 => 53,  121 => 48,  117 => 56,  105 => 45,  91 => 44,  62 => 24,  49 => 12,  24 => 2,  25 => 3,  19 => 1,  79 => 27,  72 => 27,  69 => 23,  47 => 10,  40 => 5,  37 => 13,  22 => 2,  246 => 90,  157 => 77,  145 => 56,  139 => 71,  131 => 52,  123 => 47,  120 => 46,  115 => 43,  111 => 43,  108 => 30,  101 => 28,  98 => 42,  96 => 31,  83 => 25,  74 => 38,  66 => 26,  55 => 19,  52 => 13,  50 => 16,  43 => 11,  41 => 10,  35 => 4,  32 => 3,  29 => 3,  209 => 82,  203 => 78,  199 => 67,  193 => 73,  189 => 71,  187 => 85,  182 => 83,  176 => 64,  173 => 65,  168 => 67,  164 => 66,  162 => 63,  154 => 58,  149 => 75,  147 => 46,  144 => 73,  141 => 55,  133 => 55,  130 => 37,  125 => 49,  122 => 63,  116 => 53,  112 => 31,  109 => 42,  106 => 36,  103 => 51,  99 => 40,  95 => 36,  92 => 37,  86 => 39,  82 => 30,  80 => 10,  73 => 52,  64 => 23,  60 => 20,  57 => 20,  54 => 14,  51 => 16,  48 => 23,  45 => 42,  42 => 13,  39 => 6,  36 => 15,  33 => 4,  30 => 1,);
     }
 }

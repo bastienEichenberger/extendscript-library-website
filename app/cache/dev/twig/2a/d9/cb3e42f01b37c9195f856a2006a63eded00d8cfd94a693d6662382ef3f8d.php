@@ -42,7 +42,7 @@ class __TwigTemplate_2ad9cb3e42f01b37c9195f856a2006a63eded00d8cfd94a693d6662382e
             ";
         // line 17
         $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["articles"]) ? $context["articles"] : $this->getContext($context, "articles")));
+        $context['_seq'] = twig_ensure_traversable($this->getContext($context, "articles"));
         $context['_iterated'] = false;
         $context['loop'] = array(
           'parent' => $context['_parent'],
@@ -69,14 +69,14 @@ class __TwigTemplate_2ad9cb3e42f01b37c9195f856a2006a63eded00d8cfd94a693d6662382e
                 echo "                            <div class=\"admin-post\">
                                 ";
                 // line 23
-                $context["modal_id"] = ("modal-article-" . $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "id"));
+                $context["modal_id"] = ("modal-article-" . $this->getAttribute($this->getContext($context, "article"), "id"));
                 // line 24
                 echo "                                <a class=\"pull-right\" href=\"";
-                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sdzblog_edit_post", array("id" => $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "id"))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sdzblog_edit_post", array("id" => $this->getAttribute($this->getContext($context, "article"), "id"))), "html", null, true);
                 echo "\"><span class=\"glyphicon glyphicon-pencil\"></span></a>
                                 <a class=\"pull-right\" href=\"#\" data-toggle=\"modal\" data-target=\"#";
                 // line 25
-                echo twig_escape_filter($this->env, (isset($context["modal_id"]) ? $context["modal_id"] : $this->getContext($context, "modal_id")), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getContext($context, "modal_id"), "html", null, true);
                 echo "\"><span class=\"glyphicon glyphicon-minus\"></span></a>
                                 <!-- Modal -->
                                 ";
@@ -91,25 +91,25 @@ class __TwigTemplate_2ad9cb3e42f01b37c9195f856a2006a63eded00d8cfd94a693d6662382e
                         
                         <h2><a href=\"";
             // line 32
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sdzblog_voir", array("slug" => $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "slug"))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sdzblog_voir", array("slug" => $this->getAttribute($this->getContext($context, "article"), "slug"))), "html", null, true);
             echo "\">";
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "titre"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "article"), "titre"), "html", null, true);
             echo "</a></h2>
                         <p>";
             // line 33
-            echo twig_escape_filter($this->env, twig_truncate_filter($this->env, $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "contenu"), 200, true, "..."), "html", null, true);
+            echo twig_escape_filter($this->env, twig_truncate_filter($this->env, $this->getAttribute($this->getContext($context, "article"), "contenu"), 200, true, "..."), "html", null, true);
             echo "</p>
                     </div>
                     ";
             // line 35
-            if ((!(null === $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "image")))) {
+            if ((!(null === $this->getAttribute($this->getContext($context, "article"), "image")))) {
                 // line 36
                 echo "                        <div class=\"col-lg-4\">
                             <img class=\"featurette-image img-responsive\" src=\"";
                 // line 37
-                echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl($this->getAttribute($this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "image"), "webPath")), "html", null, true);
+                echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl($this->getAttribute($this->getAttribute($this->getContext($context, "article"), "image"), "webPath")), "html", null, true);
                 echo "\" alt=\"";
-                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "image"), "alt"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "article"), "image"), "alt"), "html", null, true);
                 echo "\">
                         </div>
                     ";
@@ -119,7 +119,7 @@ class __TwigTemplate_2ad9cb3e42f01b37c9195f856a2006a63eded00d8cfd94a693d6662382e
                 ";
             // line 42
             echo "                ";
-            if (($this->getAttribute((isset($context["loop"]) ? $context["loop"] : $this->getContext($context, "loop")), "index") < (isset($context["nombre_sur_page"]) ? $context["nombre_sur_page"] : $this->getContext($context, "nombre_sur_page")))) {
+            if (($this->getAttribute($this->getContext($context, "loop"), "index") < $this->getContext($context, "nombre_sur_page"))) {
                 // line 43
                 echo "                    <hr class=\"featurette-divider\">
                 ";
@@ -150,26 +150,26 @@ class __TwigTemplate_2ad9cb3e42f01b37c9195f856a2006a63eded00d8cfd94a693d6662382e
             
              ";
         // line 51
-        if (((isset($context["nb_page"]) ? $context["nb_page"] : $this->getContext($context, "nb_page")) > 1)) {
+        if (($this->getContext($context, "nb_page") > 1)) {
             // line 52
             echo "                <ul class=\"pagination pull-right\">
                   ";
             // line 54
             echo "                  ";
             $context['_parent'] = (array) $context;
-            $context['_seq'] = twig_ensure_traversable(range(1, (isset($context["nb_page"]) ? $context["nb_page"] : $this->getContext($context, "nb_page"))));
+            $context['_seq'] = twig_ensure_traversable(range(1, $this->getContext($context, "nb_page")));
             foreach ($context['_seq'] as $context["_key"] => $context["p"]) {
                 // line 55
                 echo "                    <li";
-                if (((isset($context["p"]) ? $context["p"] : $this->getContext($context, "p")) == (isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")))) {
+                if (($this->getContext($context, "p") == $this->getContext($context, "page"))) {
                     echo " class=\"active\"";
                 }
                 echo ">
                       <a href=\"";
                 // line 56
-                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sdzblog_accueil", array("page" => (isset($context["p"]) ? $context["p"] : $this->getContext($context, "p")))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sdzblog_accueil", array("page" => $this->getContext($context, "p"))), "html", null, true);
                 echo "\">";
-                echo twig_escape_filter($this->env, (isset($context["p"]) ? $context["p"] : $this->getContext($context, "p")), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getContext($context, "p"), "html", null, true);
                 echo "</a>
                     </li>
                   ";
@@ -199,6 +199,6 @@ class __TwigTemplate_2ad9cb3e42f01b37c9195f856a2006a63eded00d8cfd94a693d6662382e
 
     public function getDebugInfo()
     {
-        return array (  185 => 61,  181 => 59,  170 => 56,  163 => 55,  158 => 54,  155 => 52,  153 => 51,  149 => 49,  142 => 47,  128 => 45,  124 => 43,  121 => 42,  118 => 40,  110 => 37,  107 => 36,  105 => 35,  100 => 33,  94 => 32,  90 => 30,  86 => 28,  84 => 27,  79 => 25,  74 => 24,  72 => 23,  69 => 22,  67 => 21,  44 => 17,  33 => 8,  30 => 7,  25 => 3,);
+        return array (  181 => 59,  170 => 56,  155 => 52,  153 => 51,  90 => 30,  174 => 70,  152 => 60,  148 => 59,  127 => 50,  104 => 39,  100 => 33,  137 => 41,  126 => 36,  53 => 12,  23 => 3,  222 => 72,  190 => 70,  185 => 61,  178 => 52,  175 => 51,  124 => 43,  110 => 37,  97 => 47,  84 => 27,  81 => 38,  58 => 14,  34 => 11,  172 => 70,  150 => 60,  146 => 59,  134 => 53,  118 => 40,  114 => 45,  77 => 29,  70 => 19,  480 => 162,  474 => 161,  469 => 158,  461 => 155,  457 => 153,  453 => 151,  444 => 149,  440 => 148,  437 => 147,  435 => 146,  430 => 144,  427 => 143,  423 => 142,  413 => 134,  409 => 132,  407 => 131,  402 => 130,  398 => 129,  393 => 126,  387 => 122,  384 => 121,  381 => 120,  379 => 119,  374 => 116,  368 => 112,  365 => 111,  362 => 110,  360 => 109,  355 => 106,  341 => 105,  337 => 103,  322 => 101,  314 => 99,  312 => 98,  309 => 97,  305 => 95,  298 => 91,  294 => 90,  285 => 89,  283 => 88,  278 => 86,  268 => 85,  264 => 84,  258 => 81,  252 => 80,  247 => 78,  241 => 77,  229 => 73,  220 => 70,  214 => 69,  177 => 65,  169 => 60,  140 => 55,  132 => 52,  128 => 45,  107 => 36,  61 => 22,  273 => 96,  269 => 94,  254 => 92,  243 => 88,  240 => 86,  238 => 85,  235 => 74,  230 => 82,  227 => 81,  224 => 71,  221 => 77,  219 => 76,  217 => 75,  208 => 68,  204 => 72,  179 => 72,  159 => 64,  143 => 57,  135 => 53,  119 => 62,  102 => 39,  71 => 20,  67 => 21,  63 => 22,  59 => 15,  38 => 11,  94 => 32,  89 => 20,  85 => 24,  75 => 36,  68 => 24,  56 => 18,  87 => 25,  21 => 5,  26 => 2,  93 => 36,  88 => 32,  78 => 37,  46 => 17,  27 => 4,  44 => 17,  31 => 4,  28 => 9,  201 => 92,  196 => 90,  183 => 82,  171 => 45,  166 => 67,  163 => 55,  158 => 54,  156 => 66,  151 => 47,  142 => 47,  138 => 54,  136 => 53,  121 => 42,  117 => 44,  105 => 35,  91 => 44,  62 => 16,  49 => 19,  24 => 1,  25 => 3,  19 => 1,  79 => 25,  72 => 23,  69 => 22,  47 => 15,  40 => 14,  37 => 6,  22 => 2,  246 => 90,  157 => 50,  145 => 46,  139 => 16,  131 => 52,  123 => 47,  120 => 46,  115 => 43,  111 => 43,  108 => 29,  101 => 27,  98 => 38,  96 => 31,  83 => 25,  74 => 24,  66 => 17,  55 => 15,  52 => 17,  50 => 6,  43 => 4,  41 => 9,  35 => 10,  32 => 5,  29 => 4,  209 => 82,  203 => 78,  199 => 67,  193 => 73,  189 => 71,  187 => 84,  182 => 63,  176 => 64,  173 => 65,  168 => 67,  164 => 66,  162 => 66,  154 => 58,  149 => 49,  147 => 46,  144 => 20,  141 => 57,  133 => 55,  130 => 37,  125 => 50,  122 => 63,  116 => 45,  112 => 31,  109 => 43,  106 => 36,  103 => 51,  99 => 31,  95 => 36,  92 => 24,  86 => 28,  82 => 31,  80 => 19,  73 => 20,  64 => 16,  60 => 14,  57 => 13,  54 => 27,  51 => 11,  48 => 23,  45 => 15,  42 => 7,  39 => 8,  36 => 7,  33 => 8,  30 => 7,);
     }
 }
