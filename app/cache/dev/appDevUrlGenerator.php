@@ -12,7 +12,7 @@ use Psr\Log\LoggerInterface;
  */
 class appDevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerator
 {
-    private static $declaredRoutes = array(
+    static private $declaredRoutes = array(
         '_assetic_324f466' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'assetic.controller:render',    'name' => '324f466',    'pos' => NULL,    '_format' => 'css',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/css/main.css',    ),  ),  4 =>   array (  ),),
         '_assetic_324f466_0' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'assetic.controller:render',    'name' => '324f466',    'pos' => 0,    '_format' => 'css',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/css/main_leaflet_1.css',    ),  ),  4 =>   array (  ),),
         '_assetic_324f466_1' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'assetic.controller:render',    'name' => '324f466',    'pos' => 1,    '_format' => 'css',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/css/main_map_2.css',    ),  ),  4 =>   array (  ),),

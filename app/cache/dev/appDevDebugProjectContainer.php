@@ -300,7 +300,7 @@ class appDevDebugProjectContainer extends Container
             'security.secure_random' => 'getSecurity_SecureRandomService',
             'security.user_checker' => 'getSecurity_UserCheckerService',
             'security.validator.user_password' => 'getSecurity_Validator_UserPasswordService',
-            'sensio.distribution.webconfigurator' => 'getSensio_Distribution_WebconfiguratorService',
+            'sensio_distribution.webconfigurator' => 'getSensioDistribution_WebconfiguratorService',
             'sensio_framework_extra.cache.listener' => 'getSensioFrameworkExtra_Cache_ListenerService',
             'sensio_framework_extra.controller.listener' => 'getSensioFrameworkExtra_Controller_ListenerService',
             'sensio_framework_extra.converter.datetime' => 'getSensioFrameworkExtra_Converter_DatetimeService',
@@ -399,6 +399,7 @@ class appDevDebugProjectContainer extends Container
             'jsfv' => 'jsfv.generator',
             'mailer' => 'swiftmailer.mailer.default',
             'security.acl.dbal.connection' => 'doctrine.dbal.default_connection',
+            'sensio.distribution.webconfigurator' => 'sensio_distribution.webconfigurator',
             'session.storage' => 'session.storage.native',
             'swiftmailer.mailer' => 'swiftmailer.mailer.default',
             'swiftmailer.plugin.messagelogger' => 'swiftmailer.mailer.default.plugin.messagelogger',
@@ -417,7 +418,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getAnnotationReaderService()
     {
-        return $this->services['annotation_reader'] = new \Doctrine\Common\Annotations\FileCacheReader(new \Doctrine\Common\Annotations\AnnotationReader(), '/Applications/MAMP/htdocs/jlfa/app/cache/dev/annotations', true);
+        return $this->services['annotation_reader'] = new \Doctrine\Common\Annotations\FileCacheReader(new \Doctrine\Common\Annotations\AnnotationReader(), '/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/annotations', true);
     }
 
     /**
@@ -432,14 +433,14 @@ class appDevDebugProjectContainer extends Container
     {
         $a = $this->get('templating.loader');
 
-        $this->services['assetic.asset_manager'] = $instance = new \Assetic\Factory\LazyAssetManager($this->get('assetic.asset_factory'), array('twig' => new \Assetic\Factory\Loader\CachedFormulaLoader(new \Assetic\Extension\Twig\TwigFormulaLoader($this->get('twig')), new \Assetic\Cache\ConfigCache('/Applications/MAMP/htdocs/jlfa/app/cache/dev/assetic/config'), true)));
+        $this->services['assetic.asset_manager'] = $instance = new \Assetic\Factory\LazyAssetManager($this->get('assetic.asset_factory'), array('twig' => new \Assetic\Factory\Loader\CachedFormulaLoader(new \Assetic\Extension\Twig\TwigFormulaLoader($this->get('twig')), new \Assetic\Cache\ConfigCache('/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/assetic/config'), true)));
 
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JlfaWebSiteBundle', '/Applications/MAMP/htdocs/jlfa/app/Resources/JlfaWebSiteBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JlfaWebSiteBundle', '/Applications/MAMP/htdocs/jlfa/src/Jlfa/WebSiteBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FOSUserBundle', '/Applications/MAMP/htdocs/jlfa/app/Resources/FOSUserBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FOSUserBundle', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SdzBlogBundle', '/Applications/MAMP/htdocs/jlfa/app/Resources/SdzBlogBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SdzBlogBundle', '/Applications/MAMP/htdocs/jlfa/src/Sdz/BlogBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JlfaForumBundle', '/Applications/MAMP/htdocs/jlfa/app/Resources/JlfaForumBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JlfaForumBundle', '/Applications/MAMP/htdocs/jlfa/src/Jlfa/ForumBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'CCDNForumForumBundle', '/Applications/MAMP/htdocs/jlfa/app/Resources/CCDNForumForumBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'CCDNForumForumBundle', '/Applications/MAMP/htdocs/jlfa/vendor/codeconsortium/ccdn-forum-bundle/CCDNForum/ForumBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, '', '/Applications/MAMP/htdocs/jlfa/app/Resources/views', '/\\.[^.]+\\.twig$/'), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JlfaWebSiteBundle', '/Applications/MAMP/htdocs/extendscript-library-website/app/Resources/JlfaWebSiteBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JlfaWebSiteBundle', '/Applications/MAMP/htdocs/extendscript-library-website/src/Jlfa/WebSiteBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FOSUserBundle', '/Applications/MAMP/htdocs/extendscript-library-website/app/Resources/FOSUserBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FOSUserBundle', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SdzBlogBundle', '/Applications/MAMP/htdocs/extendscript-library-website/app/Resources/SdzBlogBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SdzBlogBundle', '/Applications/MAMP/htdocs/extendscript-library-website/src/Sdz/BlogBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JlfaForumBundle', '/Applications/MAMP/htdocs/extendscript-library-website/app/Resources/JlfaForumBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JlfaForumBundle', '/Applications/MAMP/htdocs/extendscript-library-website/src/Jlfa/ForumBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'CCDNForumForumBundle', '/Applications/MAMP/htdocs/extendscript-library-website/app/Resources/CCDNForumForumBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'CCDNForumForumBundle', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/codeconsortium/ccdn-forum-bundle/CCDNForum/ForumBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, '', '/Applications/MAMP/htdocs/extendscript-library-website/app/Resources/views', '/\\.[^.]+\\.twig$/'), 'twig');
 
         return $instance;
     }
@@ -483,7 +484,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getAssetic_Filter_YuiCssService()
     {
-        $this->services['assetic.filter.yui_css'] = $instance = new \Assetic\Filter\Yui\CssCompressorFilter('/Applications/MAMP/htdocs/jlfa/app/Resources/java/yuicompressor.jar', 'C:\\Program Files (x86)\\Java\\jre7\\bin\\java.exe');
+        $this->services['assetic.filter.yui_css'] = $instance = new \Assetic\Filter\Yui\CssCompressorFilter('/Applications/MAMP/htdocs/extendscript-library-website/app/Resources/java/yuicompressor.jar', 'C:\\Program Files (x86)\\Java\\jre7\\bin\\java.exe');
 
         $instance->setCharset('UTF-8');
         $instance->setTimeout(NULL);
@@ -502,7 +503,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getAssetic_Filter_YuiJsService()
     {
-        $this->services['assetic.filter.yui_js'] = $instance = new \Assetic\Filter\Yui\JsCompressorFilter('/Applications/MAMP/htdocs/jlfa/app/Resources/java/yuicompressor.jar', 'C:\\Program Files (x86)\\Java\\jre7\\bin\\java.exe');
+        $this->services['assetic.filter.yui_js'] = $instance = new \Assetic\Filter\Yui\JsCompressorFilter('/Applications/MAMP/htdocs/extendscript-library-website/app/Resources/java/yuicompressor.jar', 'C:\\Program Files (x86)\\Java\\jre7\\bin\\java.exe');
 
         $instance->setCharset('UTF-8');
         $instance->setTimeout(NULL);
@@ -552,7 +553,7 @@ class appDevDebugProjectContainer extends Container
     {
         $a = $this->get('translation.loader.xliff');
 
-        $this->services['bazinga.exposetranslation.controller'] = $instance = new \Bazinga\ExposeTranslationBundle\Controller\Controller($this->get('translator.default'), $this->get('templating'), $this->get('bazinga.exposetranslation.finder.translation_finder'), '/Applications/MAMP/htdocs/jlfa/app/cache/dev/bazinga_expose_translation', true, '', array(0 => 'messages'));
+        $this->services['bazinga.exposetranslation.controller'] = $instance = new \Bazinga\ExposeTranslationBundle\Controller\Controller($this->get('translator.default'), $this->get('templating'), $this->get('bazinga.exposetranslation.finder.translation_finder'), '/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/bazinga_expose_translation', true, '', array(0 => 'messages'));
 
         $instance->addLoader('php', $this->get('translation.loader.php'));
         $instance->addLoader('yml', $this->get('translation.loader.yml'));
@@ -639,7 +640,7 @@ class appDevDebugProjectContainer extends Container
         $a = $this->get('kernel');
         $b = $this->get('templating.filename_parser');
 
-        $c = new \Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder($a, $b, '/Applications/MAMP/htdocs/jlfa/app/Resources');
+        $c = new \Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder($a, $b, '/Applications/MAMP/htdocs/extendscript-library-website/app/Resources');
 
         return $this->services['cache_warmer'] = new \Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerAggregate(array(0 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplatePathsCacheWarmer($c, $this->get('templating.locator')), 1 => new \Symfony\Bundle\AsseticBundle\CacheWarmer\AssetManagerCacheWarmer($this), 2 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\RouterCacheWarmer($this->get('router')), 3 => new \Symfony\Bundle\TwigBundle\CacheWarmer\TemplateCacheCacheWarmer($this, $c), 4 => new \Symfony\Bridge\Doctrine\CacheWarmer\ProxyCacheWarmer($this->get('doctrine')), 5 => new \JMS\DiExtraBundle\HttpKernel\ControllerInjectorsWarmer($a, $this->get('jms_di_extra.controller_resolver'), array()), 6 => $this->get('kernel.cache_warmer.jsformvalidation')));
     }
@@ -1867,7 +1868,7 @@ class appDevDebugProjectContainer extends Container
         $e->addEventListener(array(0 => 'postGenerateSchema'), 'security.acl.dbal.schema_listener');
         $e->addEventListener(array(0 => 'loadClassMetadata'), $d);
 
-        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_pgsql', 'host' => 'localhost', 'port' => 5433, 'dbname' => 'jlfa', 'user' => 'postgres', 'password' => 'admin', 'charset' => 'UTF8', 'driverOptions' => array()), $b, $e, array('enum' => 'string'));
+        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('dbname' => 'jlfa', 'host' => 'localhost', 'port' => 5433, 'user' => 'postgres', 'password' => 'admin', 'charset' => 'UTF8', 'driver' => 'pdo_pgsql', 'driverOptions' => array()), $b, $e, array('enum' => 'string'));
     }
 
     /**
@@ -1876,29 +1877,29 @@ class appDevDebugProjectContainer extends Container
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return EntityManager5333d09161c90_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager A EntityManager5333d09161c90_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager instance.
+     * @return EntityManager5333e8e9f06c0_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager A EntityManager5333e8e9f06c0_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager instance.
      */
     protected function getDoctrine_Orm_DefaultEntityManagerService()
     {
-        require_once '/Applications/MAMP/htdocs/jlfa/app/cache/dev/jms_diextra/doctrine/EntityManager_5333d09161c90.php';
+        require_once '/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/jms_diextra/doctrine/EntityManager_5333e8e9f06c0.php';
 
         $a = $this->get('annotation_reader');
 
         $b = new \Doctrine\Common\Cache\ArrayCache();
-        $b->setNamespace('sf2orm_default_0574889ffb11bf91aa5376a76ed4f39dda2aefc910ffad901fde95ef060725eb');
+        $b->setNamespace('sf2orm_default_2245baf619aa1b8d6a4fd0faaab7ddea6363d5ef119484739ce93c3398ee9e5e');
 
         $c = new \Doctrine\Common\Cache\ArrayCache();
-        $c->setNamespace('sf2orm_default_0574889ffb11bf91aa5376a76ed4f39dda2aefc910ffad901fde95ef060725eb');
+        $c->setNamespace('sf2orm_default_2245baf619aa1b8d6a4fd0faaab7ddea6363d5ef119484739ce93c3398ee9e5e');
 
         $d = new \Doctrine\Common\Cache\ArrayCache();
-        $d->setNamespace('sf2orm_default_0574889ffb11bf91aa5376a76ed4f39dda2aefc910ffad901fde95ef060725eb');
+        $d->setNamespace('sf2orm_default_2245baf619aa1b8d6a4fd0faaab7ddea6363d5ef119484739ce93c3398ee9e5e');
 
-        $e = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => '/Applications/MAMP/htdocs/jlfa/vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity', 1 => '/Applications/MAMP/htdocs/jlfa/src/Sdz/BlogBundle/Entity', 2 => '/Applications/MAMP/htdocs/jlfa/src/Sdz/UserBundle/Entity'));
+        $e = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => '/Applications/MAMP/htdocs/extendscript-library-website/vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity', 1 => '/Applications/MAMP/htdocs/extendscript-library-website/src/Sdz/BlogBundle/Entity', 2 => '/Applications/MAMP/htdocs/extendscript-library-website/src/Sdz/UserBundle/Entity'));
 
-        $f = new \Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver(array('/Applications/MAMP/htdocs/jlfa/vendor/codeconsortium/ccdn-forum-bundle/CCDNForum/ForumBundle/Resources/config/doctrine' => 'CCDNForum\\ForumBundle\\Entity'));
+        $f = new \Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver(array('/Applications/MAMP/htdocs/extendscript-library-website/vendor/codeconsortium/ccdn-forum-bundle/CCDNForum/ForumBundle/Resources/config/doctrine' => 'CCDNForum\\ForumBundle\\Entity'));
         $f->setGlobalBasename('mapping');
 
-        $g = new \Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver(array('/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/config/doctrine' => 'FOS\\UserBundle\\Entity'));
+        $g = new \Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver(array('/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/config/doctrine' => 'FOS\\UserBundle\\Entity'));
         $g->setGlobalBasename('mapping');
 
         $h = new \Doctrine\ORM\Mapping\Driver\DriverChain();
@@ -1907,7 +1908,7 @@ class appDevDebugProjectContainer extends Container
         $h->addDriver($e, 'Sdz\\UserBundle\\Entity');
         $h->addDriver($f, 'CCDNForum\\ForumBundle\\Entity');
         $h->addDriver($g, 'FOS\\UserBundle\\Entity');
-        $h->addDriver(new \Doctrine\ORM\Mapping\Driver\XmlDriver(new \Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator(array('/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/config/doctrine/model' => 'FOS\\UserBundle\\Model'), '.orm.xml')), 'FOS\\UserBundle\\Model');
+        $h->addDriver(new \Doctrine\ORM\Mapping\Driver\XmlDriver(new \Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator(array('/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/config/doctrine/model' => 'FOS\\UserBundle\\Model'), '.orm.xml')), 'FOS\\UserBundle\\Model');
 
         $i = new \Doctrine\ORM\Configuration();
         $i->setEntityNamespaces(array('GedmoTranslatable' => 'Gedmo\\Translatable\\Entity', 'CCDNForumForumBundle' => 'CCDNForum\\ForumBundle\\Entity', 'SdzBlogBundle' => 'Sdz\\BlogBundle\\Entity', 'SdzUserBundle' => 'Sdz\\UserBundle\\Entity', 'FOSUserBundle' => 'FOS\\UserBundle\\Entity'));
@@ -1915,7 +1916,7 @@ class appDevDebugProjectContainer extends Container
         $i->setQueryCacheImpl($c);
         $i->setResultCacheImpl($d);
         $i->setMetadataDriverImpl($h);
-        $i->setProxyDir('/Applications/MAMP/htdocs/jlfa/app/cache/dev/doctrine/orm/Proxies');
+        $i->setProxyDir('/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/doctrine/orm/Proxies');
         $i->setProxyNamespace('Proxies');
         $i->setAutoGenerateProxyClasses(true);
         $i->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
@@ -1930,7 +1931,7 @@ class appDevDebugProjectContainer extends Container
         $j = call_user_func(array('Doctrine\\ORM\\EntityManager', 'create'), $this->get('doctrine.dbal.default_connection'), $i);
         $this->get('doctrine.orm.default_manager_configurator')->configure($j);
 
-        return $this->services['doctrine.orm.default_entity_manager'] = new \EntityManager5333d09161c90_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager($j, $this);
+        return $this->services['doctrine.orm.default_entity_manager'] = new \EntityManager5333e8e9f06c0_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager($j, $this);
     }
 
     /**
@@ -1982,7 +1983,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getFileLocatorService()
     {
-        return $this->services['file_locator'] = new \Symfony\Component\HttpKernel\Config\FileLocator($this->get('kernel'), '/Applications/MAMP/htdocs/jlfa/app/Resources');
+        return $this->services['file_locator'] = new \Symfony\Component\HttpKernel\Config\FileLocator($this->get('kernel'), '/Applications/MAMP/htdocs/extendscript-library-website/app/Resources');
     }
 
     /**
@@ -2996,7 +2997,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['jms_di_extra.metadata.metadata_factory'] = $instance = new \Metadata\MetadataFactory(new \Metadata\Driver\LazyLoadingDriver($this, 'jms_di_extra.metadata_driver'), 'Metadata\\ClassHierarchyMetadata', true);
 
-        $instance->setCache(new \Metadata\Cache\FileCache('/Applications/MAMP/htdocs/jlfa/app/cache/dev/jms_diextra/metadata'));
+        $instance->setCache(new \Metadata\Cache\FileCache('/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/jms_diextra/metadata'));
 
         return $instance;
     }
@@ -3281,7 +3282,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getMonolog_Handler_MainService()
     {
-        return $this->services['monolog.handler.main'] = new \Monolog\Handler\StreamHandler('/Applications/MAMP/htdocs/jlfa/app/logs/dev.log', 100, true);
+        return $this->services['monolog.handler.main'] = new \Monolog\Handler\StreamHandler('/Applications/MAMP/htdocs/extendscript-library-website/app/logs/dev.log', 100, true);
     }
 
     /**
@@ -3508,7 +3509,7 @@ class appDevDebugProjectContainer extends Container
         $d = new \Doctrine\Bundle\DoctrineBundle\DataCollector\DoctrineDataCollector($this->get('doctrine'));
         $d->addLogger('default', $this->get('doctrine.dbal.logger.profiling.default'));
 
-        $this->services['profiler'] = $instance = new \Symfony\Component\HttpKernel\Profiler\Profiler(new \Symfony\Component\HttpKernel\Profiler\FileProfilerStorage('file:/Applications/MAMP/htdocs/jlfa/app/cache/dev/profiler', '', '', 86400), $a);
+        $this->services['profiler'] = $instance = new \Symfony\Component\HttpKernel\Profiler\Profiler(new \Symfony\Component\HttpKernel\Profiler\FileProfilerStorage('file:/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/profiler', '', '', 86400), $a);
 
         $instance->add($c);
         $instance->add($this->get('data_collector.request'));
@@ -3607,7 +3608,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getRouterService()
     {
-        return $this->services['router'] = new \Symfony\Bundle\FrameworkBundle\Routing\Router($this, '/Applications/MAMP/htdocs/jlfa/app/cache/dev/assetic/routing.yml', array('cache_dir' => '/Applications/MAMP/htdocs/jlfa/app/cache/dev', 'debug' => true, 'generator_class' => 'Symfony\\Component\\Routing\\Generator\\UrlGenerator', 'generator_base_class' => 'Symfony\\Component\\Routing\\Generator\\UrlGenerator', 'generator_dumper_class' => 'Symfony\\Component\\Routing\\Generator\\Dumper\\PhpGeneratorDumper', 'generator_cache_class' => 'appDevUrlGenerator', 'matcher_class' => 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableUrlMatcher', 'matcher_base_class' => 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableUrlMatcher', 'matcher_dumper_class' => 'Symfony\\Component\\Routing\\Matcher\\Dumper\\PhpMatcherDumper', 'matcher_cache_class' => 'appDevUrlMatcher', 'strict_requirements' => true), $this->get('router.request_context', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('monolog.logger.router', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+        return $this->services['router'] = new \Symfony\Bundle\FrameworkBundle\Routing\Router($this, '/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/assetic/routing.yml', array('cache_dir' => '/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev', 'debug' => true, 'generator_class' => 'Symfony\\Component\\Routing\\Generator\\UrlGenerator', 'generator_base_class' => 'Symfony\\Component\\Routing\\Generator\\UrlGenerator', 'generator_dumper_class' => 'Symfony\\Component\\Routing\\Generator\\Dumper\\PhpGeneratorDumper', 'generator_cache_class' => 'appDevUrlGenerator', 'matcher_class' => 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableUrlMatcher', 'matcher_base_class' => 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableUrlMatcher', 'matcher_dumper_class' => 'Symfony\\Component\\Routing\\Matcher\\Dumper\\PhpMatcherDumper', 'matcher_cache_class' => 'appDevUrlMatcher', 'strict_requirements' => true), $this->get('router.request_context', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('monolog.logger.router', ContainerInterface::NULL_ON_INVALID_REFERENCE));
     }
 
     /**
@@ -3773,7 +3774,7 @@ class appDevDebugProjectContainer extends Container
 
         $d = new \JMS\SecurityExtraBundle\Security\Authorization\Expression\LazyLoadingExpressionVoter($this->get('security.expressions.handler'), $a);
         $d->setLazyCompiler($this, 'security.expressions.compiler');
-        $d->setCacheDir('/Applications/MAMP/htdocs/jlfa/app/cache/dev/jms_security/expressions');
+        $d->setCacheDir('/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/jms_security/expressions');
 
         return $this->services['security.access.decision_manager'] = new \JMS\SecurityExtraBundle\Security\Authorization\RememberingAccessDecisionManager(new \Symfony\Component\Security\Core\Authorization\AccessDecisionManager(array(0 => $d, 1 => new \Symfony\Component\Security\Core\Authorization\Voter\ExpressionVoter(new \Symfony\Component\Security\Core\Authorization\ExpressionLanguage(), $b, $c), 2 => new \Symfony\Component\Security\Core\Authorization\Voter\RoleHierarchyVoter($c), 3 => new \Symfony\Component\Security\Core\Authorization\Voter\AuthenticatedVoter($b), 4 => new \JMS\SecurityExtraBundle\Security\Acl\Voter\AclVoter($this->get('security.acl.provider'), $this->get('security.acl.object_identity_retrieval_strategy'), $this->get('security.acl.security_identity_retrieval_strategy'), $this->get('security.acl.permission.map'), $a, true)), 'affirmative', false, true));
     }
@@ -4021,10 +4022,10 @@ class appDevDebugProjectContainer extends Container
         $m = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler($j, array('login_path' => 'fos_user_security_login', 'always_use_default_target_path' => false, 'default_target_path' => '/', 'target_path_parameter' => '_target_path', 'use_referer' => false));
         $m->setProviderKey('main');
 
-        $n = new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $g, $this->get('security.authentication.session_strategy'), $j, 'main', $m, new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($f, $j, array('login_path' => 'fos_user_security_login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'), $a), array('check_path' => 'fos_user_security_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $d, NULL);
+        $n = new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $g, $this->get('security.authentication.session_strategy'), $j, 'main', $m, new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($f, $j, array('login_path' => 'fos_user_security_login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'), $a), array('check_path' => 'fos_user_security_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $d);
         $n->setRememberMeServices($k);
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($h, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $i, 1 => $c), 'main', $a, $d), 2 => $l, 3 => $n, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $k, $g, $a, $d), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5333d09149a33', $a), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $h, $g)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $j, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $j, 'fos_user_security_login', false), NULL, NULL, $a));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($h, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $i, 1 => $c), 'main', $a, $d), 2 => $l, 3 => $n, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $k, $g, $a, $d), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5333e8e98effc', $a), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $h, $g)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $j, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $j, 'fos_user_security_login', false), NULL, NULL, $a));
     }
 
     /**
@@ -4063,7 +4064,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_SecureRandomService()
     {
-        return $this->services['security.secure_random'] = new \Symfony\Component\Security\Core\Util\SecureRandom('/Applications/MAMP/htdocs/jlfa/app/cache/dev/secure_random.seed', $this->get('monolog.logger.security', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+        return $this->services['security.secure_random'] = new \Symfony\Component\Security\Core\Util\SecureRandom('/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/secure_random.seed', $this->get('monolog.logger.security', ContainerInterface::NULL_ON_INVALID_REFERENCE));
     }
 
     /**
@@ -4080,16 +4081,16 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
-     * Gets the 'sensio.distribution.webconfigurator' service.
+     * Gets the 'sensio_distribution.webconfigurator' service.
      *
      * This service is shared.
      * This method always returns the same instance of the service.
      *
      * @return Sensio\Bundle\DistributionBundle\Configurator\Configurator A Sensio\Bundle\DistributionBundle\Configurator\Configurator instance.
      */
-    protected function getSensio_Distribution_WebconfiguratorService()
+    protected function getSensioDistribution_WebconfiguratorService()
     {
-        return $this->services['sensio.distribution.webconfigurator'] = new \Sensio\Bundle\DistributionBundle\Configurator\Configurator('/Applications/MAMP/htdocs/jlfa/app');
+        return $this->services['sensio_distribution.webconfigurator'] = new \Sensio\Bundle\DistributionBundle\Configurator\Configurator('/Applications/MAMP/htdocs/extendscript-library-website/app');
     }
 
     /**
@@ -4250,7 +4251,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSession_HandlerService()
     {
-        return $this->services['session.handler'] = new \Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler('/Applications/MAMP/htdocs/jlfa/app/cache/dev/sessions');
+        return $this->services['session.handler'] = new \Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler('/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/sessions');
     }
 
     /**
@@ -4263,7 +4264,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSession_Storage_FilesystemService()
     {
-        return $this->services['session.storage.filesystem'] = new \Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage('/Applications/MAMP/htdocs/jlfa/app/cache/dev/sessions', 'MOCKSESSID', $this->get('session.storage.metadata_bag'));
+        return $this->services['session.storage.filesystem'] = new \Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage('/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/sessions', 'MOCKSESSID', $this->get('session.storage.metadata_bag'));
     }
 
     /**
@@ -4506,7 +4507,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getTemplating_Helper_CodeService()
     {
-        return $this->services['templating.helper.code'] = new \Symfony\Bundle\FrameworkBundle\Templating\Helper\CodeHelper(NULL, '/Applications/MAMP/htdocs/jlfa/app', 'UTF-8');
+        return $this->services['templating.helper.code'] = new \Symfony\Bundle\FrameworkBundle\Templating\Helper\CodeHelper(NULL, '/Applications/MAMP/htdocs/extendscript-library-website/app', 'UTF-8');
     }
 
     /**
@@ -5026,214 +5027,212 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getTranslator_DefaultService()
     {
-        $this->services['translator.default'] = $instance = new \Symfony\Bundle\FrameworkBundle\Translation\Translator($this, new \Symfony\Component\Translation\MessageSelector(), array('translation.loader.php' => array(0 => 'php'), 'translation.loader.yml' => array(0 => 'yml'), 'translation.loader.xliff' => array(0 => 'xlf', 1 => 'xliff'), 'translation.loader.po' => array(0 => 'po'), 'translation.loader.mo' => array(0 => 'mo'), 'translation.loader.qt' => array(0 => 'ts'), 'translation.loader.csv' => array(0 => 'csv'), 'translation.loader.res' => array(0 => 'res'), 'translation.loader.dat' => array(0 => 'dat'), 'translation.loader.ini' => array(0 => 'ini'), 'translation.loader.json' => array(0 => 'json')), array('cache_dir' => '/Applications/MAMP/htdocs/jlfa/app/cache/dev/translations', 'debug' => true));
+        $this->services['translator.default'] = $instance = new \Symfony\Bundle\FrameworkBundle\Translation\Translator($this, new \Symfony\Component\Translation\MessageSelector(), array('translation.loader.php' => array(0 => 'php'), 'translation.loader.yml' => array(0 => 'yml'), 'translation.loader.xliff' => array(0 => 'xlf', 1 => 'xliff'), 'translation.loader.po' => array(0 => 'po'), 'translation.loader.mo' => array(0 => 'mo'), 'translation.loader.qt' => array(0 => 'ts'), 'translation.loader.csv' => array(0 => 'csv'), 'translation.loader.res' => array(0 => 'res'), 'translation.loader.dat' => array(0 => 'dat'), 'translation.loader.ini' => array(0 => 'ini'), 'translation.loader.json' => array(0 => 'json')), array('cache_dir' => '/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/translations', 'debug' => true));
 
         $instance->setFallbackLocales(array(0 => 'fr'));
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.af.xlf', 'af', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ar.xlf', 'ar', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.bg.xlf', 'bg', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ca.xlf', 'ca', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.cs.xlf', 'cs', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.cy.xlf', 'cy', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.da.xlf', 'da', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.de.xlf', 'de', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.el.xlf', 'el', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.en.xlf', 'en', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.es.xlf', 'es', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.et.xlf', 'et', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.eu.xlf', 'eu', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fa.xlf', 'fa', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fi.xlf', 'fi', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fr.xlf', 'fr', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.gl.xlf', 'gl', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.he.xlf', 'he', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.hr.xlf', 'hr', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.hu.xlf', 'hu', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.hy.xlf', 'hy', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.id.xlf', 'id', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.it.xlf', 'it', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ja.xlf', 'ja', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.lb.xlf', 'lb', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.lt.xlf', 'lt', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.mn.xlf', 'mn', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nb.xlf', 'nb', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nl.xlf', 'nl', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.no.xlf', 'no', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pl.xlf', 'pl', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pt.xlf', 'pt', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pt_BR.xlf', 'pt_BR', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ro.xlf', 'ro', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ru.xlf', 'ru', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sk.xlf', 'sk', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sl.xlf', 'sl', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sq.xlf', 'sq', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sr_Cyrl.xlf', 'sr_Cyrl', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sr_Latn.xlf', 'sr_Latn', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sv.xlf', 'sv', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.tr.xlf', 'tr', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.uk.xlf', 'uk', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.vi.xlf', 'vi', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.zh_CN.xlf', 'zh_CN', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.zh_TW.xlf', 'zh_TW', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ar.xlf', 'ar', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.bg.xlf', 'bg', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ca.xlf', 'ca', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.cs.xlf', 'cs', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.da.xlf', 'da', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.de.xlf', 'de', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.el.xlf', 'el', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.en.xlf', 'en', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.es.xlf', 'es', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.et.xlf', 'et', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.eu.xlf', 'eu', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.fa.xlf', 'fa', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.fi.xlf', 'fi', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.fr.xlf', 'fr', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.gl.xlf', 'gl', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.he.xlf', 'he', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.hr.xlf', 'hr', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.hu.xlf', 'hu', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.hy.xlf', 'hy', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.id.xlf', 'id', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.it.xlf', 'it', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ja.xlf', 'ja', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.lb.xlf', 'lb', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.lt.xlf', 'lt', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.lv.xlf', 'lv', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.mn.xlf', 'mn', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.nb.xlf', 'nb', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.nl.xlf', 'nl', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.pl.xlf', 'pl', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.pt.xlf', 'pt', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.pt_BR.xlf', 'pt_BR', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ro.xlf', 'ro', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ru.xlf', 'ru', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sk.xlf', 'sk', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sl.xlf', 'sl', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sr_Cyrl.xlf', 'sr_Cyrl', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sr_Latn.xlf', 'sr_Latn', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sv.xlf', 'sv', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.uk.xlf', 'uk', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.zh_CN.xlf', 'zh_CN', 'validators');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.ar.xlf', 'ar', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.ca.xlf', 'ca', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.cs.xlf', 'cs', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.da.xlf', 'da', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.de.xlf', 'de', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.el.xlf', 'el', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.en.xlf', 'en', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.es.xlf', 'es', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.fa.xlf', 'fa', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.fr.xlf', 'fr', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.gl.xlf', 'gl', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.hu.xlf', 'hu', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.it.xlf', 'it', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.lb.xlf', 'lb', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.nl.xlf', 'nl', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.no.xlf', 'no', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.pl.xlf', 'pl', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.pt_BR.xlf', 'pt_BR', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.pt_PT.xlf', 'pt_PT', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.ro.xlf', 'ro', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.ru.xlf', 'ru', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.sk.xlf', 'sk', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.sl.xlf', 'sl', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.sr_Cyrl.xlf', 'sr_Cyrl', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.sr_Latn.xlf', 'sr_Latn', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.sv.xlf', 'sv', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.tr.xlf', 'tr', 'security');
-        $instance->addResource('xlf', '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.ua.xlf', 'ua', 'security');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/src/Sdz/BlogBundle/Resources/translations/messages.en.yml', 'en', 'messages');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/src/Sdz/BlogBundle/Resources/translations/messages.fr.yml', 'fr', 'messages');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/src/Sdz/BlogBundle/Resources/translations/validators.fr.yml', 'fr', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/src/Sdz/UserBundle/Resources/translations/FOSUserBundle.de.yml', 'de', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/src/Sdz/UserBundle/Resources/translations/FOSUserBundle.en.yml', 'en', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/src/Sdz/UserBundle/Resources/translations/FOSUserBundle.fr.yml', 'fr', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/src/Sdz/UserBundle/Resources/translations/validators.de.yml', 'de', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/src/Sdz/UserBundle/Resources/translations/validators.en.yml', 'en', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/src/Sdz/UserBundle/Resources/translations/validators.fr.yml', 'fr', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.ar.yml', 'ar', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.bg.yml', 'bg', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.ca.yml', 'ca', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.cs.yml', 'cs', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.da.yml', 'da', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.de.yml', 'de', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.en.yml', 'en', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.es.yml', 'es', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.et.yml', 'et', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.fa.yml', 'fa', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.fi.yml', 'fi', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.fr.yml', 'fr', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.he.yml', 'he', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.hr.yml', 'hr', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.hu.yml', 'hu', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.id.yml', 'id', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.it.yml', 'it', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.ja.yml', 'ja', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.lb.yml', 'lb', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.lt.yml', 'lt', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.lv.yml', 'lv', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.nb.yml', 'nb', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.nl.yml', 'nl', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.pl.yml', 'pl', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.pt_BR.yml', 'pt_BR', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.pt_PT.yml', 'pt_PT', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.ro.yml', 'ro', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.ru.yml', 'ru', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.sk.yml', 'sk', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.sl.yml', 'sl', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.sr_Latn.yml', 'sr_Latn', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.sv.yml', 'sv', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.tr.yml', 'tr', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.uk.yml', 'uk', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.vi.yml', 'vi', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.zh_CN.yml', 'zh_CN', 'FOSUserBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.ar.yml', 'ar', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.bg.yml', 'bg', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.ca.yml', 'ca', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.cs.yml', 'cs', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.da.yml', 'da', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.de.yml', 'de', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.en.yml', 'en', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.es.yml', 'es', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.fa.yml', 'fa', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.fi.yml', 'fi', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.fr.yml', 'fr', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.he.yml', 'he', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.hr.yml', 'hr', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.hu.yml', 'hu', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.id.yml', 'id', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.it.yml', 'it', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.ja.yml', 'ja', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.lt.yml', 'lt', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.lv.yml', 'lv', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.nb.yml', 'nb', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.nl.yml', 'nl', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.pl.yml', 'pl', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.pt.yml', 'pt', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.pt_BR.yml', 'pt_BR', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.ro.yml', 'ro', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.ru.yml', 'ru', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.sk.yml', 'sk', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.sl.yml', 'sl', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.sr_Latn.yml', 'sr_Latn', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.sv.yml', 'sv', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.tr.yml', 'tr', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.uk.yml', 'uk', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.vi.yml', 'vi', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.zh_CN.yml', 'zh_CN', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/src/Jlfa/WebSiteBundle/Resources/translations/messages.fr.yml', 'fr', 'messages');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/src/Jlfa/WebSiteBundle/Resources/translations/validators.fr.yml', 'fr', 'validators');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/src/Jlfa/ForumBundle/Resources/translations/messages.en.yml', 'en', 'messages');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/src/Jlfa/ForumBundle/Resources/translations/messages.fr.yml', 'fr', 'messages');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/codeconsortium/ccdn-forum-bundle/CCDNForum/ForumBundle/Resources/translations/CCDNForumForumBundle.en.yml', 'en', 'CCDNForumForumBundle');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/winzou/console-bundle/CoreSphere/ConsoleBundle/Resources/translations/messages.de.yml', 'de', 'messages');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/winzou/console-bundle/CoreSphere/ConsoleBundle/Resources/translations/messages.en.yml', 'en', 'messages');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/winzou/console-bundle/CoreSphere/ConsoleBundle/Resources/translations/messages.fr.yml', 'fr', 'messages');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/vendor/winzou/console-bundle/CoreSphere/ConsoleBundle/Resources/translations/messages.ru.yml', 'ru', 'messages');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/app/Resources/translations/messages.de.yml', 'de', 'messages');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/app/Resources/translations/messages.en.yml', 'en', 'messages');
-        $instance->addResource('yml', '/Applications/MAMP/htdocs/jlfa/app/Resources/translations/messages.fr.yml', 'fr', 'messages');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.af.xlf', 'af', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ar.xlf', 'ar', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.bg.xlf', 'bg', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ca.xlf', 'ca', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.cs.xlf', 'cs', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.cy.xlf', 'cy', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.da.xlf', 'da', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.de.xlf', 'de', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.el.xlf', 'el', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.en.xlf', 'en', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.es.xlf', 'es', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.et.xlf', 'et', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.eu.xlf', 'eu', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fa.xlf', 'fa', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fi.xlf', 'fi', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fr.xlf', 'fr', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.gl.xlf', 'gl', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.he.xlf', 'he', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.hr.xlf', 'hr', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.hu.xlf', 'hu', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.hy.xlf', 'hy', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.id.xlf', 'id', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.it.xlf', 'it', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ja.xlf', 'ja', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.lb.xlf', 'lb', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.lt.xlf', 'lt', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.mn.xlf', 'mn', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nb.xlf', 'nb', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nl.xlf', 'nl', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.no.xlf', 'no', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pl.xlf', 'pl', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pt.xlf', 'pt', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pt_BR.xlf', 'pt_BR', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ro.xlf', 'ro', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ru.xlf', 'ru', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sk.xlf', 'sk', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sl.xlf', 'sl', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sq.xlf', 'sq', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sr_Cyrl.xlf', 'sr_Cyrl', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sr_Latn.xlf', 'sr_Latn', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sv.xlf', 'sv', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.tr.xlf', 'tr', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.uk.xlf', 'uk', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.zh_CN.xlf', 'zh_CN', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ar.xlf', 'ar', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.bg.xlf', 'bg', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ca.xlf', 'ca', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.cs.xlf', 'cs', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.da.xlf', 'da', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.de.xlf', 'de', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.el.xlf', 'el', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.en.xlf', 'en', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.es.xlf', 'es', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.et.xlf', 'et', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.eu.xlf', 'eu', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.fa.xlf', 'fa', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.fi.xlf', 'fi', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.fr.xlf', 'fr', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.gl.xlf', 'gl', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.he.xlf', 'he', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.hr.xlf', 'hr', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.hu.xlf', 'hu', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.hy.xlf', 'hy', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.id.xlf', 'id', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.it.xlf', 'it', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ja.xlf', 'ja', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.lb.xlf', 'lb', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.lt.xlf', 'lt', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.lv.xlf', 'lv', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.mn.xlf', 'mn', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.nb.xlf', 'nb', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.nl.xlf', 'nl', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.pl.xlf', 'pl', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.pt.xlf', 'pt', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.pt_BR.xlf', 'pt_BR', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ro.xlf', 'ro', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ru.xlf', 'ru', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sk.xlf', 'sk', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sl.xlf', 'sl', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sr_Cyrl.xlf', 'sr_Cyrl', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sr_Latn.xlf', 'sr_Latn', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sv.xlf', 'sv', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ua.xlf', 'ua', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.zh_CN.xlf', 'zh_CN', 'validators');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.ar.xlf', 'ar', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.ca.xlf', 'ca', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.cs.xlf', 'cs', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.da.xlf', 'da', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.de.xlf', 'de', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.el.xlf', 'el', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.en.xlf', 'en', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.es.xlf', 'es', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.fa.xlf', 'fa', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.fr.xlf', 'fr', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.gl.xlf', 'gl', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.hu.xlf', 'hu', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.it.xlf', 'it', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.lb.xlf', 'lb', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.nl.xlf', 'nl', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.no.xlf', 'no', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.pl.xlf', 'pl', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.pt_BR.xlf', 'pt_BR', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.pt_PT.xlf', 'pt_PT', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.ro.xlf', 'ro', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.ru.xlf', 'ru', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.sk.xlf', 'sk', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.sl.xlf', 'sl', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.sr_Cyrl.xlf', 'sr_Cyrl', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.sr_Latn.xlf', 'sr_Latn', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.sv.xlf', 'sv', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.tr.xlf', 'tr', 'security');
+        $instance->addResource('xlf', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.ua.xlf', 'ua', 'security');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/src/Sdz/BlogBundle/Resources/translations/messages.en.yml', 'en', 'messages');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/src/Sdz/BlogBundle/Resources/translations/messages.fr.yml', 'fr', 'messages');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/src/Sdz/BlogBundle/Resources/translations/validators.fr.yml', 'fr', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/src/Sdz/UserBundle/Resources/translations/FOSUserBundle.de.yml', 'de', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/src/Sdz/UserBundle/Resources/translations/FOSUserBundle.en.yml', 'en', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/src/Sdz/UserBundle/Resources/translations/FOSUserBundle.fr.yml', 'fr', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/src/Sdz/UserBundle/Resources/translations/validators.de.yml', 'de', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/src/Sdz/UserBundle/Resources/translations/validators.en.yml', 'en', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/src/Sdz/UserBundle/Resources/translations/validators.fr.yml', 'fr', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.ar.yml', 'ar', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.bg.yml', 'bg', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.ca.yml', 'ca', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.cs.yml', 'cs', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.da.yml', 'da', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.de.yml', 'de', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.en.yml', 'en', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.es.yml', 'es', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.et.yml', 'et', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.fa.yml', 'fa', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.fi.yml', 'fi', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.fr.yml', 'fr', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.he.yml', 'he', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.hr.yml', 'hr', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.hu.yml', 'hu', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.id.yml', 'id', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.it.yml', 'it', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.ja.yml', 'ja', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.lb.yml', 'lb', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.lt.yml', 'lt', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.lv.yml', 'lv', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.nb.yml', 'nb', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.nl.yml', 'nl', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.pl.yml', 'pl', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.pt_BR.yml', 'pt_BR', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.pt_PT.yml', 'pt_PT', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.ro.yml', 'ro', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.ru.yml', 'ru', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.sk.yml', 'sk', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.sl.yml', 'sl', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.sr_Latn.yml', 'sr_Latn', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.sv.yml', 'sv', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.tr.yml', 'tr', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.uk.yml', 'uk', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.vi.yml', 'vi', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.zh_CN.yml', 'zh_CN', 'FOSUserBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.ar.yml', 'ar', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.bg.yml', 'bg', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.ca.yml', 'ca', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.cs.yml', 'cs', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.da.yml', 'da', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.de.yml', 'de', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.en.yml', 'en', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.es.yml', 'es', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.fa.yml', 'fa', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.fi.yml', 'fi', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.fr.yml', 'fr', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.he.yml', 'he', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.hr.yml', 'hr', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.hu.yml', 'hu', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.id.yml', 'id', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.it.yml', 'it', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.ja.yml', 'ja', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.lt.yml', 'lt', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.lv.yml', 'lv', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.nb.yml', 'nb', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.nl.yml', 'nl', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.pl.yml', 'pl', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.pt.yml', 'pt', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.pt_BR.yml', 'pt_BR', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.ro.yml', 'ro', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.ru.yml', 'ru', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.sk.yml', 'sk', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.sl.yml', 'sl', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.sr_Latn.yml', 'sr_Latn', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.sv.yml', 'sv', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.tr.yml', 'tr', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.uk.yml', 'uk', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.vi.yml', 'vi', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.zh_CN.yml', 'zh_CN', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/src/Jlfa/WebSiteBundle/Resources/translations/messages.fr.yml', 'fr', 'messages');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/src/Jlfa/WebSiteBundle/Resources/translations/validators.fr.yml', 'fr', 'validators');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/src/Jlfa/ForumBundle/Resources/translations/messages.en.yml', 'en', 'messages');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/src/Jlfa/ForumBundle/Resources/translations/messages.fr.yml', 'fr', 'messages');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/codeconsortium/ccdn-forum-bundle/CCDNForum/ForumBundle/Resources/translations/CCDNForumForumBundle.en.yml', 'en', 'CCDNForumForumBundle');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/winzou/console-bundle/CoreSphere/ConsoleBundle/Resources/translations/messages.de.yml', 'de', 'messages');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/winzou/console-bundle/CoreSphere/ConsoleBundle/Resources/translations/messages.en.yml', 'en', 'messages');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/winzou/console-bundle/CoreSphere/ConsoleBundle/Resources/translations/messages.fr.yml', 'fr', 'messages');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/vendor/winzou/console-bundle/CoreSphere/ConsoleBundle/Resources/translations/messages.ru.yml', 'ru', 'messages');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/app/Resources/translations/messages.de.yml', 'de', 'messages');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/app/Resources/translations/messages.en.yml', 'en', 'messages');
+        $instance->addResource('yml', '/Applications/MAMP/htdocs/extendscript-library-website/app/Resources/translations/messages.fr.yml', 'fr', 'messages');
 
         return $instance;
     }
@@ -5258,7 +5257,7 @@ class appDevDebugProjectContainer extends Container
         $c->addParser($b, 'default');
         $c->addParser(new \Knp\Bundle\MarkdownBundle\Parser\Preset\Flavored(), 'flavored');
 
-        $this->services['twig'] = $instance = new \Twig_Environment($this->get('twig.loader'), array('debug' => true, 'strict_variables' => true, 'exception_controller' => 'twig.controller.exception:showAction', 'autoescape_service' => NULL, 'autoescape_service_method' => NULL, 'cache' => '/Applications/MAMP/htdocs/jlfa/app/cache/dev/twig', 'charset' => 'UTF-8', 'paths' => array()));
+        $this->services['twig'] = $instance = new \Twig_Environment($this->get('twig.loader'), array('debug' => true, 'strict_variables' => true, 'exception_controller' => 'twig.controller.exception:showAction', 'autoescape_service' => NULL, 'autoescape_service_method' => NULL, 'cache' => '/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/twig', 'charset' => 'UTF-8', 'paths' => array()));
 
         $instance->addExtension($this->get('twig.extension.intl'));
         $instance->addExtension($this->get('twig.extension.text'));
@@ -5268,7 +5267,7 @@ class appDevDebugProjectContainer extends Container
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\TranslationExtension($this->get('translator.default')));
         $instance->addExtension(new \Symfony\Bundle\TwigBundle\Extension\AssetsExtension($this));
         $instance->addExtension(new \Symfony\Bundle\TwigBundle\Extension\ActionsExtension($this));
-        $instance->addExtension(new \Symfony\Bridge\Twig\Extension\CodeExtension(NULL, '/Applications/MAMP/htdocs/jlfa/app', 'UTF-8'));
+        $instance->addExtension(new \Symfony\Bridge\Twig\Extension\CodeExtension(NULL, '/Applications/MAMP/htdocs/extendscript-library-website/app', 'UTF-8'));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\RoutingExtension($this->get('router')));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\YamlExtension());
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\StopwatchExtension($this->get('debug.stopwatch', ContainerInterface::NULL_ON_INVALID_REFERENCE)));
@@ -5379,26 +5378,26 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['twig.loader'] = $instance = new \Symfony\Bundle\TwigBundle\Loader\FilesystemLoader($this->get('templating.locator'), $this->get('templating.name_parser'));
 
-        $instance->addPath('/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/views', 'Framework');
-        $instance->addPath('/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/views', 'Security');
-        $instance->addPath('/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views', 'Twig');
-        $instance->addPath('/Applications/MAMP/htdocs/jlfa/vendor/symfony/swiftmailer-bundle/Symfony/Bundle/SwiftmailerBundle/Resources/views', 'Swiftmailer');
-        $instance->addPath('/Applications/MAMP/htdocs/jlfa/vendor/doctrine/doctrine-bundle/Doctrine/Bundle/DoctrineBundle/Resources/views', 'Doctrine');
-        $instance->addPath('/Applications/MAMP/htdocs/jlfa/src/Sdz/BlogBundle/Resources/views', 'SdzBlog');
-        $instance->addPath('/Applications/MAMP/htdocs/jlfa/src/Sdz/UserBundle/Resources/views', 'SdzUser');
-        $instance->addPath('/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/views', 'FOSUser');
-        $instance->addPath('/Applications/MAMP/htdocs/jlfa/src/Jlfa/WebSiteBundle/Resources/views', 'JlfaWebSite');
-        $instance->addPath('/Applications/MAMP/htdocs/jlfa/vendor/willdurand/js-translation-bundle/Bazinga/ExposeTranslationBundle/Resources/views', 'BazingaExposeTranslation');
-        $instance->addPath('/Applications/MAMP/htdocs/jlfa/vendor/apy/jsfv-bundle/APY/JsFormValidationBundle/Resources/views', 'APYJsFormValidation');
-        $instance->addPath('/Applications/MAMP/htdocs/jlfa/src/Jlfa/APYJsFormValidationBundle/Resources/views', 'JlfaAPYJsFormValidation');
-        $instance->addPath('/Applications/MAMP/htdocs/jlfa/vendor/knplabs/knp-paginator-bundle/Knp/Bundle/PaginatorBundle/Resources/views', 'KnpPaginator');
-        $instance->addPath('/Applications/MAMP/htdocs/jlfa/src/Jlfa/ForumBundle/Resources/views', 'JlfaForum');
-        $instance->addPath('/Applications/MAMP/htdocs/jlfa/vendor/codeconsortium/ccdn-forum-bundle/CCDNForum/ForumBundle/Resources/views', 'CCDNForumForum');
-        $instance->addPath('/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views', 'WebProfiler');
-        $instance->addPath('/Applications/MAMP/htdocs/jlfa/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/views', 'SensioDistribution');
-        $instance->addPath('/Applications/MAMP/htdocs/jlfa/vendor/winzou/console-bundle/CoreSphere/ConsoleBundle/Resources/views', 'CoreSphereConsole');
-        $instance->addPath('/Applications/MAMP/htdocs/jlfa/app/Resources/views');
-        $instance->addPath('/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form');
+        $instance->addPath('/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/views', 'Framework');
+        $instance->addPath('/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/views', 'Security');
+        $instance->addPath('/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views', 'Twig');
+        $instance->addPath('/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/swiftmailer-bundle/Symfony/Bundle/SwiftmailerBundle/Resources/views', 'Swiftmailer');
+        $instance->addPath('/Applications/MAMP/htdocs/extendscript-library-website/vendor/doctrine/doctrine-bundle/Doctrine/Bundle/DoctrineBundle/Resources/views', 'Doctrine');
+        $instance->addPath('/Applications/MAMP/htdocs/extendscript-library-website/src/Sdz/BlogBundle/Resources/views', 'SdzBlog');
+        $instance->addPath('/Applications/MAMP/htdocs/extendscript-library-website/src/Sdz/UserBundle/Resources/views', 'SdzUser');
+        $instance->addPath('/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/views', 'FOSUser');
+        $instance->addPath('/Applications/MAMP/htdocs/extendscript-library-website/src/Jlfa/WebSiteBundle/Resources/views', 'JlfaWebSite');
+        $instance->addPath('/Applications/MAMP/htdocs/extendscript-library-website/vendor/willdurand/js-translation-bundle/Bazinga/ExposeTranslationBundle/Resources/views', 'BazingaExposeTranslation');
+        $instance->addPath('/Applications/MAMP/htdocs/extendscript-library-website/vendor/apy/jsfv-bundle/APY/JsFormValidationBundle/Resources/views', 'APYJsFormValidation');
+        $instance->addPath('/Applications/MAMP/htdocs/extendscript-library-website/src/Jlfa/APYJsFormValidationBundle/Resources/views', 'JlfaAPYJsFormValidation');
+        $instance->addPath('/Applications/MAMP/htdocs/extendscript-library-website/vendor/knplabs/knp-paginator-bundle/Knp/Bundle/PaginatorBundle/Resources/views', 'KnpPaginator');
+        $instance->addPath('/Applications/MAMP/htdocs/extendscript-library-website/src/Jlfa/ForumBundle/Resources/views', 'JlfaForum');
+        $instance->addPath('/Applications/MAMP/htdocs/extendscript-library-website/vendor/codeconsortium/ccdn-forum-bundle/CCDNForum/ForumBundle/Resources/views', 'CCDNForumForum');
+        $instance->addPath('/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views', 'WebProfiler');
+        $instance->addPath('/Applications/MAMP/htdocs/extendscript-library-website/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/views', 'SensioDistribution');
+        $instance->addPath('/Applications/MAMP/htdocs/extendscript-library-website/vendor/winzou/console-bundle/CoreSphere/ConsoleBundle/Resources/views', 'CoreSphereConsole');
+        $instance->addPath('/Applications/MAMP/htdocs/extendscript-library-website/app/Resources/views');
+        $instance->addPath('/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form');
 
         return $instance;
     }
@@ -5521,7 +5520,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getAssetic_AssetFactoryService()
     {
-        $this->services['assetic.asset_factory'] = $instance = new \Symfony\Bundle\AsseticBundle\Factory\AssetFactory($this->get('kernel'), $this, $this->getParameterBag(), '/Applications/MAMP/htdocs/jlfa/app/../web', true);
+        $this->services['assetic.asset_factory'] = $instance = new \Symfony\Bundle\AsseticBundle\Factory\AssetFactory($this->get('kernel'), $this, $this->getParameterBag(), '/Applications/MAMP/htdocs/extendscript-library-website/app/../web', true);
 
         $instance->addWorker(new \Symfony\Bundle\AsseticBundle\Factory\Worker\UseControllerWorker());
 
@@ -5542,7 +5541,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getAssetic_CacheService()
     {
-        return $this->services['assetic.cache'] = new \Assetic\Cache\FilesystemCache('/Applications/MAMP/htdocs/jlfa/app/cache/dev/assetic/assets');
+        return $this->services['assetic.cache'] = new \Assetic\Cache\FilesystemCache('/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/assetic/assets');
     }
 
     /**
@@ -5714,7 +5713,7 @@ class appDevDebugProjectContainer extends Container
     {
         $a = $this->get('security.user_checker');
 
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username_email'), $a, 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'ThisTokenIsNotSoSecretChangeIt', 'main'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5333d09149a33')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username_email'), $a, 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'ThisTokenIsNotSoSecretChangeIt', 'main'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5333e8e98effc')), true);
 
         $instance->setEventDispatcher($this->get('debug.event_dispatcher'));
 
@@ -5769,7 +5768,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Extra_MetadataFactoryService()
     {
-        $this->services['security.extra.metadata_factory'] = $instance = new \Metadata\MetadataFactory(new \Metadata\Driver\LazyLoadingDriver($this, 'security.extra.metadata_driver'), new \Metadata\Cache\FileCache('/Applications/MAMP/htdocs/jlfa/app/cache/dev/jms_security', true));
+        $this->services['security.extra.metadata_factory'] = $instance = new \Metadata\MetadataFactory(new \Metadata\Driver\LazyLoadingDriver($this, 'security.extra.metadata_driver'), new \Metadata\Cache\FileCache('/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/jms_security', true));
 
         $instance->setIncludeInterfaces(true);
 
@@ -5872,7 +5871,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getTemplating_LocatorService()
     {
-        return $this->services['templating.locator'] = new \Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator($this->get('file_locator'), '/Applications/MAMP/htdocs/jlfa/app/cache/dev');
+        return $this->services['templating.locator'] = new \Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator($this->get('file_locator'), '/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev');
     }
 
     /**
@@ -5889,7 +5888,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getValidator_Mapping_ClassMetadataFactoryService()
     {
-        return $this->services['validator.mapping.class_metadata_factory'] = new \Symfony\Component\Validator\Mapping\ClassMetadataFactory(new \Symfony\Component\Validator\Mapping\Loader\LoaderChain(array(0 => new \Symfony\Component\Validator\Mapping\Loader\AnnotationLoader($this->get('annotation_reader')), 1 => new \Symfony\Component\Validator\Mapping\Loader\StaticMethodLoader(), 2 => new \Symfony\Component\Validator\Mapping\Loader\XmlFilesLoader(array(0 => '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/config/validation.xml', 1 => '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/config/validation.xml', 2 => '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/config/validation/orm.xml')), 3 => new \Symfony\Component\Validator\Mapping\Loader\YamlFilesLoader(array(0 => '/Applications/MAMP/htdocs/jlfa/vendor/codeconsortium/ccdn-forum-bundle/CCDNForum/ForumBundle/Resources/config/validation.yml')))), NULL);
+        return $this->services['validator.mapping.class_metadata_factory'] = new \Symfony\Component\Validator\Mapping\ClassMetadataFactory(new \Symfony\Component\Validator\Mapping\Loader\LoaderChain(array(0 => new \Symfony\Component\Validator\Mapping\Loader\AnnotationLoader($this->get('annotation_reader')), 1 => new \Symfony\Component\Validator\Mapping\Loader\StaticMethodLoader(), 2 => new \Symfony\Component\Validator\Mapping\Loader\XmlFilesLoader(array(0 => '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/config/validation.xml', 1 => '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/config/validation.xml', 2 => '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/config/validation/orm.xml')), 3 => new \Symfony\Component\Validator\Mapping\Loader\YamlFilesLoader(array(0 => '/Applications/MAMP/htdocs/extendscript-library-website/vendor/codeconsortium/ccdn-forum-bundle/CCDNForum/ForumBundle/Resources/config/validation.yml')))), NULL);
     }
 
     /**
@@ -5943,12 +5942,12 @@ class appDevDebugProjectContainer extends Container
     protected function getDefaultParameters()
     {
         return array(
-            'kernel.root_dir' => '/Applications/MAMP/htdocs/jlfa/app',
+            'kernel.root_dir' => '/Applications/MAMP/htdocs/extendscript-library-website/app',
             'kernel.environment' => 'dev',
             'kernel.debug' => true,
             'kernel.name' => 'app',
-            'kernel.cache_dir' => '/Applications/MAMP/htdocs/jlfa/app/cache/dev',
-            'kernel.logs_dir' => '/Applications/MAMP/htdocs/jlfa/app/logs',
+            'kernel.cache_dir' => '/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev',
+            'kernel.logs_dir' => '/Applications/MAMP/htdocs/extendscript-library-website/app/logs',
             'kernel.bundles' => array(
                 'FrameworkBundle' => 'Symfony\\Bundle\\FrameworkBundle\\FrameworkBundle',
                 'SecurityBundle' => 'Symfony\\Bundle\\SecurityBundle\\SecurityBundle',
@@ -6048,7 +6047,7 @@ class appDevDebugProjectContainer extends Container
             'debug.errors_logger_listener.class' => 'Symfony\\Component\\HttpKernel\\EventListener\\ErrorsLoggerListener',
             'debug.event_dispatcher.class' => 'Symfony\\Component\\HttpKernel\\Debug\\TraceableEventDispatcher',
             'debug.stopwatch.class' => 'Symfony\\Component\\Stopwatch\\Stopwatch',
-            'debug.container.dump' => '/Applications/MAMP/htdocs/jlfa/app/cache/dev/appDevDebugProjectContainer.xml',
+            'debug.container.dump' => '/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/appDevDebugProjectContainer.xml',
             'debug.controller_resolver.class' => 'Symfony\\Component\\HttpKernel\\Controller\\TraceableControllerResolver',
             'kernel.secret' => 'ThisTokenIsNotSoSecretChangeIt',
             'kernel.http_method_override' => true,
@@ -6073,7 +6072,7 @@ class appDevDebugProjectContainer extends Container
             'session.storage.options' => array(
 
             ),
-            'session.save_path' => '/Applications/MAMP/htdocs/jlfa/app/cache/dev/sessions',
+            'session.save_path' => '/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/sessions',
             'session.metadata.update_threshold' => '0',
             'security.secure_random.class' => 'Symfony\\Component\\Security\\Core\\Util\\SecureRandom',
             'form.resolved_type_factory.class' => 'Symfony\\Component\\Form\\ResolvedFormTypeFactory',
@@ -6132,12 +6131,12 @@ class appDevDebugProjectContainer extends Container
             'validator.mapping.loader.yaml_files_loader.class' => 'Symfony\\Component\\Validator\\Mapping\\Loader\\YamlFilesLoader',
             'validator.validator_factory.class' => 'Symfony\\Bundle\\FrameworkBundle\\Validator\\ConstraintValidatorFactory',
             'validator.mapping.loader.xml_files_loader.mapping_files' => array(
-                0 => '/Applications/MAMP/htdocs/jlfa/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/config/validation.xml',
-                1 => '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/config/validation.xml',
-                2 => '/Applications/MAMP/htdocs/jlfa/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/config/validation/orm.xml',
+                0 => '/Applications/MAMP/htdocs/extendscript-library-website/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/config/validation.xml',
+                1 => '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/config/validation.xml',
+                2 => '/Applications/MAMP/htdocs/extendscript-library-website/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/config/validation/orm.xml',
             ),
             'validator.mapping.loader.yaml_files_loader.mapping_files' => array(
-                0 => '/Applications/MAMP/htdocs/jlfa/vendor/codeconsortium/ccdn-forum-bundle/CCDNForum/ForumBundle/Resources/config/validation.yml',
+                0 => '/Applications/MAMP/htdocs/extendscript-library-website/vendor/codeconsortium/ccdn-forum-bundle/CCDNForum/ForumBundle/Resources/config/validation.yml',
             ),
             'validator.expression.class' => 'Symfony\\Component\\Validator\\Constraints\\ExpressionValidator',
             'validator.translation_domain' => 'validators',
@@ -6157,7 +6156,7 @@ class appDevDebugProjectContainer extends Container
             'data_collector.form.extractor.class' => 'Symfony\\Component\\Form\\Extension\\DataCollector\\FormDataExtractor',
             'profiler_listener.only_exceptions' => false,
             'profiler_listener.only_master_requests' => false,
-            'profiler.storage.dsn' => 'file:/Applications/MAMP/htdocs/jlfa/app/cache/dev/profiler',
+            'profiler.storage.dsn' => 'file:/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/profiler',
             'profiler.storage.username' => '',
             'profiler.storage.password' => '',
             'profiler.storage.lifetime' => 86400,
@@ -6181,7 +6180,7 @@ class appDevDebugProjectContainer extends Container
             'router.request_context.host' => 'localhost',
             'router.request_context.scheme' => 'http',
             'router.request_context.base_url' => '',
-            'router.resource' => '/Applications/MAMP/htdocs/jlfa/app/cache/dev/assetic/routing.yml',
+            'router.resource' => '/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/assetic/routing.yml',
             'router.cache_class_prefix' => 'appDev',
             'request_listener.http_port' => 80,
             'request_listener.https_port' => 443,
@@ -6317,7 +6316,7 @@ class appDevDebugProjectContainer extends Container
                 'exception_controller' => 'twig.controller.exception:showAction',
                 'autoescape_service' => NULL,
                 'autoescape_service_method' => NULL,
-                'cache' => '/Applications/MAMP/htdocs/jlfa/app/cache/dev/twig',
+                'cache' => '/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/twig',
                 'charset' => 'UTF-8',
                 'paths' => array(
 
@@ -6326,6 +6325,7 @@ class appDevDebugProjectContainer extends Container
             'monolog.logger.class' => 'Symfony\\Bridge\\Monolog\\Logger',
             'monolog.gelf.publisher.class' => 'Gelf\\MessagePublisher',
             'monolog.handler.stream.class' => 'Monolog\\Handler\\StreamHandler',
+            'monolog.handler.console.class' => 'Symfony\\Bridge\\Monolog\\Handler\\ConsoleHandler',
             'monolog.handler.group.class' => 'Monolog\\Handler\\GroupHandler',
             'monolog.handler.buffer.class' => 'Monolog\\Handler\\BufferHandler',
             'monolog.handler.rotating_file.class' => 'Monolog\\Handler\\RotatingFileHandler',
@@ -6336,12 +6336,25 @@ class appDevDebugProjectContainer extends Container
             'monolog.handler.firephp.class' => 'Symfony\\Bridge\\Monolog\\Handler\\FirePHPHandler',
             'monolog.handler.chromephp.class' => 'Symfony\\Bridge\\Monolog\\Handler\\ChromePhpHandler',
             'monolog.handler.debug.class' => 'Symfony\\Bridge\\Monolog\\Handler\\DebugHandler',
-            'monolog.handler.swift_mailer.class' => 'Monolog\\Handler\\SwiftMailerHandler',
+            'monolog.handler.swift_mailer.class' => 'Symfony\\Bridge\\Monolog\\Handler\\SwiftMailerHandler',
             'monolog.handler.native_mailer.class' => 'Monolog\\Handler\\NativeMailerHandler',
             'monolog.handler.socket.class' => 'Monolog\\Handler\\SocketHandler',
             'monolog.handler.pushover.class' => 'Monolog\\Handler\\PushoverHandler',
+            'monolog.handler.raven.class' => 'Monolog\\Handler\\RavenHandler',
+            'monolog.handler.newrelic.class' => 'Monolog\\Handler\\NewRelicHandler',
+            'monolog.handler.hipchat.class' => 'Monolog\\Handler\\HipChatHandler',
+            'monolog.handler.cube.class' => 'Monolog\\Handler\\CubeHandler',
+            'monolog.handler.amqp.class' => 'Monolog\\Handler\\AmqpHandler',
+            'monolog.handler.error_log.class' => 'Monolog\\Handler\\ErrorLogHandler',
+            'monolog.handler.loggly.class' => 'Monolog\\Handler\\LogglyHandler',
+            'monolog.activation_strategy.not_found.class' => 'Symfony\\Bundle\\MonologBundle\\NotFoundActivationStrategy',
             'monolog.handler.fingers_crossed.class' => 'Monolog\\Handler\\FingersCrossedHandler',
             'monolog.handler.fingers_crossed.error_level_activation_strategy.class' => 'Monolog\\Handler\\FingersCrossed\\ErrorLevelActivationStrategy',
+            'monolog.handler.mongo.class' => 'Monolog\\Handler\\MongoDBHandler',
+            'monolog.mongo.client.class' => 'MongoClient',
+            'monolog.swift_mailer.handlers' => array(
+
+            ),
             'monolog.handlers_to_channels' => array(
                 'monolog.handler.firephp' => NULL,
                 'monolog.handler.main' => NULL,
@@ -6371,6 +6384,7 @@ class appDevDebugProjectContainer extends Container
             'swiftmailer.mailer.default.transport.smtp.timeout' => 30,
             'swiftmailer.mailer.default.transport.smtp.source_ip' => NULL,
             'swiftmailer.mailer.default.spool.enabled' => false,
+            'swiftmailer.mailer.default.plugin.impersonate' => NULL,
             'swiftmailer.mailer.default.single_address' => NULL,
             'swiftmailer.spool.enabled' => false,
             'swiftmailer.delivery.enabled' => true,
@@ -6394,7 +6408,7 @@ class appDevDebugProjectContainer extends Container
             'assetic.node.paths' => array(
 
             ),
-            'assetic.cache_dir' => '/Applications/MAMP/htdocs/jlfa/app/cache/dev/assetic',
+            'assetic.cache_dir' => '/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/assetic',
             'assetic.bundles' => array(
                 0 => 'JlfaWebSiteBundle',
                 1 => 'FOSUserBundle',
@@ -6410,8 +6424,8 @@ class appDevDebugProjectContainer extends Container
             'assetic.debug' => true,
             'assetic.use_controller' => true,
             'assetic.enable_profiler' => false,
-            'assetic.read_from' => '/Applications/MAMP/htdocs/jlfa/app/../web',
-            'assetic.write_to' => '/Applications/MAMP/htdocs/jlfa/app/../web',
+            'assetic.read_from' => '/Applications/MAMP/htdocs/extendscript-library-website/app/../web',
+            'assetic.write_to' => '/Applications/MAMP/htdocs/extendscript-library-website/app/../web',
             'assetic.variables' => array(
 
             ),
@@ -6422,7 +6436,7 @@ class appDevDebugProjectContainer extends Container
             'assetic.filter.cssrewrite.class' => 'Assetic\\Filter\\CssRewriteFilter',
             'assetic.filter.yui_js.class' => 'Assetic\\Filter\\Yui\\JsCompressorFilter',
             'assetic.filter.yui_js.java' => 'C:\\Program Files (x86)\\Java\\jre7\\bin\\java.exe',
-            'assetic.filter.yui_js.jar' => '/Applications/MAMP/htdocs/jlfa/app/Resources/java/yuicompressor.jar',
+            'assetic.filter.yui_js.jar' => '/Applications/MAMP/htdocs/extendscript-library-website/app/Resources/java/yuicompressor.jar',
             'assetic.filter.yui_js.charset' => 'UTF-8',
             'assetic.filter.yui_js.stacksize' => NULL,
             'assetic.filter.yui_js.timeout' => NULL,
@@ -6431,7 +6445,7 @@ class appDevDebugProjectContainer extends Container
             'assetic.filter.yui_js.disable_optimizations' => NULL,
             'assetic.filter.yui_css.class' => 'Assetic\\Filter\\Yui\\CssCompressorFilter',
             'assetic.filter.yui_css.java' => 'C:\\Program Files (x86)\\Java\\jre7\\bin\\java.exe',
-            'assetic.filter.yui_css.jar' => '/Applications/MAMP/htdocs/jlfa/app/Resources/java/yuicompressor.jar',
+            'assetic.filter.yui_css.jar' => '/Applications/MAMP/htdocs/extendscript-library-website/app/Resources/java/yuicompressor.jar',
             'assetic.filter.yui_css.charset' => 'UTF-8',
             'assetic.filter.yui_css.stacksize' => NULL,
             'assetic.filter.yui_css.timeout' => NULL,
@@ -6514,7 +6528,7 @@ class appDevDebugProjectContainer extends Container
             'doctrine.orm.naming_strategy.default.class' => 'Doctrine\\ORM\\Mapping\\DefaultNamingStrategy',
             'doctrine.orm.naming_strategy.underscore.class' => 'Doctrine\\ORM\\Mapping\\UnderscoreNamingStrategy',
             'doctrine.orm.auto_generate_proxy_classes' => true,
-            'doctrine.orm.proxy_dir' => '/Applications/MAMP/htdocs/jlfa/app/cache/dev/doctrine/orm/Proxies',
+            'doctrine.orm.proxy_dir' => '/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/doctrine/orm/Proxies',
             'doctrine.orm.proxy_namespace' => 'Proxies',
             'sensio_framework_extra.view.guesser.class' => 'Sensio\\Bundle\\FrameworkExtraBundle\\Templating\\TemplateGuesser',
             'sensio_framework_extra.controller.listener.class' => 'Sensio\\Bundle\\FrameworkExtraBundle\\EventListener\\ControllerListener',
@@ -6526,7 +6540,7 @@ class appDevDebugProjectContainer extends Container
             'sensio_framework_extra.converter.doctrine.class' => 'Sensio\\Bundle\\FrameworkExtraBundle\\Request\\ParamConverter\\DoctrineParamConverter',
             'sensio_framework_extra.converter.datetime.class' => 'Sensio\\Bundle\\FrameworkExtraBundle\\Request\\ParamConverter\\DateTimeParamConverter',
             'sensio_framework_extra.view.listener.class' => 'Sensio\\Bundle\\FrameworkExtraBundle\\EventListener\\TemplateListener',
-            'jms_aop.cache_dir' => '/Applications/MAMP/htdocs/jlfa/app/cache/dev/jms_aop',
+            'jms_aop.cache_dir' => '/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/jms_aop',
             'jms_aop.interceptor_loader.class' => 'JMS\\AopBundle\\Aop\\InterceptorLoader',
             'jms_di_extra.metadata.driver.annotation_driver.class' => 'JMS\\DiExtraBundle\\Metadata\\Driver\\AnnotationDriver',
             'jms_di_extra.metadata.driver.configured_controller_injections.class' => 'JMS\\DiExtraBundle\\Metadata\\Driver\\ConfiguredControllerInjectionsDriver',
@@ -6543,14 +6557,14 @@ class appDevDebugProjectContainer extends Container
             'jms_di_extra.directories' => array(
 
             ),
-            'jms_di_extra.cache_dir' => '/Applications/MAMP/htdocs/jlfa/app/cache/dev/jms_diextra',
+            'jms_di_extra.cache_dir' => '/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/jms_diextra',
             'jms_di_extra.disable_grep' => false,
             'jms_di_extra.doctrine_integration' => true,
             'jms_di_extra.cache_warmer.controller_file_blacklist' => array(
 
             ),
-            'jms_di_extra.doctrine_integration.entity_manager.file' => '/Applications/MAMP/htdocs/jlfa/app/cache/dev/jms_diextra/doctrine/EntityManager_5333d09161c90.php',
-            'jms_di_extra.doctrine_integration.entity_manager.class' => 'EntityManager5333d09161c90_546a8d27f194334ee012bfe64f629947b07e4919\\__CG__\\Doctrine\\ORM\\EntityManager',
+            'jms_di_extra.doctrine_integration.entity_manager.file' => '/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/jms_diextra/doctrine/EntityManager_5333e8e9f06c0.php',
+            'jms_di_extra.doctrine_integration.entity_manager.class' => 'EntityManager5333e8e9f06c0_546a8d27f194334ee012bfe64f629947b07e4919\\__CG__\\Doctrine\\ORM\\EntityManager',
             'security.secured_services' => array(
 
             ),
@@ -6572,7 +6586,7 @@ class appDevDebugProjectContainer extends Container
             'security.extra.annotation_driver.class' => 'JMS\\SecurityExtraBundle\\Metadata\\Driver\\AnnotationDriver',
             'security.extra.file_cache.class' => 'Metadata\\Cache\\FileCache',
             'security.access.secure_all_services' => false,
-            'security.extra.cache_dir' => '/Applications/MAMP/htdocs/jlfa/app/cache/dev/jms_security',
+            'security.extra.cache_dir' => '/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/jms_security',
             'security.acl.permission_evaluator.class' => 'JMS\\SecurityExtraBundle\\Security\\Acl\\Expression\\PermissionEvaluator',
             'security.acl.has_permission_compiler.class' => 'JMS\\SecurityExtraBundle\\Security\\Acl\\Expression\\HasPermissionFunctionCompiler',
             'security.expressions.voter.class' => 'JMS\\SecurityExtraBundle\\Security\\Authorization\\Expression\\LazyLoadingExpressionVoter',
@@ -6844,7 +6858,7 @@ class appDevDebugProjectContainer extends Container
             'web_profiler.debug_toolbar.class' => 'Symfony\\Bundle\\WebProfilerBundle\\EventListener\\WebDebugToolbarListener',
             'web_profiler.debug_toolbar.intercept_redirects' => false,
             'web_profiler.debug_toolbar.mode' => 2,
-            'sensio.distribution.webconfigurator.class' => 'Sensio\\Bundle\\DistributionBundle\\Configurator\\Configurator',
+            'sensio_distribution.webconfigurator.class' => 'Sensio\\Bundle\\DistributionBundle\\Configurator\\Configurator',
             'data_collector.templates' => array(
                 'data_collector.config' => array(
                     0 => 'config',

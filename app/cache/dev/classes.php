@@ -58,6 +58,7 @@ return $this->container->get('session');
 namespace Symfony\Component\HttpFoundation\Session\Storage
 {
 use Symfony\Component\HttpFoundation\Session\SessionBagInterface;
+use Symfony\Component\HttpFoundation\Session\Storage\MetadataBag;
 interface SessionStorageInterface
 {
 public function start();
@@ -78,6 +79,7 @@ namespace Symfony\Component\HttpFoundation\Session\Storage
 {
 use Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 use Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeSessionHandler;
+use Symfony\Component\HttpFoundation\Session\Storage\MetadataBag;
 use Symfony\Component\HttpFoundation\Session\Storage\Proxy\NativeProxy;
 use Symfony\Component\HttpFoundation\Session\Storage\Proxy\AbstractProxy;
 use Symfony\Component\HttpFoundation\Session\Storage\Proxy\SessionHandlerProxy;
@@ -273,6 +275,7 @@ $this->closed = false;
 }
 namespace Symfony\Component\HttpFoundation\Session\Storage
 {
+use Symfony\Component\HttpFoundation\Session\Storage\MetadataBag;
 use Symfony\Component\HttpFoundation\Session\Storage\Proxy\AbstractProxy;
 use Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeSessionHandler;
 class PhpBridgeSessionStorage extends NativeSessionStorage
@@ -466,6 +469,7 @@ use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
 use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBagInterface;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
+use Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 class Session implements SessionInterface, \IteratorAggregate, \Countable
 {
@@ -1394,8 +1398,10 @@ if ($route->getCondition() && !$this->getExpressionLanguage()->evaluate($route->
 return array(self::REQUIREMENT_MISMATCH, null);
 }
 $scheme = $route->getRequirement('_scheme');
-$status = $scheme && $scheme !== $this->context->getScheme() ? self::REQUIREMENT_MISMATCH : self::REQUIREMENT_MATCH;
-return array($status, null);
+if ($scheme && $scheme !== $this->context->getScheme()) {
+return array(self::REQUIREMENT_MISMATCH, null);
+}
+return array(self::REQUIREMENT_MATCH, null);
 }
 protected function mergeDefaults($params, $defaults)
 {
@@ -2017,7 +2023,7 @@ return $controller;
 }
 if (false === strpos($controller,':')) {
 if (method_exists($controller,'__invoke')) {
-return new $controller();
+return new $controller;
 } elseif (function_exists($controller)) {
 return $controller;
 }
@@ -2343,6 +2349,7 @@ namespace Symfony\Bundle\FrameworkBundle\Controller
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpKernel\Controller\ControllerResolver as BaseControllerResolver;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 class ControllerResolver extends BaseControllerResolver
 {
@@ -4694,7 +4701,6 @@ protected function normalizeException(Exception $e)
 $data = array('class'=> get_class($e),'message'=> $e->getMessage(),'file'=> $e->getFile().':'.$e->getLine(),
 );
 $trace = $e->getTrace();
-array_shift($trace);
 foreach ($trace as $frame) {
 if (isset($frame['file'])) {
 $data['trace'][] = $frame['file'].':'.$frame['line'];
@@ -4724,13 +4730,16 @@ return json_encode($data);
 }
 namespace Monolog\Formatter
 {
+use Exception;
 class LineFormatter extends NormalizerFormatter
 {
 const SIMPLE_FORMAT ="[%datetime%] %channel%.%level_name%: %message% %context% %extra%\n";
 protected $format;
-public function __construct($format = null, $dateFormat = null)
+protected $allowInlineLineBreaks;
+public function __construct($format = null, $dateFormat = null, $allowInlineLineBreaks = false)
 {
 $this->format = $format ?: static::SIMPLE_FORMAT;
+$this->allowInlineLineBreaks = $allowInlineLineBreaks;
 parent::__construct($dateFormat);
 }
 public function format(array $record)
@@ -4739,13 +4748,13 @@ $vars = parent::format($record);
 $output = $this->format;
 foreach ($vars['extra'] as $var => $val) {
 if (false !== strpos($output,'%extra.'.$var.'%')) {
-$output = str_replace('%extra.'.$var.'%', $this->convertToString($val), $output);
+$output = str_replace('%extra.'.$var.'%', $this->replaceNewlines($this->convertToString($val)), $output);
 unset($vars['extra'][$var]);
 }
 }
 foreach ($vars as $var => $val) {
 if (false !== strpos($output,'%'.$var.'%')) {
-$output = str_replace('%'.$var.'%', $this->convertToString($val), $output);
+$output = str_replace('%'.$var.'%', $this->replaceNewlines($this->convertToString($val)), $output);
 }
 }
 return $output;
@@ -4758,32 +4767,35 @@ $message .= $this->format($record);
 }
 return $message;
 }
-protected function normalize($data)
+protected function normalizeException(Exception $e)
 {
-if (is_bool($data) || is_null($data)) {
-return var_export($data, true);
-}
-if ($data instanceof \Exception) {
 $previousText ='';
-if ($previous = $data->getPrevious()) {
+if ($previous = $e->getPrevious()) {
 do {
 $previousText .=', '.get_class($previous).': '.$previous->getMessage().' at '.$previous->getFile().':'.$previous->getLine();
 } while ($previous = $previous->getPrevious());
 }
-return'[object] ('.get_class($data).': '.$data->getMessage().' at '.$data->getFile().':'.$data->getLine().$previousText.')';
-}
-return parent::normalize($data);
+return'[object] ('.get_class($e).': '.$e->getMessage().' at '.$e->getFile().':'.$e->getLine().$previousText.')';
 }
 protected function convertToString($data)
 {
-if (null === $data || is_scalar($data)) {
+if (null === $data || is_bool($data)) {
+return var_export($data, true);
+}
+if (is_scalar($data)) {
 return (string) $data;
 }
-$data = $this->normalize($data);
 if (version_compare(PHP_VERSION,'5.4.0','>=')) {
 return $this->toJson($data, true);
 }
 return str_replace('\\/','/', @json_encode($data));
+}
+protected function replaceNewlines($str)
+{
+if ($this->allowInlineLineBreaks) {
+return $str;
+}
+return preg_replace('{[\r\n]+}',' ', $str);
 }
 }
 }
@@ -4955,7 +4967,8 @@ throw new \UnexpectedValueException(sprintf('The stream or file "%s" could not b
 }
 fwrite($this->stream, (string) $record['formatted']);
 }
-private function customErrorHandler($code, $msg) {
+private function customErrorHandler($code, $msg)
+{
 $this->errorMessage = preg_replace('{^fopen\(.*?\): }','', $msg);
 }
 }
@@ -5492,7 +5505,8 @@ $request = $this->container->get('request');
 return array('locale'=> $request->getLocale(),'env'=> $this->container->getParameter('kernel.environment'),
 );
 }
-}}
+}
+}
 namespace Assetic\Factory
 {
 use Assetic\Asset\AssetCollection;
@@ -6281,7 +6295,7 @@ if (!$configuration = $request->attributes->get('_cache')) {
 return;
 }
 $response = $event->getResponse();
-if (!$response->isCacheable()) {
+if (!$response->isSuccessful()) {
 return;
 }
 if (null !== $configuration->getSMaxAge()) {

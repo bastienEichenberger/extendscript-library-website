@@ -2,4 +2,4 @@ _assetic:
     resource: .
     type: assetic
 _app:
-    resource: /Applications/MAMP/htdocs/jlfa/app/config/routing_dev.yml
+    resource: /Applications/MAMP/htdocs/extendscript-library-website/app/config/routing_dev.yml

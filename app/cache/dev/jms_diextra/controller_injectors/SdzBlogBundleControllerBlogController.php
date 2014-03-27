@@ -10,9 +10,9 @@ namespace Sdz\BlogBundle\Controller;
 class BlogController__JMSInjector
 {
     public static function inject($container) {
-        require_once '/Applications/MAMP/htdocs/jlfa/app/cache/dev/jms_diextra/proxies/Sdz-BlogBundle-Controller-BlogController.php';
+        require_once '/Applications/MAMP/htdocs/extendscript-library-website/app/cache/dev/jms_diextra/proxies/Sdz-BlogBundle-Controller-BlogController.php';
         $a = new \JMS\AopBundle\Aop\InterceptorLoader($container, array('Sdz\\BlogBundle\\Controller\\BlogController' => array('addPostAction' => array(0 => 'security.access.method_interceptor'), 'editAction' => array(0 => 'security.access.method_interceptor'), 'supprimerAction' => array(0 => 'security.access.method_interceptor'))));
-        $instance = new \EnhancedProxy668e1049_d946947553b7cbf9f4e7ff596a57ff3b311e10bd\__CG__\Sdz\BlogBundle\Controller\BlogController();
+        $instance = new \EnhancedProxyf56b062a_d946947553b7cbf9f4e7ff596a57ff3b311e10bd\__CG__\Sdz\BlogBundle\Controller\BlogController();
         $instance->__CGInterception__setLoader($a);
         return $instance;
     }
