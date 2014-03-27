@@ -1,0 +1,90 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf390
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Consolas;\f2\fswiss\fcharset0 LucidaConsole;
+\f3\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red56\green110\blue255;\red234\green234\blue234;\red0\green0\blue120;
+\red104\green104\blue104;\red234\green234\blue234;\red107\green0\blue3;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww18160\viewh12580\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\b\fs24 \cf0 Connection sftp\
+\
+Connection console/web\
+\pard\pardeftab720
+{\field{\*\fldinst{HYPERLINK "https://my.unity-web.ch/clientarea.php?action=productdetails&id=613&modop=custom&a=management&page=vmdetails&vserver=221"}}{\fldrslt 
+\b0 \cf2 \ul \ulc2 https://my.unity-web.ch/clientarea.php?action=productdetails&id=613&modop=custom&a=management&page=vmdetails&vserver=221}}
+\b0 \cf2 \ul \ulc2 \
+cli3680\
+\
+root\
+\pard\pardeftab720
+\cf0 \ulnone cli3680,,42\
+postgres\
+cli3680,,42
+\b \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \
+create gis db
+\b0 \
+
+\b connect as postgres user\
+type: sudo -s -u postgres
+\b0 \
+- type: postgres, password\
+- createdb mydb\
+\
+\
+\
+OR\
+FROM DB connect\
+CREATE EXTENSION postgis;\
+\
+commands\
+list databases: psql -l\
+list tables in database: psql mydatabase, \\d\
+quit db \\q\
+\
+backup import as postgres usr\
+pgadmin3 -> sauvegarde -> personnalit\'e9 -> jlfa.backup\
+d\'e9poser dans /usr/local/backup/\
+ex\'e9cuter command\
+pg_restore -d 
+\b jlfa
+\b0  /usr/local/backup/jlfa.backup\
+\
+
+\b d\'e9ployer symfony2\
+
+\b0 php app/console cache:clear\
+php app/console cache:clear --env=prod\
+\pard\pardeftab720\sl340
+
+\f1\fs28 \cf0 \cb3  app/console assetic:\cf4 dump\cf0  --env=prod\
+mettre app.php kernel true // uniquement test\
+\
+\pard\pardeftab720\sl300
+
+\f2 \cf0 \cb5 php\'a0app/console\'a0assets:install
+\f0\b\fs24 \cb1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 \
+connaitre la version de postgres, dans la base\
+\pard\pardeftab720
+
+\f3\b0 \cf0 SELECT postgis_full_version();\
+\
+delete prod cache\
+rm -rf /var/www/jlfa2/app/cache/prod\
+rights to cache\
+\pard\pardeftab720\sl340
+
+\f1\fs28 \cf0 \cb6 chmod -R \cf7 777\cf0  /var/www/jlfa2/app/cache\
+\pard\pardeftab720
+
+\f3\fs24 \cf0 \cb1 \
+\pard\pardeftab720
+
+\f0\b \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\b0 \cf0 \
+}

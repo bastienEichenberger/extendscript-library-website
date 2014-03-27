@@ -39,8 +39,7 @@
     
     
     {# Block carousel is only on the home page #}
-    {% if app.request.attributes.get('_route') == 'jlfa_web_site_homepage' 
-        or app.request.attributes.get('_route') == 'root' %}
+    {% if app.request.attributes.get('_route') == 'jlfa_web_site_homepage' %}
           {% block carousel %}
           {% endblock %}
     {% endif %}

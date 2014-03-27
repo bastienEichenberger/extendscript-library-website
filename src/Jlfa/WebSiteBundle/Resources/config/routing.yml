@@ -1,6 +1,6 @@
 jlfa_web_site_homepage:
     pattern:  /
-    defaults: { _controller: JlfaWebSiteBundle:WebSite:home  }
+    defaults: { _controller: JlfaWebSiteBundle:WebSite:home }
 
 jlfa_web_site_startpage:
   pattern: /start
