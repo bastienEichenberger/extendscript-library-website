@@ -69,11 +69,9 @@ textarea.form-control {
 }
 
 .alert-messages {
-  position: fixed;
   top: 47px;
   left: 0;
   right: 0;
-  z-index: 1000;
 }
 
 
