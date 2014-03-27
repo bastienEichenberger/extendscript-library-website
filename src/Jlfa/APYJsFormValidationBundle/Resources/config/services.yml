@@ -1,0 +1,7 @@
+parameters:
+#    jlfa_apy_js_form_validation.example.class: Jlfa\APYJsFormValidationBundle\Example
+
+services:
+#    jlfa_apy_js_form_validation.example:
+#        class: %jlfa_apy_js_form_validation.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,4 @@
+services:
+    jlfawebsite.geojsonbuilder:
+        class: Jlfa\WebSiteBundle\Jsonbuilder\GeoJsonBuilder
+        arguments: [ "@doctrine.orm.entity_manager", "@router"]

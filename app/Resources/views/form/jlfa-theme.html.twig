@@ -1,0 +1,49 @@
+{% block form_errors %}
+    {% if errors|length > 0 %}
+            <ul>
+                {% for error in errors %}
+                    <li class="error">{{ error.message|trans }}</li>
+                {% endfor %}
+            </ul>
+    {% endif %}
+{% endblock form_errors %}
+        
+{% block choice_widget %}
+        {% spaceless %}
+            {% if expanded %}
+                {% set type = 'radio' %}
+                {% set index = 0 %}
+                {% for child in form %}
+                    <div class="radio {% if index != 0%} right {% endif %}">
+                        <label>
+                            {{ form_widget(child) }}
+                            {{ form_label(child) }}
+                        </label>
+                    </div>
+                    {% set index = index + 1 %}
+                {% endfor %}
+            {% else %}
+                {{ block('choice_widget_collapsed') }}
+            {% endif %}
+        {% endspaceless %}
+{% endblock %}
+
+{% block radio_label %}
+    {{ label }}
+{% endblock radio_label %}
+
+
+
+{% block checkbox_label %}
+    {{ label }}
+{% endblock checkbox_label %}
+
+{% block checkbox_widget %}
+{% spaceless %}
+    test
+    <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+{% endspaceless %}
+{% endblock checkbox_widget %}
+
+
+

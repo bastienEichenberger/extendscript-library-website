@@ -1,0 +1,25 @@
+<div class="col-lg-3">
+    <div id="post-nav">
+        <h3>Recent comments</h3>
+        <ul class="nav nav-pills nav-stacked">
+            {% for comment in last_comments %}
+                <li>
+                    <a href="{{ path('sdzblog_voir', {'slug': comment.article.slug} ) }}">{{ comment.contenu | truncate(25, true, '...') }}</a>
+                </li>
+            {% else %}
+                <li>aucun commentaire</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% if is_granted('ROLE_AUTHOR') %}
+        <hr class="featurette-divider">
+        <div id="admin-nav">
+            <h3>Admin</h3>
+            <ul class="nav nav-pills nav-stacked">
+                <li>
+                    <a href="{{ path('sdzblog_add_post') }}"><i class="glyphicon glyphicon-plus"></i>add post</a>
+                </li>
+            </ul>
+        </div>
+    {% endif %}
+</div>

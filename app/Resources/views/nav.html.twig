@@ -1,0 +1,107 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="col-lg-10">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+            <div class="logo">
+                <a class="navbar-brand" href="{{ path('jlfa_web_site_homepage') }}">
+                    <img src="{{ asset('img/logo_extlib.svg') }}" onerror="this.onerror=null; this.src='{{ asset('img/logo_extlib.svg') }}'">
+                    <h1>ExtendScript library</h1>
+                </a>
+            </div>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="{{ path('jlfa_web_site_homepage') }}">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Get started<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('jlfa_web_site_startpage') }}">Start</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Documentation</li>
+                        <li><a href="{{ path('jlfa_jsdoc') }}" target="_blank">View html doc</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Get involved<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('jlfa_web_site_participatepage') }}">Participate</a></li>
+                        <li><a href="{{ path('forum_jlfa_homepage') }}">Forum</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ path('sdzblog_accueil') }}">News</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">About<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('jlfa_web_site_contributorspage') }}">Contributors</a></li>
+                        <li><a href="{{ path('jlfa_web_site_licencespage') }}">Licences</a></li>
+                    </ul>
+                </li>
+            </ul>
+            {# if user connected display is name and disconnect menu #}
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ app.user.username }}<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+                    <li><a href="{{ path('fos_user_profile_show') }}">Profile</a></li>
+                </ul>
+              </li>
+            </ul>
+            {# if user not connected link to connection page #}
+            {% else %}
+              <ul class="nav navbar-nav navbar-right">
+                  <li><a href="{{ path('fos_user_security_login') }}">Connection</a></li>
+              </ul>
+            {% endif %}
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
+      <div class="col-lg-1 navbar-collapse pull-right">
+        <ul id="language-screen" class="language nav navbar-nav">
+              <li class="dropdown">
+                  {% if app.request.locale == 'fr' %}
+                      {% set flag_class = 'flag-fr' %}
+                  {% elseif app.request.locale == 'en' %}
+                      {% set flag_class = 'flag-en' %}
+                  {% else %}
+                      {% set flag_class = 'flag-de' %}
+                  {% endif%}
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon {{ flag_class }}"></span><b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="{{ path(
+                                            app.request.attributes.get('_route'),
+                                            app.request.attributes.get('_route_params')|
+                                            merge(app.request.query.all)|merge({'_locale': 'fr'})
+                                            )
+                                    }}">
+                          <span class="glyphicon flag-fr"></span></a>
+                      </li>
+                      <li><a href="{{ path(
+                                            app.request.attributes.get('_route'),
+                                            app.request.attributes.get('_route_params')|
+                                            merge(app.request.query.all)|merge({'_locale': 'de'})
+                                            )
+                                    }}">
+                          <span class="glyphicon flag-de"></span></a>
+                      </li>
+                      <li><a href="{{ path(
+                                            app.request.attributes.get('_route'),
+                                            app.request.attributes.get('_route_params')|
+                                            merge(app.request.query.all)|merge({'_locale': 'en'})
+                                            )
+                                    }}">
+                          <span class="glyphicon flag-en"></span></a>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
+      </div>
+</nav>

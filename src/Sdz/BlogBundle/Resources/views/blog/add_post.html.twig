@@ -1,0 +1,80 @@
+{% extends "SdzBlogBundle::form_layout.html.twig" %}
+
+
+
+
+
+{% block content %}
+    <div class="row">
+    <div class="col-lg-12">
+        <div class="well">
+            <form action="{{ path('sdzblog_add_post') }}" {{ form_enctype(form) }} method="POST" class="form-inline" novalidate>
+                <fieldset>
+                    <legend>Add Article</legend>
+                    <div class="control-group">
+                        {{ form_label(form.titre, label|default(null), {'label_attr': {'class': 'control-label'}}) }}
+                        <div class="controls">
+                            {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.titre) }}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{ form_label(form.titreEn, label|default(null), {'label_attr': {'class': 'control-label'}}) }}
+                        <div class="controls">
+                            {{ form_widget(form.titreEn, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.titreEn) }}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{ form_label(form.titreDe, label|default(null), {'label_attr': {'class': 'control-label'}}) }}
+                        <div class="controls">
+                            {{ form_widget(form.titreDe, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.titreDe) }}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{ form_label(form.contenu, label|default(null), {'label_attr': {'class': 'control-label'}}) }}
+                        <div class="controls">
+                            {{ form_widget(form.contenu, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.contenu) }}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{ form_label(form.contenuEn, label|default(null), {'label_attr': {'class': 'control-label'}}) }}
+                        <div class="controls">
+                            {{ form_widget(form.contenuEn, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.contenuEn) }}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{ form_label(form.contenuDe, label|default(null), {'label_attr': {'class': 'control-label'}}) }}
+                        <div class="controls">
+                            {{ form_widget(form.contenuDe, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.contenuDe) }}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{ form_label(form.image.file, label|default(null), {'label_attr': {'class': 'control-label'}}) }}
+                        <div class="controls">
+                            {{ form_widget(form.image.file) }}
+                            {{ form_errors(form.image.file) }}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{ form_label(form.author, label|default(null), {'label_attr': {'class': 'control-label'}}) }}
+                        <div class="controls">
+                            {{ form_widget(form.author, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.author) }}
+                        </div>
+                    </div>
+                    {{ form_rest(form) }}
+                    <div>
+                        <button type="reset" class="btn">Cancel</button>
+                        <button id="sdz_blogbundle_articletype" type="submit" class="btn btn-primary btn-large">Add</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+   </div>
+</div>
+{% endblock %}

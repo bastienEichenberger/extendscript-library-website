@@ -1,0 +1,16 @@
+{% extends "SdzBlogBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="row">
+        
+        {% include 'SdzBlogBundle::nav/blog_nav.html.twig' %}
+
+        <div class="col-lg-8 col-lg-offset-1">
+                {% block messages %}    
+                    {% include 'messages.html.twig' %}
+                {% endblock %}
+                
+                {% block body_content %}
+                {% endblock %}
+        </div>
+{% endblock %}

@@ -1,0 +1,54 @@
+function IsAdresseValid(field, params)
+{
+    var value = field && field.nodeName ? {{ getJsFormElementValue('field') }} : field;
+    /*if (isNotDefined(value)) {
+        // clear lat + lng
+        return true;
+    }*/
+    
+    var cache, cacheindex = 'm' + value + '';
+    if (params && field.nodeName) {
+            cache = $(field).data('_adresseValidCache');
+            if (!cache) cache = {};
+            
+            if (cache[cacheindex] != undefined) {
+                if (cache[cacheindex] === false) {
+                    return getComputeMessage(params.message);
+                } else return true;
+            }
+
+        $(field).trigger("geocode");
+
+        $(field).bind("geocode:error", function(event, result) {
+            if (!cache) cache = {};
+            
+            if (cache[cacheindex] != undefined) {
+                if (cache[cacheindex] === false) {
+                    return getComputeMessage(params.message);
+                } else return true;
+            }
+            cache[cacheindex] = false;
+            $(field).data('_adresseValidCache', cache);
+            checkError($(field).attr('id'), IsAdresseValid, params);
+        });
+
+        $(field).bind("geocode:result", function(event, result) {
+            if (!cache) cache = {};
+            
+            if (cache[cacheindex] != undefined) {
+                if (cache[cacheindex] === false) {
+                    return getComputeMessage(params.message);
+                } else return true;
+            }
+            cache[cacheindex] = true;
+            $(field).data('_adresseValidCache', cache);
+            checkError($(field).attr('id'), IsAdresseValid, params);
+        });
+    }
+    return true;
+}
+
+function asynchrone_state(){
+
+}
+

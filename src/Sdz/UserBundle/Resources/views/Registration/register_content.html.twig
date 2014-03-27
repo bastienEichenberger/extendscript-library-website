@@ -1,0 +1,81 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+
+<!-- add form --> 
+<div class="row">
+    <div class="col-lg-12">
+        <div class="well">            
+            <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" id="contact-form" class="form-inline" novalidate>
+                <fieldset>
+                    <legend>Create your account2</legend>
+                    <div class="control-group">
+                        <label class="control-label" for="{{ form.email.vars.id }}">{{ form.email.vars.label|trans }}<span title ="{{ 'registration.email_no_spam'|trans }}" class="glyphicon glyphicon-exclamation-sign"></span></label>
+                        <div class="controls">
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.email) }}
+                        </div>
+
+                        <div class="radio-group">
+                            {{ form_widget(form.displayMail) }}
+                            {{ form_errors(form.displayMail) }}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{ form_label(form.username, label|default(null), {'label_attr': {'class': 'control-label'}}) }}
+                        <div class="controls">
+                            {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.username) }}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{ form_label(form.plainPassword.first, label|default(null), {'label_attr': {'class': 'control-label'}}) }}
+                        <div class="controls">
+                            {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.plainPassword.first) }}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{ form_label(form.plainPassword.second, label|default(null), {'label_attr': {'class': 'control-label'}}) }}
+                        <div class="controls">
+                            {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.plainPassword.second) }}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{ form_label(form.aboutMe, label|default(null), {'label_attr': {'class': 'control-label'}}) }}
+                        <div class="controls">
+                            {{ form_widget(form.aboutMe, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.aboutMe) }}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="{{ form.adresse.vars.id }}">{{ form.adresse.vars.label|trans }}<span title ="{{ 'registration.adresse_using'|trans }}" class="glyphicon glyphicon-exclamation-sign"></span></label>
+                        <div class="input-group controls">
+                            {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.adresse) }}
+                            <span class="input-group-btn">
+                                <button id="go" class="btn btn-default" type="button">Go</button>
+                            </span>
+                        </div>
+                            
+                        <div class="radio-group">
+                            {{ form_widget(form.displayAdresse) }}
+                            {{ form_errors(form.displayAdresse) }}
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div id="map-canvas"></div>
+                    </div>
+                    {{ form_rest(form) }}
+                    <div class="form-actions">
+                        <a type="reset" class="btn btn-default" href="{{ path('fos_user_security_login') }}" >Cancel</a>
+                        <button id="fos_user_registration_form" type="submit" class="btn btn-primary btn-large" value="{{ 'registration.submit'|trans }}">Submit</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>            
+    </div>
+</div>
+

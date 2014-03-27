@@ -1,0 +1,59 @@
+{# On utilise une macro Twig pour afficher :
+   * Soit le nom de l'auteur anonyme de l'auteur
+   * Soit son nom et un lien vers son profil s'il était identifié #}
+{% import "SdzUserBundle::userHelpers.html.twig" as userHelpers %}
+{% form_theme form '::form/jlfa-theme.html.twig' %}
+
+<h3>Commentaires</h3>
+
+  {% for commentaire in commentaires %}
+    <div id="comment{{ commentaire.id }}" itemscope itemtype="http://schema.org/Comment">
+     {% if is_granted('ROLE_AUTHOR') or is_granted('EDIT', commentaire) %}
+        <div class="admin-post">
+            {% set modal_id = 'modal-comment-' ~ commentaire.id %}
+            <a class="pull-right" href="#" data-toggle="modal" data-target="#{{ modal_id}}"><span class="glyphicon glyphicon-minus"></span></a>
+            <!-- Modal -->
+            {% include 'SdzBlogBundle:blog:delete_comment.html.twig' %}
+        </div> 
+    {% endif %}
+    <em>
+      Le <time datetime="{{ commentaire.date|date('c') }}" itemprop="datePublished">{{ commentaire.date|date('d/m/Y à H\\hi') }}</time>,
+      <span itemprop="author">{{ userHelpers.link(commentaire.user, commentaire.auteur) }}</span> a écrit :
+    </em>
+    <br />
+    {{ commentaire.contenu|markdown }}
+  </div>
+  {% else %}
+    <p>Pas encore de commentaire.</p>
+  {% endfor %}
+  <hr />
+  <h3>Poster un nouveau commentaire</h3>
+  <form id="comments" method="post" action="{{ path('sdzblog_ajouter_commentaire', {'id': article.id}) }}">
+        {% if form.auteur is defined %}
+            <div class="control-group">
+                {{ form_label(form.auteur, label|default(null), {'label_attr': {'class': 'control-label'}}) }}
+                <div class="controls">
+                    {{ form_widget(form.auteur, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.auteur) }}
+                </div>
+            </div>
+        {% endif %}
+        
+          
+        <div class="control-group">
+            {{ form_label(form.contenu, label|default(null), {'label_attr': {'class': 'control-label'}}) }}
+            <div class="controls">
+                {{ form_widget(form.contenu, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.contenu) }}
+            </div>
+        </div>
+        {{ form_rest(form) }}
+        <div class="form-actions">
+            <input type="submit" value="Ajouter" class="btn btn-primary" />
+        </div> 
+  </form>
+
+
+
+
+

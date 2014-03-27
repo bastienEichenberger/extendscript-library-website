@@ -1,0 +1,30 @@
+{% extends "::backbone.html.twig" %}
+
+{% block stylesheets %}
+  {{ parent() }} 
+  {% stylesheets output='css/main.css' filter='cssrewrite, ?yui_css'
+    '@JlfaForumBundle/Resources/public/css/forum.css'
+  %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+  {% endstylesheets %}
+{% endblock %}
+    
+    
+{% block content %}
+
+ <div class="row">
+     
+    {% block sidebar %}
+    {% endblock sidebar -%}
+    
+    <div class="col-lg-9 col-lg">
+        {% block messages %}    
+            {% include 'messages.html.twig' %}
+        {% endblock %}
+            
+        {% block body_content %}
+        {% endblock %}
+
+    </div>
+</div>
+{% endblock %}

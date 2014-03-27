@@ -1,0 +1,6 @@
+CCDNForumForumBundle:
+    resource: "@CCDNForumForumBundle/Resources/config/routing.yml"
+    
+forum_jlfa_homepage:
+    pattern: /forum/jlfa
+    defaults: { _controller: CCDNForumForumBundle:UserCategory:index, _locale: en, forumName: jlfa }

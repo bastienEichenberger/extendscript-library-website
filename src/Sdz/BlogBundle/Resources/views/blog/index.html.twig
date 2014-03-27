@@ -1,0 +1,63 @@
+{% extends "SdzBlogBundle::sidebar_layout.html.twig" %}
+
+{% import "SdzUserBundle::userHelpers.html.twig" as userHelpers %}
+
+
+
+{% block body_content %}
+    
+    
+            
+            <div class="row">
+                  <div class="col-lg-12">
+                    <h1>News</h1>
+                </div>
+            </div>
+            <!-- Blog posts -->
+            {% for article in articles %}     
+                <div class="row post">
+                    <div class="col-lg-8">
+                        <!-- admin post -->
+                        {% if is_granted('ROLE_AUTHOR') %}
+                            <div class="admin-post">
+                                {% set modal_id = 'modal-article-' ~ article.id %}
+                                <a class="pull-right" href="{{ path('sdzblog_edit_post', { 'id': article.id } ) }}"><span class="glyphicon glyphicon-pencil"></span></a>
+                                <a class="pull-right" href="#" data-toggle="modal" data-target="#{{ modal_id}}"><span class="glyphicon glyphicon-minus"></span></a>
+                                <!-- Modal -->
+                                {% include 'SdzBlogBundle:blog:delete.html.twig' %}
+                            </div> 
+                        {% endif %}
+                        <!-- end admin post -->  
+                        
+                        <h2><a href="{{ path('sdzblog_voir', {'slug': article.slug} ) }}">{{ article.titre }}</a></h2>
+                        <p>{{ article.contenu | truncate(200, true, '...') }}</p>
+                    </div>
+                    {% if article.image is not null %}
+                        <div class="col-lg-4">
+                            <img class="featurette-image img-responsive" src="{{ asset(article.image.webPath) }}" alt="{{ article.image.alt }}">
+                        </div>
+                    {% endif %}
+                </div>
+                {# if it is the last post on this page not display separator #}
+                {% if loop.index < nombre_sur_page %}
+                    <hr class="featurette-divider">
+                {% endif %}
+                
+            {% else %}
+                <p>Pas (encore !) d'articles</p>
+            {% endfor %}
+            
+            
+             {% if nb_page > 1 %}
+                <ul class="pagination pull-right">
+                  {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
+                  {% for p in range(1, nb_page) %}
+                    <li{% if p == page %} class="active"{% endif %}>
+                      <a href="{{ path('sdzblog_accueil', {'page': p}) }}">{{ p }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+            {% endif %}
+
+
+{% endblock %}

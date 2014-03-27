@@ -1,0 +1,152 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: "@SdzUserBundle/Resources/config/services.yml" }
+
+framework:
+    #esi:             ~
+    translator:      { fallback: %locale% }
+    default_locale:  %locale%
+    secret:          %secret%
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+    form:            true
+    csrf_protection: true
+    validation:      { enable_annotations: true }
+    templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
+    session:  ~
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+  
+# Assetic Configuration
+assetic:
+    debug:          %kernel.debug%
+    use_controller: false
+    bundles:        
+      [JlfaWebSiteBundle, FOSUserBundle, SdzBlogBundle, JlfaForumBundle, CCDNForumForumBundle]
+    java: %java_path%
+    filters:
+        cssrewrite: ~
+        yui_js:
+            jar: %kernel.root_dir%/Resources/java/yuicompressor.jar
+        yui_css:
+            jar: %kernel.root_dir%/Resources/java/yuicompressor.jar
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   %database_driver%
+        host:     %database_host%
+        port:     %database_port%
+        dbname:   %database_name%
+        user:     %database_user%
+        password: %database_password%
+        charset:  UTF8
+        # Ajouter cela si vous avez des tables non gérées par Doctrine dans votre bdd
+        # (Si vous rencontrez une erreur obscure à propos du type ENUM)
+        mapping_types:
+          enum: string
+        types:
+            geometry:   CrEOF\Spatial\DBAL\Types\GeometryType
+            point:      CrEOF\Spatial\DBAL\Types\Geometry\PointType
+            polygon:    CrEOF\Spatial\DBAL\Types\Geometry\PolygonType
+            linestring: CrEOF\Spatial\DBAL\Types\Geometry\LineStringType
+
+
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true
+        # only these lines are added additionally
+        resolve_target_entities:
+            Symfony\Component\Security\Core\User\UserInterface: Sdz\UserBundle\Entity\User
+        mappings:
+          gedmo_translatable:
+            type: annotation
+            prefix: Gedmo\Translatable\Entity
+            dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
+            alias: GedmoTranslatable # this one is optional and will default to the name set for the mapping
+            is_bundle: false
+          CCDNForumForumBundle:
+                         mapping:              true
+                         type:                 yml
+                         dir:                  "Resources/config/doctrine"
+                         alias:                ~
+                         prefix:               CCDNForum\ForumBundle\Entity
+                         is_bundle:            true
+        dql:
+           numeric_functions:
+               st_contains:     CrEOF\Spatial\ORM\Query\AST\Functions\PostgreSql\STContains
+               st_distance:     CrEOF\Spatial\ORM\Query\AST\Functions\PostgreSql\STDistance
+               st_area:         CrEOF\Spatial\ORM\Query\AST\Functions\PostgreSql\STArea
+               st_length:       CrEOF\Spatial\ORM\Query\AST\Functions\PostgreSql\STLength
+               st_geomfromtext: CrEOF\Spatial\ORM\Query\AST\Functions\PostgreSql\STGeomFromText
+        
+        
+swiftmailer:
+    transport:  smtp
+    encryption: ssl
+    auth_mode:  login
+    port:       25
+    host:       smtp.gmail.com
+    username:   bastien.eichenberger
+    password:   chabert17321732
+
+# Stof\DoctrineExtensionBundle configuration
+stof_doctrine_extensions:
+    default_locale: fr_FR
+    translation_fallback: true
+    orm:
+        default:
+            translatable: true
+            sluggable: true
+            uploadable: true
+            
+
+# Activation de l'extension Twig intl
+services:
+    twig.extension.intl:
+       class: Twig_Extensions_Extension_Intl
+       tags:
+           - { name: twig.extension }
+           
+    # to active truncate text filter
+    twig.extension.text:
+       class: Twig_Extensions_Extension_Text
+       tags:
+           - { name: twig.extension }
+           
+    twig.extension.debug:
+        class: Twig_Extension_Debug
+        tags: [{ name: 'twig.extension' }]
+
+fos_user:
+    db_driver:     orm                        # Le type de BDD à utiliser, nous utilisons l'ORM Doctrine depuis le début
+    firewall_name: main                       # Le nom du firewall duquel on utilisera ces utilisateurs
+    user_class:    Sdz\UserBundle\Entity\User # La classe de l'entité User que nous utilisons
+    registration:
+        form:
+            type: sdz_user_registration
+        confirmation:
+            enabled: true
+
+# Ornicar\AksimetBundle
+ornicar_akismet:
+    api_key: %akismet_key%
+    url:     %akismet_url%
+
+
+apy_js_form_validation:
+    enabled: true
+    yui_js: false
+    check_modes: [submit, blur]
+    javascript_framework: jquery
+    validation_bundle: APYJsFormValidationBundle
+    script_directory: bundles/jsformvalidation/js/
+    identifier_field: jsfv_identifier
+    translation_group: validators
+
+
+    

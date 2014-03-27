@@ -1,0 +1,29 @@
+jlfa_web_site_homepage:
+    pattern:  /
+    defaults: { _controller: JlfaWebSiteBundle:WebSite:home  }
+
+jlfa_web_site_startpage:
+  pattern: /start
+  defaults: {_controller: JlfaWebSiteBundle:WebSite:start}
+  
+jlfa_web_site_participatepage:
+  pattern: /participate
+  defaults: { _controller: JlfaWebSiteBundle:WebSite:participate }
+  
+jlfa_web_site_todolistpage:
+  pattern: /to-do-list
+  defaults: { _controller: JlfaWebSiteBundle:WebSite:todolist }
+  
+jlfa_web_site_contributorspage:
+  pattern: /contributors
+  defaults: { _controller: JlfaWebSiteBundle:WebSite:contributors }
+  
+jlfa_web_site_licencespage:
+  pattern: /licences
+  defaults: { _controller: JlfaWebSiteBundle:WebSite:licences}
+  
+jlfa_jsdoc:
+  pattern: /jsdoc
+  defaults: { _controller: JlfaWebSiteBundle:WebSite:jsDoc}
+  
+

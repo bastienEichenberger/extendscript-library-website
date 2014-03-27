@@ -1,0 +1,9 @@
+/* ------------------------- comments ------------------------- */
+
+#comments .form-control {
+    width:50%;
+}
+
+.control-group {
+    margin-bottom: 15px;
+}

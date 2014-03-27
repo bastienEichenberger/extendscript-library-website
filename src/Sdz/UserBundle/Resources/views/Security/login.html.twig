@@ -1,0 +1,27 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+
+{% block stylesheets %}
+  {{ parent() }} 
+  {% stylesheets output='css/main.css' filter='cssrewrite, ?yui_css'
+    '@SdzUserBundle/Resources/public/css/signin.css'
+  %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+  {% endstylesheets %}
+{% endblock %}
+
+    
+{% block fos_user_content %}
+    {% include "FOSUserBundle:Security:login_content.html.twig" %}
+{% endblock fos_user_content %}
+    
+    
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts output='js/main.js' filter='?yui_js'
+      
+    %}
+      <script type="text/javascript" src="{{ asset_url }}"></script>
+      <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+    {% endjavascripts %}
+{% endblock %}

@@ -1,0 +1,47 @@
+sdzblog_voir:
+    pattern:   /post/{slug}
+    defaults:  { _controller: SdzBlogBundle:Blog:voir }
+
+sdzblog_accueil:
+    pattern:   /{page}
+    defaults:  { _controller: SdzBlogBundle:Blog:index, page: 1 }
+    requirements:
+        page:  \d+
+
+sdzblog_add_post:
+    pattern:   /add-post
+    defaults:  { _controller: SdzBlogBundle:Blog:addPost }
+    
+sdzblog_edit_post:
+    pattern:   /edit-post/{id}
+    defaults:  { _controller: SdzBlogBundle:Blog:edit }
+    requirements:
+        id:  \d+
+
+sdzblog_supprimer:
+    pattern:   /supprimer/{id}
+    defaults:  { _controller: SdzBlogBundle:Blog:supprimer }
+    requirements:
+        id:  \d+
+        
+        
+        
+
+
+
+
+
+
+sdzblog_ajouter_commentaire:
+    pattern:  /ajouter/{id}/commentaire
+    defaults: { _controller: SdzBlogBundle:Blog:ajouterCommentaire }
+    methods:  POST
+    requirements:
+        id:      \d+
+        
+sdzblog_supprimer_commentaire:
+    pattern:   /supprimer/commentaire/{id}
+    defaults:  { _controller: SdzBlogBundle:Blog:supprimerCommentaire }
+    requirements:
+        id:  \d+
+

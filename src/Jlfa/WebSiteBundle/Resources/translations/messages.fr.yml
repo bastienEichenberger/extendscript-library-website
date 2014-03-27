@@ -1,0 +1,8 @@
+# FR translations for the website content
+page_content :
+  home:
+    carrousel:
+      become_member:
+        title: "Deviens membre"
+        content: "Deviens membre et profite du forum pour poser des questions et donner ton avis sur ExtendScript-library!"
+        sign_in: "inscription"

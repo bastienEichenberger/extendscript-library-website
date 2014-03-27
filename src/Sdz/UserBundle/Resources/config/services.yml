@@ -1,0 +1,19 @@
+services:
+    sdz_user.registration.form.type:
+        class: Sdz\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: sdz_user_registration }
+            
+            
+    sdzblog.validator.sdzblog_isAdresseValid:    
+        class:     Sdz\UserBundle\Validator\IsAdresseValidValidator
+        tags:
+            - { name: validator.constraint_validator, alias: sdzblog_isAdresseValid }
+            
+            
+    sdzblog.updatemap:
+        class: Sdz\UserBundle\Listener\MapUpdater
+        arguments: ["@service_container"]
+        tags:
+            - { name: doctrine.event_listener, event: postPersist }

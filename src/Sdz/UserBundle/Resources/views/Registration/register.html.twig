@@ -1,0 +1,33 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% form_theme form '::form/jlfa-theme.html.twig' %}
+
+
+{% block stylesheets %}
+  {{ parent() }} 
+  {% stylesheets output='css/main.css' filter='cssrewrite, ?yui_css'
+    'css/form.css'
+  %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+  {% endstylesheets %}
+{% endblock %}
+    
+{% block fos_user_content %}
+    {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+{% endblock fos_user_content %}
+    
+    
+{% block javascripts %}
+    {{ parent() }}
+    
+    {% javascripts output='js/main.js' filter='?yui_js'
+      '@SdzUserBundle/Resources/public/js/jquery.geocomplete.min.js'
+      '@BazingaExposeTranslationBundle/Resources/public/js/translator.min.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    
+    <script type="text/javascript" src="{{ url('bazinga_exposetranslation_js', { 'domain_name': 'validators' }) }}"></script>
+    {{ JSFV(form) }}
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+    <script type="text/javascript" src="{{ asset('bundles/sdzuser/js/register-form.js') }}"></script>
+{% endblock %}

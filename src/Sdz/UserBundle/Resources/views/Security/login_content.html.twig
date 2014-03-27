@@ -1,0 +1,35 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="row">
+    {% if error %}
+        <div class="alert alert-danger">{{ error|trans }}</div>
+    {% endif %}
+            
+    <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
+
+        <div class="control-group">
+            <label for="username" class="control-label">{{ 'security.login.username_or_email'|trans({}, 'FOSUserBundle') }}</label>
+            <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+        </div>
+
+        <div class="control-group">
+            <label for="password" class="control-label">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+            <input class="form-control" type="password" id="password" name="_password" required="required" />
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <label for="remember_me" class="checkbox">
+                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            {{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}
+                </label>
+
+                <button type="submit" id="_submit" name="_submit" class="btn btn-lg btn-primary btn-block">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+            </div>
+        </div>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        <hr class="featurette-divider">
+        <p class="pull-left"><a href="{{ path('fos_user_resetting_request') }}">{{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}</a></p>
+        <p class="pull-right"><a class="btn btn-large btn-success" href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></p>
+    </form>
+</div>
