@@ -1,0 +1,4 @@
+# FR translations for the website content
+page_content :
+  button:
+    home: "Retour à l'accueil"
