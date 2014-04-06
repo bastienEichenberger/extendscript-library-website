@@ -14,7 +14,7 @@
         <form action="{{ path('sdzblog_supprimer', {'id': article.id}) }}" method="post">
             <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
             <input type="submit" value="Supprimer" class="btn btn-danger" />
-            {{ render(controller( 'SdzBlogBundle:blog:delete_form', { 'id': article.id } )) }}
+            {{ render(controller( 'SdzBlogBundle:Blog:delete_form', { 'id': article.id } )) }}
         </form>
       </div>
     </div><!-- /.modal-content -->
