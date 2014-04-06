@@ -238,7 +238,7 @@ class BlogController extends Controller {
             $objectIdentity = ObjectIdentity::fromDomainObject($commentaire);
             $acl = $aclProvider->createAcl($objectIdentity);
             
-            if (null !== $this->getUser()) {
+            if (null != $this->getUser() ) {
                 $user = $this->getUser();
                 $securityIdentity = UserSecurityIdentity::fromAccount($user);
                 $acl->insertObjectAce($securityIdentity, MaskBuilder::MASK_OWNER);
@@ -248,7 +248,6 @@ class BlogController extends Controller {
 	    $acl->insertObjectAce($roleSecurityIdentity, MaskBuilder::MASK_MASTER);
 	    $aclProvider->updateAcl($acl);
 
-            // On redirige vers la page de l'article, avec une ancre vers le nouveau commentaire
             return $this->redirect($this->generateUrl('sdzblog_voir', array('slug' => $article->getSlug() ) ) );
         }
 
