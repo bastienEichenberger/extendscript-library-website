@@ -1,5 +1,4 @@
 <?php
-// src/Sdz/BlogBundle/Entity/Article.php
 
 namespace Sdz\BlogBundle\Entity;
 

@@ -7,7 +7,6 @@ use Symfony\Component\Validator\ConstraintValidator;
 
 /**
  * Description of IsAdresseValidValidator
- *
  * @author bastieneichenberger
  */
 class IsAdresseValidValidator extends ConstraintValidator {

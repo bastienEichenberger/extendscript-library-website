@@ -15,9 +15,9 @@
           <img src="{{ asset('img/extendscript-library.svg') }}" onerror="this.onerror=null; this.src='{{ asset('img/extendscript-library.png') }}'">
           <div class="container">
             <div class="carousel-caption">
-              <h1>ExtendScript-library</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-large btn-ai" href="{{ path('jlfa_web_site_startpage') }}">Start</a></p>
+              <h1>{{ 'page_content.home.carrousel.welcome.title' | trans }}</h1>
+              <p>{{ 'page_content.home.carrousel.welcome.content' | trans }}</p>
+              <p><a class="btn btn-large btn-ai" href="{{ path('jlfa_web_site_startpage') }}">{{ 'page_content.home.carrousel.welcome.button' | trans }}</a></p>
             </div>
           </div>
         </div>
@@ -27,7 +27,7 @@
             <div class="carousel-caption">
               <h1>{{ 'page_content.home.carrousel.become_member.title' | trans }}</h1>
               <p>{{ 'page_content.home.carrousel.become_member.content' | trans }}</p>
-              <p><a class="btn btn-large btn-indd" href="{{ path('fos_user_registration_register')}}">{{ 'page_content.home.carrousel.become_member.sign_in' | trans }}</a></p>
+              <p><a class="btn btn-large btn-indd" href="{{ path('fos_user_registration_register')}}">{{ 'page_content.home.carrousel.become_member.button' | trans }}</a></p>
             </div>
           </div>
         </div>
@@ -35,9 +35,9 @@
           <img src="{{ asset('img/open-source.svg') }}" onerror="this.onerror=null; this.src='{{ asset('img/open-source.png') }}'">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Open source</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-large btn-ps" href="{{ path('jlfa_web_site_licencespage') }}">Licences</a></p>
+              <h1>{{ 'page_content.home.carrousel.open_source.title' | trans }}</h1>
+              <p>{{ 'page_content.home.carrousel.open_source.content' | trans }}</p>
+              <p><a class="btn btn-large btn-ps" href="{{ path('jlfa_web_site_licencespage') }}">{{ 'page_content.home.carrousel.open_source.button' | trans }}</a></p>
             </div>
           </div>
         </div>
@@ -53,24 +53,24 @@
     <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-lg-12">
-            <h1>Our goals</h1>
+            <h1>{{ 'page_content.home.our_goals.title' | trans }}</h1>
             <div class="col-md-4">
-              <img class="img-circle" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">
-              <h2 class="logo">Build a library</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vehicula vestibulum dui, at aliquet turpis accumsan et. Nam porta est sed urna ullamcorper consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam molestie diam eget enim ullamcorper, a tempus neque porta.</p>
-              <p><a class="btn btn-default" href="{{ path('jlfa_web_site_startpage') }}">Start &raquo;</a></p>
+              <img class="img" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">
+              <h2 class="logo">{{ 'page_content.home.our_goals.feature_one.title' | trans }}</h2>
+              <p>{{ 'page_content.home.our_goals.feature_one.content' | trans }}</p>
+              <p><a class="btn btn-default" href="{{ path('jlfa_web_site_startpage') }}">{{ 'page_content.home.our_goals.feature_one.button' | trans }}</a></p>
             </div><!-- /.col-lg-4 -->
             <div class="col-md-4">
-              <img class="img-circle" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">
-              <h2 class="logo">Work together</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vehicula vestibulum dui, at aliquet turpis accumsan et. Nam porta est sed urna ullamcorper consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-              <p><a class="btn btn-default" href="{{ path('jlfa_web_site_participatepage') }}">Participe</a></p>
+              <img class="img" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">
+              <h2 class="logo">{{ 'page_content.home.our_goals.feature_two.title' | trans }}</h2>
+              <p>{{ 'page_content.home.our_goals.feature_two.content' | trans }}</p>
+              <p><a class="btn btn-default" href="{{ path('jlfa_web_site_participatepage') }}">{{ 'page_content.home.our_goals.feature_two.button' | trans }}</a></p>
             </div><!-- /.col-lg-4 -->
             <div class="col-md-4">
-              <img class="img-circle" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">
-              <h2 class="logo">Open source</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vehicula vestibulum dui, at aliquet turpis accumsan et. Nam porta est sed urna ullamcorper consectetur.</p>
-              <p><a class="btn btn-default" href="{{ path('jlfa_web_site_contributorspage') }}">Contributors</a></p>
+              <img class="img" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">
+              <h2 class="logo">{{ 'page_content.home.our_goals.feature_three.title' | trans }}</h2>
+              <p>{{ 'page_content.home.our_goals.feature_three.content' | trans }}</p>
+              <p><a class="btn btn-default" href="{{ path('jlfa_web_site_contributorspage') }}">{{ 'page_content.home.our_goals.feature_three.button' | trans }}</a></p>
             </div><!-- /.col-lg-4 -->
         </div>
       </div>

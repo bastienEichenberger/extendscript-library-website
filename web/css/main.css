@@ -6874,11 +6874,9 @@ textarea.form-control {
 }
 
 .alert-messages {
-  position: fixed;
   top: 47px;
   left: 0;
   right: 0;
-  z-index: 1000;
 }
 
 
@@ -6983,7 +6981,10 @@ body {
   color: #5a5a5a;
 }
 
-
+/* MARGING AFTER ICON **/
+a>i[class^="glyphicon"] {
+    margin-right: 10px;
+}
 
 
 /* CUSTOMIZE THE NAVBAR

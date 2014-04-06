@@ -18,6 +18,9 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 
+/**
+ * Class add method show profile in fosuserbundle
+ */
 class ProfileController extends BaseController
 {
     

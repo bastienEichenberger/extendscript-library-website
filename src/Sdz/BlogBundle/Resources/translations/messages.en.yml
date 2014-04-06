@@ -1,3 +1,8 @@
 blog:
+    article:
+      added: "The article has been successfully added"
+      edit: "The article has been successfully modified"
+      delete: "The article has been successfully deleted"
     comment:
-          error: "the comment couln't not been added"
+          error: "The comment couldn't not been added"
+          delete: "The comment has been successfully deleted"

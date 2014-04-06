@@ -5,10 +5,11 @@
             <div class="alert alert-{{ type }} alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <strong>
+                    {# translate the type with messages.(info, sucess, danger, warning) #}
                     {% set messageType = 'messages.' ~ type %}
-                    {{ messageType |trans({}, 'messages') }}
+                    {{ messageType |trans }}
                 </strong>
-                {{ message }}
+                {{ message |trans }}
             </div>
         </div>
     {% endfor %}

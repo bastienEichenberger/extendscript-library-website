@@ -1,26 +1,28 @@
 $(document).ready(function() {
 
-
     /**
-     * 
+     * Globales
      * @type Object JSON countries is already defened in a js file imported
      * @type Object JSON members is already defened in a js file imported
      */
-
+    
     var total_user = countries.properties.total;
+    
+    /**
+     * 
+     * @type Array grades the array with choropleth density
+     */
     var grades = [0, 10, 50, 200, 500, 1000];
-
+    
     var countries_layer;
     var markers_layer;
+    
 
     var map = L.map("map", {
         center: [48, 51],
         zoom: 3,
         minZoom: 2,
         zoomControl: false,
-        //crs: L.CRS.EPSG3857
-        //crs: L.CRS.EPSG4326
-        //crs: L.CRS.EPSG900913
     })
     map.addControl(new L.Control.ZoomMin());
 
@@ -33,7 +35,11 @@ $(document).ready(function() {
     
 
     
-
+    /**
+     * 
+     * @param {integer} d the density
+     * @returns {String} color the hexadecimal color
+     */
     function getColor(d) {
         return d > grades[5] ? '#800026' :
                 d > grades[4] ? '#BD0026' :
@@ -43,7 +49,12 @@ $(document).ready(function() {
                 d > grades[0] ? '#FED976' :
                 'white'
     }
-
+    
+    
+    /**
+     * @param {geojson feature} feature
+     * @returns LeafletStyle
+     */
     function style(feature) {
         return {
             fillColor: getColor(feature.properties.density),
@@ -55,23 +66,29 @@ $(document).ready(function() {
         };
     }
 
+    // ------------------------ INFO WINDOW --------------------------------------------
     var info = L.control();
-
     info.onAdd = function(map) {
         this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
         this.update();
         return this._div;
     };
-
     // method that we will use to update the control based on feature properties passed
     info.update = function(props) {
         this._div.innerHTML = '<h4>Total users: ' + total_user + '</h4>'
                 + (props ? '<b>' + props.country + '</b><br />'
                 + props.density + ' people' : 'Hover over a state');
     };
-
     info.addTo(map);
-
+    
+    
+    
+    
+    
+    /**
+     * Function to highlight each feature on hover event
+     * @param {Event} e
+     */
     function highlightFeature(e) {
         var layer = e.target;
 
@@ -87,7 +104,7 @@ $(document).ready(function() {
         }
         info.update(layer.feature.properties);
     }
-
+    
     function zoomToFeature(e) {
         map.fitBounds(e.target.getBounds());
     }
@@ -109,33 +126,29 @@ $(document).ready(function() {
         style: style,
         onEachFeature: onEachFeature
     }).addTo(map);
-
+    
+    
+    // ------------------------ DENSITY SCALE --------------------------------------------
     var legend = L.control({position: 'bottomright'});
-
     legend.onAdd = function(map) {
 
-        var div = L.DomUtil.create('div', 'info legend'),
-                labels = [];
-
+        var div = L.DomUtil.create('div', 'info legend'), labels = [];
         // loop through our density intervals and generate a label with a colored square for each interval
         for (var i = 0; i < grades.length; i++) {
             div.innerHTML +=
                     '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
                     grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
         }
-
         return div;
     };
 
     legend.addTo(map);
 
 
-// markers
     var markers = L.markerClusterGroup();
-
     var geoJsonLayer = L.geoJson(members, {
+        // hover on a marker display user infos
         onEachFeature: function(feature, layer) {
-
             var title = $('<h1/>').html(feature.properties.username);
             var link = $('<a/>').html('see my profile').attr('href', feature.properties.profile_link);
             var feature_container = $('<div/>').html(title).append(link);

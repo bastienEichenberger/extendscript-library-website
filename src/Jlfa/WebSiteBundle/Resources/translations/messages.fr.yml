@@ -1,8 +1,34 @@
 # FR translations for the website content
 page_content :
+  # home content
   home:
+    # carrousel content
     carrousel:
+      welcome:
+        title: "ExtendScript-library"
+        content: "ExtendScript-library est une librairie écrite en JavaScript qui permet d'écrire des scripts pour automatiser des tâches dans les logiciels de la Creative Suite d'Adobe."
+        button: "débute"
       become_member:
         title: "Deviens membre"
         content: "Deviens membre et profite du forum pour poser des questions et donner ton avis sur ExtendScript-library!"
-        sign_in: "inscription"
+        button: "inscription"
+      open_source:
+        title: "Open source"
+        content: "Ce projet libre est distribué sous license BSD. Le principal but est donc que les différents utilisateurs partagent et inventent de nouvelles fonctions qui permettrons à tous de gagner du temps!"
+        button: "Licenses"
+    # goals feature
+    our_goals:
+      title: "Nos objectifs"
+      feature_one:
+        title: "Créer une librairie"
+        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vehicula vestibulum dui, at aliquet turpis accumsan et. Nam porta est sed urna ullamcorper consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam molestie diam eget enim ullamcorper, a tempus neque porta."
+        button: "Start»"
+      feature_two:
+        title: "Travailler ensembles!"
+        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vehicula vestibulum dui, at aliquet turpis accumsan et. Nam porta est sed urna ullamcorper consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam molestie diam eget enim ullamcorper, a tempus neque porta."
+        button: "Participe»"
+      feature_three:
+         title: "Code libre"
+         content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vehicula vestibulum dui, at aliquet turpis accumsan et. Nam porta est sed urna ullamcorper consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam molestie diam eget enim ullamcorper, a tempus neque porta."
+         button: "Contributeurs»"
+        

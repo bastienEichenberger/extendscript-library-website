@@ -25,8 +25,17 @@ use FOS\UserBundle\Model\UserInterface;
 use Sdz\UserBundle\Entity\User;
 use CrEOF\Spatial\PHP\Types\Geography\Point;
 
+/**
+ * Class to override register action
+
+ */
 class RegistrationController extends BaseController
 {
+    /**
+     * Function to save a new user, this function has been overidded to set Point object to user
+     * @param \Symfony\Component\HttpFoundation\Request $request the request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function registerAction(Request $request)
     {
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */

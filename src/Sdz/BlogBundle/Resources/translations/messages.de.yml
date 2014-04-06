@@ -1,0 +1,8 @@
+blog:
+    article:
+      added: "Dieser Artikel wurde erfolgreich hinzugefügt"
+      edit: "Dieser Artikel wurde erfolgreich geändert"
+      delete: "Dieser Artikel wurde erfolgreich gelöscht"
+    comment:
+          error: "Der Kommentar konnte nicht hinzugefügt werden"
+          delete: "Der Kommentar wurde erfolgreich gelöscht"

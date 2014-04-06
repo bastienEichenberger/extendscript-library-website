@@ -63,8 +63,8 @@ class BlogController extends Controller {
     
     /**
      * Function to create the delete form
-     * @param integer $id
-     * @return Form deleteform
+     * @param integer $id the id of the element to delete
+     * @return Form
      */
     protected function createDeleteForm($id) {
         return $this->createFormBuilder(array('id' => $id))
@@ -103,7 +103,7 @@ class BlogController extends Controller {
                 
                 $em->persist($article);
                 $em->flush();
-                $this->get('session')->getFlashBag()->add('info', 'Article bien ajouté');
+                $this->get('session')->getFlashBag()->add('info', 'blog.article.added');
 
                 return $this->redirect($this->generateUrl('sdzblog_accueil'));
             }
@@ -143,9 +143,7 @@ class BlogController extends Controller {
                 $em->persist($article);
                 $em->flush();
 
-                // On définit un message flash
-                $this->get('session')->getFlashBag()->add('warning', 'Article bien modifié');
-
+                $this->get('session')->getFlashBag()->add('warning', 'blog.article.edit');
                 return $this->redirect($this->generateUrl('sdzblog_voir', array('slug' => $article->getSlug() ) ) );
             }
         }
@@ -221,7 +219,7 @@ class BlogController extends Controller {
                 $em->remove($article);
                 $em->flush();
 
-                $this->get('session')->getFlashBag()->add('info', 'Article bien supprimé');
+                $this->get('session')->getFlashBag()->add('info', 'blog.article.delete');
 
                 return $this->redirect($this->generateUrl('sdzblog_accueil'));
             }
@@ -268,8 +266,7 @@ class BlogController extends Controller {
         }
         
         // if the comment is not added -> display error, this function control IP with antifloodvalidator
-        $error_message = $this->get('translator')->trans('blog.comment.error');
-        $this->get('session')->getFlashBag()->add('danger', $error_message);
+        $this->get('session')->getFlashBag()->add('danger', 'blog.comment.error');
 
         // not redirect to keep params
         return $this->forward('SdzBlogBundle:blog:voir', array(
@@ -301,7 +298,7 @@ class BlogController extends Controller {
     /**
      * Function to delete a comment
      * @param \Sdz\BlogBundle\Entity\Commentaire $commentaire
-     * @return type
+     * @return TwigTemplate
      * @throws AccessDeniedException
      */
     public function supprimerCommentaireAction(Commentaire $commentaire) {
@@ -322,8 +319,7 @@ class BlogController extends Controller {
             $em->remove($commentaire);
             $em->flush();
 
-            $this->get('session')->getFlashBag()->add('info', 'Commentaire bien supprimé');
-
+            $this->get('session')->getFlashBag()->add('info', 'blog.comment.delete');
             return $this->redirect($this->generateUrl('sdzblog_voir', array('slug' => $commentaire->getArticle()->getSlug())));
         }
     }

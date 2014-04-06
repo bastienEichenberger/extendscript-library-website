@@ -1,8 +1,11 @@
 <?php
-// src/Sdz/BlogBundle/Antispam/SdzAntispam.php
 
 namespace Sdz\BlogBundle\Antispam;
 
+/**
+ * Class to check if a comment is a spam
+ * Check if the comment have more than 3 URLs
+ */
 class SdzAntispam extends \Twig_Extension
 {
   protected $mailer;
@@ -15,26 +18,24 @@ class SdzAntispam extends \Twig_Extension
     $this->nbForSpam = (int) $nbForSpam;
   }
 
-  // Dépendance optionnelle, remplie par le call
-  // (En réalité on ne se sert pas de la locale dans ce service)
+  
   public function setLocale($locale)
   {
     $this->locale = $locale;
   }
 
   /**
-   * Vérifie si le texte est un spam ou non.
-   * Un texte est considéré comme spam à partir de 3 liens
-   * ou adresses e-mails dans son contenu.
+   * Function to check if the text is a spam
+   * @param string $text
+   * @return boolean true is the text is a spam
    */
   public function isSpam($text)
   {
-    // On utilise maintenant l'argument $this->nbForSpam et non plus le "3" en dur :
     return ($this->countLinks($text) + $this->countMails($text)) >= $this->nbForSpam;
   }
 
   /**
-   * Twig va exécuter cette méthode pour savoir quelle(s) fonction(s) ajoute notre service
+   * Function to add isSpam method to twig
    */
   public function getFunctions()
   {
@@ -44,7 +45,7 @@ class SdzAntispam extends \Twig_Extension
   }
 
   /**
-   * La méthode getName() identifie votre extension Twig, elle est obligatoire
+   * Required method to identify twig method
    */
   public function getName()
   {
@@ -52,7 +53,9 @@ class SdzAntispam extends \Twig_Extension
   }
 
   /**
-   * Compte les URL de $text.
+   * Function to count links
+   * @param string $text
+   * @return integer numbers of links
    */
   private function countLinks($text)
   {
@@ -65,7 +68,9 @@ class SdzAntispam extends \Twig_Extension
   }
 
   /**
-   * Compte les e-mails de $text.
+   * Function to count all mails
+   * @param string $text
+   * @return integer numbers of mails
    */
   private function countMails($text)
   {
