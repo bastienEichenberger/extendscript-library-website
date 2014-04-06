@@ -1,4 +1,5 @@
 services:
+    #geojsonbuilder service, use to generate geojson in contributors page
     jlfawebsite.geojsonbuilder:
         class: Jlfa\WebSiteBundle\Jsonbuilder\GeoJsonBuilder
         arguments: [ "@doctrine.orm.entity_manager", "@router"]
