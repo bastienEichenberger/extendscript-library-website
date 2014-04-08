@@ -4,6 +4,10 @@
     border-width: 2px;
 }
 
+span .btn {
+    border-width: 1px;
+}
+
 
 .btn-ps, .btn-primary {
     background-color: #31429C;

@@ -38,8 +38,7 @@ class RegistrationFormType extends BaseType
             'data' => true
         ));;
         
-        // mon builder avec les champs latitude et longitude
-        // ici, peut-on créer directemement l'objet Point à partir de ces champs?
+        
         $builder->add('lat', 'hidden', array(
              'attr' => array('data-geo' => 'lat')
         ));

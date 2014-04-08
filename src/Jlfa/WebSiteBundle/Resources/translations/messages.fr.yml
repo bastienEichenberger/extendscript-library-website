@@ -1,7 +1,10 @@
 # FR translations for the website content
 page_content :
+  
   # footer
   footer:
+    title: "© 2013 ExtendScript-library.org"
+    button: "Retour en haut"
     
   # home content
   home:
@@ -31,13 +34,45 @@ page_content :
         content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vehicula vestibulum dui, at aliquet turpis accumsan et. Nam porta est sed urna ullamcorper consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam molestie diam eget enim ullamcorper, a tempus neque porta."
         button: "Participe»"
       feature_three:
-         title: "Nos contributeurs"
+         title: "Fonder une communauté"
          content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vehicula vestibulum dui, at aliquet turpis accumsan et. Nam porta est sed urna ullamcorper consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam molestie diam eget enim ullamcorper, a tempus neque porta."
          button: "Contributeurs»"
     # why_use
     why_use:
       title: "Pourquoi utiliser les scripts. "
       subtitle: "Pour Automatiser!"
-      content: "laéskdjfélkjasdé flkja sédfjkl"
+      content: "La publication de contenu à l'aide de la Suite Adobe offre un grand nombre de possibilités. Néanmoins, un bon nombres de tâches sont redondantes. L'ExendScript est un moyen simple et performant pour automatiser ces actions qui prennent souvent beaucoup de temps à exécuter. Avec l'ExtendScript, il est possible de développer une solution efficace pour un Designer à faible coûts."
+  
+  #start
+  start:
+    title: "Commencer"
+    download:
+      title: "Télécharger ExtendScript-library"
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur."
+      button: "Git repository"
+    samples:
+      title: "Exemples"
       
+  #licences
+  licences:
+    title: "Licences"
+    open_source_project:
+      title: "Un projet Open source"
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur."
+    what_you_can_do:
+      title: "Qu'ai-je le droit de faire?"
+      badge_one:
+        title: "Utiliser et modifier"
+        content: "Il est permis d'utiliser et de modifier le code source librement"
+      badge_two:
+        title: "Redistribuer"
+        content: "Il est permis de redistribuer le code source tel quel ou sous forme binaire"
+    what_you_can_not_do:
+      title: "A quoi dois-je faire attention?"
+      badge_one:
+        title: "Inclure le texte de la licence"
+        content: "Les redistributions du code doivent contenir le texte de la licence BSD"
+      badge_two:
+        title: "Qualité du code"
+        content: "Le code source est mis à disposition gratuitement mais son utilisation est de la responsabilité de l'utilisateur"
         

@@ -9,11 +9,11 @@ use Symfony\Component\Validator\Constraint;
  */
 class IsAdresseValid extends Constraint
 {
-    public $message = "";
+    public $message = "adresse.not_valid";
     
     public function validatedBy()
     {
-        return 'sdzblog_isAdresseValid'; // Ici, on fait appel à l'alias du service
+        return 'sdzblog_isAdresseValid';
     }
 }
 
