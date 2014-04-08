@@ -19,7 +19,9 @@ SdzBlogBundlePrefix:
     
 userbundle:
     resource: "@SdzUserBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}
+    requirements:
+        _locale: %locales%
 
 # Les imports pour FOSUB :
 fos_user_security:
@@ -59,3 +61,7 @@ jlfa_forum:
 jlfa_apy_js_form_validation:
     resource: "@JlfaAPYJsFormValidationBundle/Resources/config/routing.yml"
     prefix:   /
+
+fos_js_routing:
+     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+     

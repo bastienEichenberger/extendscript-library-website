@@ -71,17 +71,23 @@
 {% block javascripts %}
     {{ parent() }}
         
+    {% javascripts output='js/main.js' filter='?yui_js'
+        '@BazingaExposeTranslationBundle/Resources/public/js/translator.min.js'
+        '@JlfaWebSiteBundle/Resources/public/data/countries.js'
+        '@JlfaWebSiteBundle/Resources/public/data/members.js'
+        '@JlfaWebSiteBundle/Resources/public/js/map-choropleth.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+        
     <!-- library with imagepath dependency couldn't not be moved -->
     <script type="text/javascript" src="{{ asset('bundles/jlfawebsite/js/leaflet-0.7.1/leaflet.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/jlfawebsite/js/leaflet-cluster/leaflet.markercluster.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/jlfawebsite/js/leaflet-zoom-min/L.Control.ZoomMin.js') }}"></script>
     
-    {% javascripts output='js/main.js' filter='?yui_js'
-        '@JlfaWebSiteBundle/Resources/public/data/countries.js'
-        '@JlfaWebSiteBundle/Resources/public/data/members.js'
-        '@JlfaWebSiteBundle/Resources/public/js/map-choropleth.js'
-    %}
+    <script type="text/javascript" src="{{ url('bazinga_exposetranslation_js') }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
     
-      <script type="text/javascript" src="{{ asset_url }}"></script>
+    
     {% endjavascripts %}
 {% endblock %}

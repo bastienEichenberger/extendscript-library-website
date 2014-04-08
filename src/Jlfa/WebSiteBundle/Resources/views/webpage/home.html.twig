@@ -58,7 +58,7 @@
               <img class="img" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">
               <h2 class="logo">{{ 'page_content.home.our_goals.feature_one.title' | trans }}</h2>
               <p>{{ 'page_content.home.our_goals.feature_one.content' | trans }}</p>
-              <p><a class="btn btn-default" href="{{ path('jlfa_web_site_startpage') }}">{{ 'page_content.home.our_goals.feature_one.button' | trans }}</a></p>
+              <p><a class="btn btn-default" href="{{ path('sdzblog_accueil') }}">{{ 'page_content.home.our_goals.feature_one.button' | trans }}</a></p>
             </div><!-- /.col-lg-4 -->
             <div class="col-md-4">
               <img class="img" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">
@@ -83,8 +83,10 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2>Why use JLFA. <span class="text-muted">It'll blow your mind.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <h2>{{ 'page_content.home.why_use.title' | trans }}
+              <span class="text-muted">{{ 'page_content.home.why_use.subtitle' | trans }}</span>
+          </h2>
+          <p class="lead">{{ 'page_content.home.why_use.content' | trans }}</p>
         </div>
         <div class="col-md-5">
           <img class="featurette-image img-responsive" src="data:image/png;base64," data-src="holder.js/500x500/auto" alt="Generic placeholder image">

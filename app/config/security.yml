@@ -40,11 +40,9 @@ security:
             logout:
                 path:       fos_user_security_logout
                 target:     /
-                #fix the bug with php < 5.4.11
+                # fix session the bug with php < 5.4.11
                 invalidate_session: false
                 
             remember_me:
                 key:        "%secret%"
-                
-    #access_control:
-        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+  

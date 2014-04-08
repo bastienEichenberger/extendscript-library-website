@@ -1,5 +1,8 @@
 # FR translations for the website content
 page_content :
+  # footer
+  footer:
+    
   # home content
   home:
     # carrousel content
@@ -20,15 +23,21 @@ page_content :
     our_goals:
       title: "Nos objectifs"
       feature_one:
-        title: "Créer une librairie"
+        title: "Promouvoir l'ExtendScript"
         content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vehicula vestibulum dui, at aliquet turpis accumsan et. Nam porta est sed urna ullamcorper consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam molestie diam eget enim ullamcorper, a tempus neque porta."
-        button: "Start»"
+        button: "News»"
       feature_two:
         title: "Travailler ensembles!"
         content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vehicula vestibulum dui, at aliquet turpis accumsan et. Nam porta est sed urna ullamcorper consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam molestie diam eget enim ullamcorper, a tempus neque porta."
         button: "Participe»"
       feature_three:
-         title: "Code libre"
+         title: "Nos contributeurs"
          content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vehicula vestibulum dui, at aliquet turpis accumsan et. Nam porta est sed urna ullamcorper consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam molestie diam eget enim ullamcorper, a tempus neque porta."
          button: "Contributeurs»"
+    # why_use
+    why_use:
+      title: "Pourquoi utiliser les scripts. "
+      subtitle: "Pour Automatiser!"
+      content: "laéskdjfélkjasdé flkja sédfjkl"
+      
         

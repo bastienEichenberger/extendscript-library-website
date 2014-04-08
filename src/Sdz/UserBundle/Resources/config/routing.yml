@@ -1,6 +1,5 @@
 fos_user_profile_show_by_username:
-  pattern: /{_locale}/profile/{username}
+  pattern: /profile/{username}
   defaults: {_controller: FOSUserBundle:Profile:show}
-  requirements: 
-    _locale: %locales%
-    _method: GET
+  options:
+       expose: true

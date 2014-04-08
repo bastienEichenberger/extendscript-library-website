@@ -28,11 +28,12 @@ class FeatureCollection implements \JsonSerializable {
     }
 
     public function jsonSerialize() {
-        return [
-            'type' => $this->type,
-            'features' => $this->features,
-            'properties' => $this->properties
-        ];
+       
+        return array(
+                    'type' => $this->type, 
+                    'features' => $this->features, 
+                    'properties' => $this->properties
+                );
     }
 
 }

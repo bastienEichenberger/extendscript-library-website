@@ -150,7 +150,7 @@ $(document).ready(function() {
         // hover on a marker display user infos
         onEachFeature: function(feature, layer) {
             var title = $('<h1/>').html(feature.properties.username);
-            var link = $('<a/>').html('see my profile').attr('href', feature.properties.profile_link);
+            var link = $('<a/>').html('see my profile').attr('href', Routing.generate('fos_user_profile_show_by_username', { '_locale' : Translator.locale, 'username' : feature.properties.username } ) );
             var feature_container = $('<div/>').html(title).append(link);
             layer.bindPopup(feature_container.html());
         }
