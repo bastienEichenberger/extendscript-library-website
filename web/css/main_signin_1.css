@@ -42,3 +42,7 @@ body {
 .control-group {
     padding-bottom: 10px;
 }
+
+hr {
+    background-color: black;
+}

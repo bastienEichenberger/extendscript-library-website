@@ -50,14 +50,16 @@
         {% block content %}
         {% endblock %}
         
-        <hr class="featurette-divider">
+        
         <!-- FOOTER -->
         {% if app.request.attributes.get('_route') != 'fos_user_security_login' %}
+          <hr class="featurette-divider">
           <footer>
             <p class="pull-right"><a href="#">{{ 'page_content.footer.button' | trans }}</a></p>
             <p>{{ 'page_content.footer.title' | trans }}</p>
           </footer>
         {% endif %}
+          
     </div><!-- end content -->
     
     {% block javascripts %}
