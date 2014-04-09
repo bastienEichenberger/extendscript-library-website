@@ -242,7 +242,7 @@ class BlogController extends Controller {
 
         // route force POST method, test is not required
         $form->bind($request);
-        if ($form->isValid()) {
+        if ($form->isValid() ) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($commentaire);
             $em->flush();
@@ -268,8 +268,8 @@ class BlogController extends Controller {
         // if the comment is not added -> display error, this function control IP with antifloodvalidator
         $this->get('session')->getFlashBag()->add('danger', 'blog.comment.error');
 
-        // not redirect to keep params
-        return $this->forward('SdzBlogBundle:blog:voir', array(
+        // not redirect to keep params, call the BlogController
+        return $this->forward('SdzBlogBundle:Blog:voir', array(
                     'article' => $article,
                     'form' => $form,
                     '_route' => 'sdzblog_voir',

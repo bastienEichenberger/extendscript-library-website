@@ -17,7 +17,7 @@ class CommentaireType extends AbstractType
         $builder->addEventListener(
           FormEvents::PRE_SET_DATA,
         	function (FormEvent $event) {
-        	  if (null === $event->getData()->getUser()) {
+        	  if (null === $event->getData()->getUser() ) {
         	    $event->getForm()->add('auteur', 'text');
         	  }
           }

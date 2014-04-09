@@ -27,8 +27,12 @@
     <p>Pas encore de commentaire.</p>
   {% endfor %}
   <hr />
+  
+  <!------------------- ADD COMMENTS ------------------------->
   <h3>Poster un nouveau commentaire</h3>
   <form id="comments" method="post" action="{{ path('sdzblog_ajouter_commentaire', {'id': article.id}) }}">
+        
+        
         {% if form.auteur is defined %}
             <div class="control-group">
                 {{ form_label(form.auteur, label|default(null), {'label_attr': {'class': 'control-label'}}) }}
@@ -39,7 +43,6 @@
             </div>
         {% endif %}
         
-          
         <div class="control-group">
             {{ form_label(form.contenu, label|default(null), {'label_attr': {'class': 'control-label'}}) }}
             <div class="controls">
