@@ -4,11 +4,11 @@ body {
   background-color: #eee;
 }
 
-.form-signin {
-  max-width: 330px;
-  padding: 15px;
+.container.marketing.first .row {
+  max-width: 350px;
   margin: 0 auto;
 }
+
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
   margin-bottom: 10px;
@@ -37,4 +37,8 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.control-group {
+    padding-bottom: 10px;
 }

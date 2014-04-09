@@ -12,7 +12,7 @@ group:
         deleted: The group has been deleted
 
 # Security
-"Bad credentials": Invalid username or password
+Bad credentials: "Invalid username or password"
 
 security:
     login:
@@ -20,6 +20,7 @@ security:
         password: "Password:"
         remember_me: Remember me
         submit: Login
+        username_or_email: "Username or email"
 
 # Profile
 profile:

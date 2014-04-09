@@ -32,7 +32,7 @@ class Article implements Translatable
 
   /**
    * @Gedmo\Translatable
-   * @Assert\NotBlank(message="sdz_blog.title.blank")
+   * @Assert\NotBlank(message="blog..article.title.blank")
    * @ORM\Column(name="titre", type="string", length=255)
    */
   private $titre;
@@ -44,7 +44,7 @@ class Article implements Translatable
 
   /**
    * @Gedmo\Translatable
-   * @Assert\NotBlank(message="sdz_blog.content.blank")
+   * @Assert\NotBlank(message="blog.article.content.blank")
    * @ORM\Column(name="contenu", type="text")
    */
   private $contenu;
@@ -70,11 +70,12 @@ class Article implements Translatable
   /**
    * @ORM\OneToMany(targetEntity="Sdz\BlogBundle\Entity\Commentaire", mappedBy="article", cascade={"persist", "remove"}))
    */
-  private $commentaires; // Ici commentaires prend un "s", car un article a plusieurs commentaires !
+  private $commentaires;
 
 
   /**
    * @ORM\ManyToOne(targetEntity="Sdz\UserBundle\Entity\User")
+   * @ORM\Column(nullable=true)
    */
   private $author;
   

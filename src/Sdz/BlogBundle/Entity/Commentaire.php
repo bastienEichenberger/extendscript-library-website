@@ -31,7 +31,7 @@ class Commentaire
     /**
      * @ORM\Column(name="contenu", type="text")
      * @Assert\NotBlank()
-     * @AntiFlood(secondes="45")
+     * @AntiFlood(message="blog.comment.content.wait", secondes="45")
      */
     private $contenu;
 

@@ -1,7 +1,5 @@
-parameters:
-#    sdz_blog.example.class: Sdz\BlogBundle\Example
-
 services:
+  
     sdzblog.antispam:
         class: Sdz\BlogBundle\Antispam\SdzAntispam
         arguments: ["@mailer", 3]
@@ -10,13 +8,6 @@ services:
         tags:
             -  { name: twig.extension }
         
-         
-    sdzblog.beta_listener:
-        class: Sdz\BlogBundle\Beta\BetaListener
-        arguments: ["2013-01-01"]
-        tags:
-            - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse, priority: 2 }
-
 
     sdzblog.validator.akismet:
         class:     Sdz\BlogBundle\Akismet\AkismetValidator
@@ -25,10 +16,10 @@ services:
         tags:
             - { name: validator.constraint_validator, alias: akismet }
 
-    sdzblog.validator.antiflood:                                # Le nom du service
-        class:     Sdz\BlogBundle\Validator\AntiFloodValidator  # La classe du service, ici notre validateur déjà créé
-        arguments: ["@request", "@doctrine.orm.entity_manager"]     # Les données qu'on injecte au service : la requête et l'EntityManager
-        scope:     request                                      # Comme on injecte la requête, on doit préciser ce scope
+    sdzblog.validator.antiflood:                                
+        class:     Sdz\BlogBundle\Validator\AntiFloodValidator  
+        arguments: ["@request", "@doctrine.orm.entity_manager"] 
+        scope:     request                                      
         tags:
             - { name: validator.constraint_validator, alias: sdzblog_antiflood }  # C'est avec l'alias qu'on retrouvera le service
  

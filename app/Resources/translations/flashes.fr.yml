@@ -1,0 +1,12 @@
+# website flashes messages FR
+extendscript-library:
+  title:
+    info: "Information"
+    success: "Succès2"
+    warning: "Modification"
+    danger: "Erreur"
+    
+    
+    
+        
+    

@@ -1,0 +1,4 @@
+sdzuserbundle:
+  register:
+    error: "il y a eu une erreur"
+    

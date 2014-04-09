@@ -143,13 +143,15 @@ class GeoJsonBuilder {
     }
 
     /**
-     * Function to update members json file get only members with displayadresse to true
+     * Function to update members json file 
+     * get only members with displayadresse to true and enabled to true
      */
     public function updateMembersJSON() {
 
         $sql = "SELECT id, username, aboutme, ST_AsGeoJSON(location) AS geom
                 FROM tut_user
-                WHERE displayadresse IS TRUE";
+                WHERE displayadresse IS TRUE
+                AND enabled IS TRUE;";
 
         $statement = $this->execute_statement($sql);
         $fc = new FeatureCollection();

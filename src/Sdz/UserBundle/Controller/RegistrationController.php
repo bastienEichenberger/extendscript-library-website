@@ -62,11 +62,11 @@ class RegistrationController extends BaseController
             
             $form->bind($request);
 
-            if ($form->isValid()) {
+            if ( $form->isValid() ) {
                 
                 $lat = $user->getLat();
-                $lon = $user->getLng();
-                $point = new Point($lon, $lat, 4326);
+                $lng = $user->getLng();
+                $point = new Point($lng, $lat, 4326);
                 $user->setLocation($point);
                 
                 $event = new FormEvent($form, $request);
@@ -83,8 +83,12 @@ class RegistrationController extends BaseController
 
                 return $response;
             }
+            
+            // there is an error not valid and post method
+            $this->container->get('session')->getFlashBag()->add('danger', 'sdzuserbundle.register.error');
         }
-
+        
+        
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:register.html.'.$this->getEngine(), array(
             'form' => $form->createView(),
         ));

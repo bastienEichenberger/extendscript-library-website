@@ -1,0 +1,12 @@
+# website flashes messages EN
+extendscript-library:
+  title:
+    info: "Info"
+    success: "Success"
+    warning: "Warning"
+    danger: "Error"
+
+    
+    
+        
+    

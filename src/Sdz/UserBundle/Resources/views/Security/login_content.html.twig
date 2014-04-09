@@ -1,12 +1,28 @@
 <div class="row">
+    
+    
+
+    {# IF the is an error display on login page, the is no flashbag in FOSUserbundle Controller #}
     {% if error %}
-        <div class="alert alert-danger">{{ error|trans }}</div>
+        <div class="alert-messages">
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <strong>
+                    {% set messageTitle = 'extendscript-library.title.danger' %}
+                    {{ messageTitle | trans ( {}, 'flashes' ) }}
+                </strong>
+                {{ error | trans( {}, 'FOSUserBundle') }}
+            </div>
+        </div>
     {% endif %}
+        
+    
+        
             
     <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
 
         <div class="control-group">
-            <label for="username" class="control-label">{{ 'security.login.username_or_email'|trans({}, 'FOSUserBundle') }}</label>
+            <label for="username" class="control-label">{{ 'security.login.username_or_email' | trans( {}, 'FOSUserBundle' ) }}</label>
             <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
         </div>
 
@@ -19,7 +35,7 @@
             <div class="controls">
                 <label for="remember_me" class="checkbox">
                     <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                    {{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}
+                    {{ 'security.login.remember_me' | trans( {}, 'FOSUserBundle' ) }}
                 </label>
 
                 <button type="submit" id="_submit" name="_submit" class="btn btn-lg btn-primary btn-block">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
@@ -28,7 +44,7 @@
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
         <hr class="featurette-divider">
         <p class="pull-right"><a class="btn btn-large btn-success" href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></p>
-        <p class="pull-left"><a class="btn btn-default" href="{{ path('jlfa_web_site_homepage') }}">{{ 'page_content.button.home' | trans }}</a></p>
+        <p class="pull-left"><a class="btn btn-default" href="{{ path('jlfa_web_site_homepage') }}">{{ 'page_content.login.button.home' | trans }}</a></p>
         <p class="pull-left"><a href="{{ path('fos_user_resetting_request') }}">{{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}</a></p>  
     </form>
 </div>

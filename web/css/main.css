@@ -6809,6 +6809,10 @@ td.visible-print {
     border-width: 2px;
 }
 
+span .btn {
+    border-width: 1px;
+}
+
 
 .btn-ps, .btn-primary {
     background-color: #31429C;
@@ -6861,7 +6865,8 @@ h1, h2, h3, h4 {
 
 
 h2, h3 {
-    margin-bottom: 25px;
+    margin-top : 15px;
+    margin-bottom : 25px;
 }
 
 body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {

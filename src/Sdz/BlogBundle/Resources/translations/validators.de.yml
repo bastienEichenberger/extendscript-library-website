@@ -1,0 +1,12 @@
+# errors messages
+blog:
+  # article validation messages
+  article:
+    title: 
+        blank: "Entrez un titre s'il vous plait!"
+    content:
+        blank: "Entrez un contenu s'il vous plait"
+  # comment validation messages
+  comment:
+      content:
+        wait: "Sie haben ein kommentar zeit weniger als %secondes% sekunden hinzuzufügen. Bitte, warten Sie ein bisschen!"

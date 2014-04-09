@@ -1,0 +1,9 @@
+# blog flashes messages FR
+blog:
+  article:
+    added: "Article bien ajouté"
+    edit: "Article bien modifié"
+    delete: "Article bien supprimé"
+  comment:
+    error: "Le commentaire n'as pas pu être ajouté"
+    delete: "Commentaire bien supprimé"

@@ -13,8 +13,8 @@ class IsAdresseValidValidator extends ConstraintValidator {
     
     public function validate($value, Constraint $constraint) {
         
-        
-        $this->context->addViolation($constraint->message);
+        return true;
+        //$this->context->addViolation($constraint->message);
     }
 }
 

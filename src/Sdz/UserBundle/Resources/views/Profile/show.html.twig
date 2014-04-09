@@ -1,0 +1,15 @@
+{% extends "SdzUserBundle::layout.html.twig" %}
+
+
+{% block stylesheets %}
+  {{ parent() }} 
+  {% stylesheets output='css/main.css' filter='cssrewrite, ?yui_css'
+    '@SdzUserBundle/Resources/public/css/profile.css'
+  %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+  {% endstylesheets %}
+{% endblock %}
+    
+{% block fos_user_content %}
+    {% include "SdzUserBundle:Profile:show_content.html.twig" %}
+{% endblock fos_user_content %}

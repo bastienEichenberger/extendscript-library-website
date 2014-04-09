@@ -1,3 +1,4 @@
+# errors messages
 fos_user:
     username:
         already_used: The username is already used

@@ -5,11 +5,16 @@
             <div class="alert alert-{{ type }} alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <strong>
-                    {# translate the type with messages.(info, sucess, danger, warning) #}
-                    {% set messageType = 'messages.' ~ type %}
-                    {{ messageType |trans }}
+                    {# translate domain flashes, concat to get type from controller #}
+                    {% set messageTitle = 'extendscript-library.title.' ~ type %}
+                    {{ messageTitle | trans ( {}, 'flashes' ) }}
                 </strong>
-                {{ message |trans }}
+                
+                {# overide this block to display messages from other domains #}
+                {% block translation_messages %}
+                    {{ message | trans ( {}, 'flashes' ) }}
+                {% endblock %}
+                
             </div>
         </div>
     {% endfor %}
