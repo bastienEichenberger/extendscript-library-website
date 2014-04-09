@@ -1,0 +1,4 @@
+page_content :
+  login:
+    button:
+      home: "Zurück zur Homepage"

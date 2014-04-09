@@ -12,15 +12,15 @@ group:
         deleted: Le groupe a été supprimé
 
 # Security
-Bad credentials: Nom d'utilisateur ou mot de passe incorrect
+Bad credentials: "Nom d'utilisateur ou mot de passe incorrect"
 
 security:
-    login:
-        username: "Nom d'utilisateur :"
-        password: "Mot de passe :"
-        remember_me: Se souvenir de moi
-        submit: Connexion
-        username_or_email: "Nom d'utilisateur ou email"
+  login:
+      username: "Nom d'utilisateur :"
+      password: "Mot de passe :"
+      remember_me: "Se souvenir de moi"
+      submit: "Connexion"
+      username_or_email: "Nom d'utilisateur ou email"
 
 # Profile
 profile:
@@ -55,8 +55,6 @@ registration:
 
             Cordialement,
             L'équipe.
-    email_no_spam: Aucun spam ne sera envoyé depuis ce site web.
-    adresse_using: Cette adresse sera utilisée pour établir une carte des membres.
 
 # Password resetting
 resetting:
@@ -97,4 +95,3 @@ form:
     password_confirmation: "Vérification :"
     new_password: "Nouveau mot de passe :"
     new_password_confirmation: "Vérification :"
-    adresse: "Adresse"
