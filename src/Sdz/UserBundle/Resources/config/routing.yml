@@ -1,5 +1,5 @@
 fos_user_profile_show_by_username:
-  pattern: /profile/{username}
+  pattern: /profile/show/{username}
   defaults: {_controller: FOSUserBundle:Profile:showByUserName}
   options:
        expose: true

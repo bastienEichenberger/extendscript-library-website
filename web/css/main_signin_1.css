@@ -43,6 +43,6 @@ body {
     padding-bottom: 10px;
 }
 
-hr {
-    background-color: black;
+hr.featurette-divider {
+    border-color: black !important;
 }

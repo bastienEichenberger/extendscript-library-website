@@ -1,5 +1,15 @@
 {% extends "SdzBlogBundle::layout.html.twig" %}
 
+
+{% block stylesheets %}
+  {{ parent() }} 
+  {% stylesheets output='css/main.css' filter='cssrewrite, ?yui_css'
+    '@SdzBlogBundle/Resources/public/css//blog-thumbnails.css'
+  %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+  {% endstylesheets %}
+{% endblock %}
+    
 {% block content %}
     <div class="row">
         
