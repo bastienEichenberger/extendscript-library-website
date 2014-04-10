@@ -75,7 +75,6 @@ class Article implements Translatable
 
   /**
    * @ORM\ManyToOne(targetEntity="Sdz\UserBundle\Entity\User")
-   * @ORM\Column(nullable=true)
    */
   private $author;
   
