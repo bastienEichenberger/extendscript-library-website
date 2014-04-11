@@ -54,17 +54,23 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        {{ form_label(form.image.file, label|default(null), {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_label(form.image.file, label|default(null), {'label_attr': {'class': 'control-label'} } ) }}
                         <div class="controls">
                             {{ form_widget(form.image.file) }}
                             {{ form_errors(form.image.file) }}
                         </div>
                     </div>
                     <div class="control-group">
-                        {{ form_label(form.author, label|default(null), {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_label(form.author, label|default(null), {'label_attr': {'class': 'control-label'} } ) }}
                         <div class="controls">
-                            {{ form_widget(form.author, {'attr': {'class': 'form-control'}}) }}
-                            {{ form_errors(form.author) }}
+                            {# test if the author is empty display unknow author in field #}
+                            {% if form.vars.value.author is not empty %}
+                                {{ form_widget(form.author, {'attr': {'class': 'form-control'} } ) }}
+                                {{ form_errors(form.author) }}
+                            {% else %}
+                                {% do form.author.setRendered %}
+                                <p>Unknow Author</p>
+                            {% endif %}
                         </div>
                     </div>
                     {{ form_rest(form) }}

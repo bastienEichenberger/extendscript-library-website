@@ -30,11 +30,18 @@
 
                     <div class="col-lg-6 content">
                         <div class="author">
-                            By <b>Bhaumik</b> |
-                            <time datetime="2014-01-20">January 20th, 2014</time>
+                            By
+                            <b>
+                                {% if article.author is not empty %}
+                                    {{ article.author }}
+                                {% else %}
+                                    Unknow
+                                {% endif %}
+                            </b> |
+                            <time datetime="{{ article.date|date('c') }}">{{ article.date|date('d/m/Y à H\\hi') }}</time>
                         </div>
                         <!-- article content -->    
-                        <p>{{ article.contenu | truncate(200, true, '...') }}</p>
+                        <p>{{ article.contenu | truncate(400, true, '...') }}</p>
 
                         <div>
                             <a href="{{ path('sdzblog_voir', {'slug': article.slug} ) }}" class="btn btn-warning btn-sm">Read more</a>

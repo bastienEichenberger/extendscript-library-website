@@ -22,7 +22,7 @@ class ArticleType extends AbstractType
       ->add('contenuEn',     'textarea')
       ->add('contenuDe',     'textarea')
       ->add('image',       new ImageType(), array('required' => false))
-      ->add('author', 'fos_user_username', array('read_only' => true))
+      ->add('author', 'fos_user_username', array('read_only' => true, 'required' => false) )
     ;
 
     // On ajoute une fonction qui va écouter l'évènement PRE_SET_DATA
