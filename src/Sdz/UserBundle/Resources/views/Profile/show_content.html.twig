@@ -6,39 +6,49 @@
         </div>
         <div class="col-sm-6 col-md-8">
             <div class="profile-title">
-                <h4>Bhaumik Patel</h4>
-                <small>
-                    <cite title="San Francisco, USA">San Francisco, USA 
-                        <i class="glyphicon glyphicon-map-marker"></i>
-                    </cite>
-                </small>
+                <h4>{{ user.username }}</h4>
+                {% if user.displayAdresse == true %}
+                    <small>
+                        <cite title="{{ user.adresse }}">
+                            {{ user.adresse }}
+                            <i class="glyphicon glyphicon-map-marker"></i>
+                        </cite>
+                    </small>
+                {% endif %}
             </div>
 
             <div class="profile-content">
-                <p>
-                    <i class="glyphicon glyphicon-envelope"></i>email@example.com
-                </p>
-                <p>
-                    <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
-                </p>
-                <p>
-                    <i class="glyphicon glyphicon-gift"></i>June 02, 1988
-                </p>
+                {% if user.displayMail == true %}
+                    <p>
+                        <i class="glyphicon glyphicon-envelope"></i>
+                        {{ user.email }}
+                    </p>
+                {% endif %}
+                {% if user.ownwebsite is not empty %}
+                    <p>
+                        <i class="glyphicon glyphicon-globe"></i>
+                        <a href="{{ user.ownwebsite }}" target="_blank">
+                            {{ user.ownwebsite }}
+                        </a>
+                    </p>
+                {% endif %}
+                
+                {% if user.birthDate is not empty %}
+                    <p>
+                        <i class="glyphicon glyphicon-gift"></i>
+                        {{ user.birthDate|date('d/m/Y') }}
+                    </p>
+                {% endif %}
+                
+                    
                 <div class="biographie">
                     <h4>Biographie</h4>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Cras posuere pretium libero congue viverra. Maecenas ac tincidunt lectus, 
-                        sit amet ullamcorper leo. Quisque condimentum, dui at imperdiet mollis, 
-                        ante est pellentesque ante, vitae luctus risus erat non urna. 
-                        Quisque urna magna, lacinia at orci ac, elementum ullamcorper odio. 
-                        Aenean ornare odio sed euismod rutrum. Curabitur vel mi dignissim, 
-                        laoreet sem ac, blandit ligula. Cum sociis natoque penatibus et magnis dis parturient montes, 
-                        nascetur ridiculus mus. Maecenas condimentum mi et lacus blandit vestibulum. 
+                        {{ user.aboutMe }}
                     </p> 
                 </div>
             </div>
-            <button type="button" class="btn btn-primary">modifier</button>
+            <a class="btn btn-primary" href="{{ path('fos_user_profile_edit') }}">modifier</a>
         </div>
 
     </div>

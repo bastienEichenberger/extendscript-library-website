@@ -26,7 +26,7 @@ assetic:
     debug:          %kernel.debug%
     use_controller: false
     bundles:        
-      [JlfaWebSiteBundle, FOSUserBundle, SdzBlogBundle, JlfaForumBundle, CCDNForumForumBundle]
+      [JlfaWebSiteBundle, FOSUserBundle, SdzBlogBundle, JlfaForumBundle, CCDNForumForumBundle, SdzUserBundle]
     java: %java_path%
     filters:
         cssrewrite: ~
@@ -127,10 +127,13 @@ fos_user:
     firewall_name: main                       # Le nom du firewall duquel on utilisera ces utilisateurs
     user_class:    Sdz\UserBundle\Entity\User # La classe de l'entité User que nous utilisons
     registration:
-        form:
-            type: sdz_user_registration
-        confirmation:
-            enabled: true
+      form:
+        type: sdz_user_registration
+      confirmation:
+        enabled: true
+    profile:
+      form:
+        type: sdz_user_edit_profile
     
 
 # Ornicar\AksimetBundle

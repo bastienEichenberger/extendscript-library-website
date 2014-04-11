@@ -2,7 +2,7 @@
 extendscript-library:
   title:
     info: "Information"
-    success: "Succès2"
+    success: "Succès"
     warning: "Modification"
     danger: "Erreur"
     

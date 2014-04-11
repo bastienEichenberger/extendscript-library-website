@@ -5,6 +5,12 @@ services:
         tags:
             - { name: form.type, alias: sdz_user_registration }
             
+    sdz_user.edit.form.type:
+        class: Sdz\UserBundle\Form\Type\ProfileEditFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: sdz_user_edit_profile }
+            
             
     sdzblog.validator.sdzblog_isAdresseValid:    
         class:     Sdz\UserBundle\Validator\IsAdresseValidValidator
