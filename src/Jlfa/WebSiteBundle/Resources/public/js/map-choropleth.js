@@ -26,9 +26,9 @@ $(document).ready(function() {
     })
     map.addControl(new L.Control.ZoomMin());
 
-    L.tileLayer('http://{s}.tile.cloudmade.com/{key}/{styleId}/256/{z}/{x}/{y}.png', {
-        key: '05a69c07b66542de8c7a3e7bf9d50da3',
-        attribution: 'jlfa',
+    L.tileLayer('https://{s}.tiles.mapbox.com/v3/{key}/{z}/{x}/{y}.png', {
+        key: 'bastieneichenberger.j48512g7',
+        attribution: 'www.extendscript-library.org',
         styleId: 22677
     }).addTo(map);
 

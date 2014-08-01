@@ -67,40 +67,27 @@
       <div class="col-lg-1 navbar-collapse pull-right">
         <ul id="language-screen" class="language nav navbar-nav">
               <li class="dropdown">
-                  {% if app.request.locale == 'fr' %}
-                      {% set flag_class = 'flag-fr' %}
-                  {% elseif app.request.locale == 'en' %}
-                      {% set flag_class = 'flag-en' %}
-                  {% else %}
-                      {% set flag_class = 'flag-de' %}
-                  {% endif%}
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon {{ flag_class }}"></span><b class="caret"></b></a>
+                      
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <span class="glyphicon {{ 'flag-' ~ app.request.locale }}">
+                      </span>
+                      <b class="caret"></b>
+                  </a>
+                  
                   <ul class="dropdown-menu">
-                      <li><a href="{{ path(
-                                            app.request.attributes.get('_route'),
-                                            app.request.attributes.get('_route_params')|
-                                            merge(app.request.query.all)|merge({'_locale': 'fr'})
-                                            )
-                                    }}">
-                          <span class="glyphicon flag-fr"></span></a>
-                      </li>
-                      <li><a href="{{ path(
-                                            app.request.attributes.get('_route'),
-                                            app.request.attributes.get('_route_params')|
-                                            merge(app.request.query.all)|merge({'_locale': 'de'})
-                                            )
-                                    }}">
-                          <span class="glyphicon flag-de"></span></a>
-                      </li>
-                      <li><a href="{{ path(
-                                            app.request.attributes.get('_route'),
-                                            app.request.attributes.get('_route_params')|
-                                            merge(app.request.query.all)|merge({'_locale': 'en'})
-                                            )
-                                    }}">
-                          <span class="glyphicon flag-en"></span></a>
-                      </li>
+                      {% for locale in ['fr', 'en', 'de'] %}
+                          <li>
+                              {# when we use render controller route params not set and display an error #}
+                              {% if app.request.get('_route_params') %} 
+                                  <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : locale})) }}">
+                                    <span class="glyphicon flag-{{ locale }}"></span></a>
+                                  </a>
+                              {% endif %}
+                          </li>
+                      {% endfor %}
                   </ul>
+                  
+                  
               </li>
           </ul>
       </div>

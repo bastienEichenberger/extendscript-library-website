@@ -4,7 +4,6 @@ namespace Sdz\UserBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use FOS\UserBundle\Form\Type\RegistrationFormType as BaseType;
-use Sdz\UserBundle\Type\Wantlet\ORM\Point;
 
 class RegistrationFormType extends BaseType
 {
@@ -29,6 +28,7 @@ class RegistrationFormType extends BaseType
             'data' => false
         ));
         $builder->add('aboutMe', 'textarea');
+        
         $builder->add('adresse', null, array('label' => 'form.adresse', 'translation_domain' => 'FOSUserBundle'));
         
         $builder->add('displayAdresse', 'choice', array(

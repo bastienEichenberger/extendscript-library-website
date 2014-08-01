@@ -23,3 +23,9 @@ services:
         arguments: ["@service_container"]
         tags:
             - { name: doctrine.event_listener, event: fos_user.registration.confirmed, method: updateMap }
+            
+    sdzblog.postcreate:
+        class: Sdz\UserBundle\Listener\UserACL
+        arguments: ["@service_container"]
+        tags:
+            - { name: doctrine.event_listener, event: fos_user.registration.success, method: addACL }

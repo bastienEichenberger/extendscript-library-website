@@ -1,26 +1,32 @@
 <?php
 
-/*
- * This file is part of the FOSUserBundle package.
- *
- * (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
 namespace Sdz\UserBundle\Form\Type;
 
-use Symfony\Component\Validator\Constraints\DateTime;
-use FOS\UserBundle\Form\Type\ProfileFormType as BaseType;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+
 use Sdz\BlogBundle\Form\ImageType;
 
-class ProfileEditFormType extends BaseType {
+
+// error with plainPassword -> delete this field
+class ProfileEditFormType extends AbstractType {
+    
+    private $class;
+
+    /**
+     * @param string $class The User class name
+     */
+    public function __construct($class)
+    {
+        $this->class = $class;
+    }
     
     public function buildForm(FormBuilderInterface $builder, array $options) {
         
-        parent::buildForm($builder, $options);
+        
+        $this->buildUserForm($builder, $options);
         
         $mail = array(
             true => 'Publier mon adresse e-mail sur ma page de profil.',
@@ -46,17 +52,41 @@ class ProfileEditFormType extends BaseType {
                 'multiple' => false,
                 'data' => true
             ) )
-            ->add('aboutMe', 'textarea')
-            ->add('plainPassword', 'repeated', array(
-                'type' => 'password',
-                'options' => array('translation_domain' => 'FOSUserBundle'),
-                'first_options' => array('label' => 'form.password'),
-                'second_options' => array('label' => 'form.password_confirmation'),
-                'invalid_message' => 'fos_user.password.mismatch',
+            ->add('lat', 'hidden', array(
+                'attr' => array('data-geo' => 'lat')
             ) )
+            ->add('lng', 'hidden', array(
+                'attr' => array('data-geo' => 'lng')
+            ) )
+            ->add('formateAdresse', 'hidden', array(
+                'attr' => array('data-geo' => 'formatted_address')
+            ) )
+                
+            ->add('adresse', null, array('label' => 'form.adresse', 'translation_domain' => 'FOSUserBundle') )
+            
+                
+            ->add('aboutMe', 'textarea')
+          
             ->add('image', new ImageType(), array('required' => false) )
         ;
         
+    }
+    
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults( array(
+            'data_class' => $this->class,
+            'intention'  => 'profile',
+            ) )
+        ;
+    }
+    
+    protected function buildUserForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
+            ->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
+        ;
     }
     
     public function getName() {

@@ -25,6 +25,8 @@ use FOS\UserBundle\Model\UserInterface;
 use Sdz\UserBundle\Entity\User;
 use CrEOF\Spatial\PHP\Types\Geography\Point;
 
+
+
 /**
  * Class to override register action
 
@@ -63,17 +65,18 @@ class RegistrationController extends BaseController
             $form->bind($request);
 
             if ( $form->isValid() ) {
-                
+                // add location
                 $lat = $user->getLat();
                 $lng = $user->getLng();
                 $point = new Point($lng, $lat, 4326);
                 $user->setLocation($point);
                 
+                
                 $event = new FormEvent($form, $request);
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
-
+                
                 $userManager->updateUser($user);
-
+                
                 if (null === $response = $event->getResponse()) {
                     $url = $this->container->get('router')->generate('fos_user_registration_confirmed');
                     $response = new RedirectResponse($url);
