@@ -1,13 +1,13 @@
 <div class="col-lg-3">
     <div id="post-nav">
-        <h3>Recent comments</h3>
+        <h3>{{ 'page_content.blog.sidebar.recent_comments' | trans }}</h3>
         <ul class="nav nav-pills nav-stacked">
             {% for comment in last_comments %}
                 <li>
                     <a href="{{ path('sdzblog_voir', {'slug': comment.article.slug} ) }}">{{ comment.contenu | truncate(25, true, '...') }}</a>
                 </li>
             {% else %}
-                <li>aucun commentaire</li>
+                <li>{{ 'page_content.blog.sidebar.no_comment' | trans }}</li>
             {% endfor %}
         </ul>
     </div>
@@ -17,7 +17,10 @@
             <h3>Admin</h3>
             <ul class="nav nav-pills nav-stacked">
                 <li>
-                    <a href="{{ path('sdzblog_add_post') }}"><i class="glyphicon glyphicon-plus"></i>add post</a>
+                    <a href="{{ path('sdzblog_add_post') }}">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        {{ 'page_content.blog.sidebar.add_post' | trans }}
+                    </a>
                 </li>
             </ul>
         </div>

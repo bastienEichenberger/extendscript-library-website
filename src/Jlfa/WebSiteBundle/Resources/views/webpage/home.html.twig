@@ -37,7 +37,7 @@
             <div class="carousel-caption">
               <h1>{{ 'page_content.home.carrousel.open_source.title' | trans }}</h1>
               <p>{{ 'page_content.home.carrousel.open_source.content' | trans }}</p>
-              <p><a class="btn btn-large btn-ps" href="{{ path('jlfa_web_site_licencespage') }}">{{ 'page_content.home.carrousel.open_source.button' | trans }}</a></p>
+              <p><a class="btn btn-large btn-primary" href="{{ path('jlfa_web_site_licencespage') }}">{{ 'page_content.home.carrousel.open_source.button' | trans }}</a></p>
             </div>
           </div>
         </div>
@@ -50,24 +50,38 @@
 
 
 {% block content %}
-    <!-- Three columns of text below the carousel -->
+    
+      <div class="row featurette">
+        <div class="col-md-12">
+          <h2>{{ 'page_content.home.why_use.title' | trans }}
+              <span class="text-muted">{{ 'page_content.home.why_use.subtitle' | trans }}</span>
+          </h2>
+          <p class="lead">{{ 'page_content.home.why_use.content' | trans }}</p>
+        </div>
+      </div>
+    
+      <hr class="featurette-divider">
+      
+      <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-lg-12">
-            <h1>{{ 'page_content.home.our_goals.title' | trans }}</h1>
+            
             <div class="col-md-4">
-              <img class="img" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">
+              <img class="img" src="{{ asset('bundles/jlfawebsite/img/news.png') }}" alt="">
               <h2 class="logo">{{ 'page_content.home.our_goals.feature_one.title' | trans }}</h2>
               <p>{{ 'page_content.home.our_goals.feature_one.content' | trans }}</p>
               <p><a class="btn btn-default" href="{{ path('sdzblog_accueil') }}">{{ 'page_content.home.our_goals.feature_one.button' | trans }}</a></p>
-            </div><!-- /.col-lg-4 -->
+            </div>  
+            
             <div class="col-md-4">
-              <img class="img" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">
+              <img class="img" src="{{ asset('bundles/jlfawebsite/img/ampoule.png') }}" alt="">
               <h2 class="logo">{{ 'page_content.home.our_goals.feature_two.title' | trans }}</h2>
               <p>{{ 'page_content.home.our_goals.feature_two.content' | trans }}</p>
               <p><a class="btn btn-default" href="{{ path('jlfa_web_site_participatepage') }}">{{ 'page_content.home.our_goals.feature_two.button' | trans }}</a></p>
             </div><!-- /.col-lg-4 -->
+            
             <div class="col-md-4">
-              <img class="img" src="data:image/png;base64," data-src="holder.js/140x140" alt="Generic placeholder image">
+                <img class="img" src="{{ asset('bundles/jlfawebsite/img/carte.png') }}" alt="">
               <h2 class="logo">{{ 'page_content.home.our_goals.feature_three.title' | trans }}</h2>
               <p>{{ 'page_content.home.our_goals.feature_three.content' | trans }}</p>
               <p><a class="btn btn-default" href="{{ path('jlfa_web_site_contributorspage') }}">{{ 'page_content.home.our_goals.feature_three.button' | trans }}</a></p>
@@ -75,23 +89,11 @@
         </div>
       </div>
       
+      
 
-
-      <!-- START THE FEATURETTES -->
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2>{{ 'page_content.home.why_use.title' | trans }}
-              <span class="text-muted">{{ 'page_content.home.why_use.subtitle' | trans }}</span>
-          </h2>
-          <p class="lead">{{ 'page_content.home.why_use.content' | trans }}</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive" src="data:image/png;base64," data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-        </div>
-      </div>
-
+      
+      
+      
+      
 {% endblock %}
 

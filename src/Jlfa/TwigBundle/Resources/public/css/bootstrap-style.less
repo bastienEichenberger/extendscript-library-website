@@ -1,52 +1,11 @@
-/** BUTONS **/
-.btn {
-    border-radius: 0px;
-    border-width: 2px;
-}
-
-span .btn {
-    border-width: 1px;
-}
-
-
-.btn-ps, .btn-primary {
-    background-color: #31429C;
-    border-color: #07A1E2;
-    color: #FFFFFF;
-}
-.btn-ps:hover, .btn-primary:hover {
-    background-color: #07A1E2;
-    border-color: #07A1E2;
-}
+@import "../../../../../../vendor/twitter/bootstrap/less/bootstrap.less";
+@import "variables.less";
+@import "custom-buttons.less";
 
 
 
-.btn-ai {
-    background-color: #B1A62B;
-    border-color: #EFD51F;
-    color: #FFFFFF;
-}
-
-.btn-ai:hover {
-    background-color: #EFD51F;
-}
-
-.btn-indd {
-    background-color: #A0006C;
-    border-color: #C60086;
-    color: #FFFFFF;
-}
-
-.btn-indd:hover {
-    background-color: #C60086;
-}
-
-
-a {
-    color: #31429C;
-}
-a:hover {
-    color: #07A1E2;
+.first {
+    margin-top: 100px;
 }
 
 /** TITLES **/
@@ -80,10 +39,6 @@ textarea.form-control {
 }
 
 
-.first {
-    margin-top:100px;
-}
-
 #logo {
     padding: 0;
     margin: 0;
@@ -91,15 +46,13 @@ textarea.form-control {
 }
 
 
+.carousel-indicators li {
+    border-radius: 0px;
+}
+
 .carousel-control.left, .carousel-control.right{
     background-image:none !important;
 }
-
-
-
-
-
-
 
 
 .nav .nav-pills .nav-stacked {
@@ -134,21 +87,21 @@ div.jumbotron {
 }
 
 .flag-fr { 
-  background-image: url("../../img/re.png");
+  background-image: url("../../../img/re.png");
   background-position: center center; 
   height: 11px; 
   width: 16px;
 }
 
 .flag-de { 
-  background-image: url("../../img/de.png");
+  background-image: url("../../../img/de.png");
   background-position: center center; 
   height: 11px; 
   width: 16px;
 }
 
 .flag-en { 
-  background-image: url("../../img/gb.png");
+  background-image: url("../../../img/gb.png");
   background-position: center center; 
   height: 11px; 
   width: 16px;
@@ -178,7 +131,6 @@ div.logo h1 {
 
 body {
   padding-bottom: 40px;
-  color: #5a5a5a;
 }
 
 /* MARGING AFTER ICON **/
@@ -345,4 +297,17 @@ a>i[class^="glyphicon"] {
   }
   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 

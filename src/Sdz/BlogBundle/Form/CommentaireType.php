@@ -12,7 +12,7 @@ class CommentaireType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('contenu', 'textarea');
+        $builder->add('contenu', 'textarea', array('label' => 'page_content.blog.add_post.form.content'));
 
         $builder->addEventListener(
           FormEvents::PRE_SET_DATA,

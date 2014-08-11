@@ -1,0 +1,5 @@
+services:
+    jlfa.twig.jlfa_extension:
+        class: Jlfa\TwigBundle\Twig\JlfaExtension
+        tags:
+            - { name: twig.extension }

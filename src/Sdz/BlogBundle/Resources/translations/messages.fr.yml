@@ -1,2 +1,45 @@
 # translate blog content FR
-blog:
+page_content:
+  blog:
+    buttons:
+      add: "Ajouter"
+      cancel: "Annuler"
+      edit: "Modifier"
+    sidebar:
+      recent_comments: "Commentaires récents"
+      no_comment: "Aucun commentaire"
+      add_post: "Ajouter un article"
+    index:
+      article_by: "Aticle posté par "
+      unknow: "Auteur inconnu"
+      no_article: "Pas encore d'articles!"
+      read_more: "Lire la suite"
+      delete_post:
+        title: "Supprimer article"
+        content: "Voulez-vous vraiment supprimer l'article: "
+    add_post:
+      legend: "Ajouter un article"
+      titre_fr: "Titre article FR"
+      form:
+        title: "Titre"
+        titleEn: "Titre EN"
+        titleDe: "Titre DE"
+        content: "Contenu"
+        contentEn: "Contenu EN"
+        contentDe: "Contenu DE"
+        file: "Vignette"
+        author: "Auteur"
+    add_comment:
+      title: "Commentaire(s)"
+      title_add: "Ajouter un commentaire"
+      content_add: "Contenu"
+      button: "Ajouter"
+      no_comment: "Pas encore de commentaire"
+      description:
+        date: "Le"
+        time: "à"
+        wrote: "a écrit"
+    delete_comment:
+      title: "Supprimer commentaire"
+      content: "Voulez-vous vraiment supprimer le commentaire: "
+    

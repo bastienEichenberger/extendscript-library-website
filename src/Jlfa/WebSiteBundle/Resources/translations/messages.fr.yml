@@ -1,6 +1,27 @@
 # FR translations for the website content
-page_content :
+page_content:
   
+  # navbar
+  navbar:
+    home: "Accueil"
+    get_started:
+      title: "Télécharger"
+      start: "ExtendScript-Library"
+      documentation: "Documentation html"
+    get_involved:
+      title: "Communauté"
+      participate: "Contribuer"
+      forum: "Forum"
+    news: "Blog"
+    about:
+      title: "A propos"
+      contributors: "Contributeurs"
+      licences: "Licenses"
+    user:
+      profile: "Mon profile"
+    
+    
+    
   # footer
   footer:
     title: "© 2013 ExtendScript-library.org"
@@ -12,67 +33,101 @@ page_content :
     carrousel:
       welcome:
         title: "ExtendScript-library"
-        content: "ExtendScript-library est une librairie écrite en JavaScript qui permet d'écrire des scripts pour automatiser des tâches dans les logiciels de la Creative Suite d'Adobe."
-        button: "débute"
+        content: "ExtendScript-library est une librairie écrite en JavaScript. Cette librairie permet d'écrire facilement des scripts pour automatiser des tâches dans les logiciels de la Creative Suite d'Adobe."
+        button: "télécharger"
       become_member:
         title: "Deviens membre"
         content: "Deviens membre et profite du forum pour poser des questions et donner ton avis sur ExtendScript-library!"
         button: "inscription"
       open_source:
         title: "Open source"
-        content: "Ce projet libre est distribué sous license BSD. Le principal but est donc que les différents utilisateurs partagent et inventent de nouvelles fonctions qui permettrons à tous de gagner du temps!"
+        content: "Ce projet libre est distribué sous license BSD. Le principal but est du projet est que les différents utilisateurs partagent et inventent de nouvelles fonctionnalités!"
         button: "Licenses"
     # goals feature
     our_goals:
-      title: "Nos objectifs"
       feature_one:
-        title: "Promouvoir l'ExtendScript"
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vehicula vestibulum dui, at aliquet turpis accumsan et. Nam porta est sed urna ullamcorper consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam molestie diam eget enim ullamcorper, a tempus neque porta."
+        title: "Blog"
+        content: "Découvre les nouveaux articles sur l'ExtendScript"
         button: "News»"
       feature_two:
-        title: "Travailler ensembles!"
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vehicula vestibulum dui, at aliquet turpis accumsan et. Nam porta est sed urna ullamcorper consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam molestie diam eget enim ullamcorper, a tempus neque porta."
-        button: "Participe»"
+        title: "Investis-toi"
+        content: "Participe à l'amélioration de cette librairie et à l'avancement du projet"
+        button: "Contribuer»"
       feature_three:
-         title: "Fonder une communauté"
-         content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vehicula vestibulum dui, at aliquet turpis accumsan et. Nam porta est sed urna ullamcorper consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam molestie diam eget enim ullamcorper, a tempus neque porta."
+         title: "Map-interactive"
+         content: "Découvre les principaux acteurs de ce projet!"
          button: "Contributeurs»"
     # why_use
     why_use:
       title: "Pourquoi utiliser les scripts. "
       subtitle: "Pour Automatiser!"
-      content: "La publication de contenu à l'aide de la Suite Adobe offre un grand nombre de possibilités. Néanmoins, un bon nombres de tâches sont redondantes. L'ExendScript est un moyen simple et performant pour automatiser ces actions qui prennent souvent beaucoup de temps à exécuter. Avec l'ExtendScript, il est possible de développer une solution efficace pour un Designer à faible coûts."
+      content: "La publication de contenu à l'aide de la Suite Adobe offre un grand nombre de possibilités. Néanmoins, certaines tâches sont redondantes. L'ExtendScript est un moyen simple et performant pour automatiser ces actions répétitives. En créant un script, il est possible de développer une solution efficace qui utilise les fonctionnalités des logiciels de la Créative Suite à faible coûts."
   
   #start
   start:
     title: "Commencer"
     download:
-      title: "Télécharger ExtendScript-library"
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur."
+      title: "Télécharger ExtendScript-Library"
+      content: | 
+        Télécharge ExtendScript-Library depuis le dépôt <i>Github</i>. Si tu souhaites apprendre à utiliser les scripts, lis l'article sur le forum <a href="#">comment débuter avec les script</a>.<br>
+        Si tu souhaites en apprendre plus sur les fonctionnalités disponibles, prends connaissance de la <a href="#">documentation html</a>.
       button: "Git repository"
     samples:
       title: "Exemples"
+      
+  #get involved
+  get_involved:
+    title: "Comment puis-je participer?"
+    community:
+      title: "Communauté"
+      content: "Profite du forum pour poser des questions, aider les autres ou proposer de nouvelles fonctionnalités!"
+      button: "Forum"
+    write_code:
+      title: "Participer au développement"
+      content: "Tu es un programmeur intéressé? Participe au développement de cette librairie et améliore tes connaissances en ExtendScript."
+      button: "Git repository"
+    debug:
+      title: "Signaler un bug"
+      content: "Afin d'améliorer ce produit, il est important que chacun participe a sa manière. Si tu découvres une erreur, merci de la signaler sur github dans la section <i>Issues</i>"
+      button: "Issues"
+    other:
+      title: "Nous cherchons des volontaires"
+      content: "Si tu souhaites participer au projet et que tu as des compétences cachées (développement web, rédaction de documentation ou d'articles etc.), tu es le bienvenu à bord."
+      button: "contacte-nous"
       
   #licences
   licences:
     title: "Licences"
     open_source_project:
       title: "Un projet Open source"
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur."
+      content: "ExtendScript-library est un projet Open source ce qui implique que vous pouvez utilisez ce programme et distribuer des copies du programme y compris à des fins commerciales. Vous pouvez lire, modifier et de redistribuer les versions modifiées sans l'accord de l'auteur."
     what_you_can_do:
       title: "Qu'ai-je le droit de faire?"
       badge_one:
         title: "Utiliser et modifier"
-        content: "Il est permis d'utiliser et de modifier le code source librement"
+        content: "Il est permis d'utiliser et de modifier le code source librement."
       badge_two:
         title: "Redistribuer"
-        content: "Il est permis de redistribuer le code source tel quel ou sous forme binaire"
+        content: "Il est permis de redistribuer le code source tel quel ou sous forme binaire. Si vous redistribuez un élément compilé, il faut ajouter un fichier texte avec la licence."
     what_you_can_not_do:
       title: "A quoi dois-je faire attention?"
       badge_one:
         title: "Inclure le texte de la licence"
-        content: "Les redistributions du code doivent contenir le texte de la licence BSD"
+        content: "Les redistributions du code doivent contenir le texte de la licence BSD et le nom des auteur(s)."
       badge_two:
         title: "Qualité du code"
-        content: "Le code source est mis à disposition gratuitement mais son utilisation est de la responsabilité de l'utilisateur"
+        content: "Le code source est mis à disposition gratuitement mais son utilisation est de la responsabilité de l'utilisateur."
         
+  #contibutors
+  contributors:
+    map:
+      total_user: "Nombres de membre(s) "
+      people: " Personne(s)"
+      over_country: "Sélectionner un pays"
+      see_profile: "Voir le profile"
+    partners:
+      title: "Nos partenaires"
+      partner_one:
+        title: "Images3"
+        content: "Entreprise active dans le secteur de l'industrie graphique et de la retouche d'images"
+      

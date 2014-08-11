@@ -13,12 +13,11 @@
 
     <!-- Bootstrap core CSS -->
     {% block stylesheets %}
-      {% stylesheets output='css/main.css' filter='cssrewrite, ?yui_css'
-        'css/bootstrap.css'
-        'css/theme.css'
+      {% stylesheets filter='lessphp,cssrewrite,?yui_css' output='css/compiled/main.css'
+        '@JlfaTwigBundle/Resources/public/css/bootstrap-style.less'
       %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
-      {% endstylesheets %}
+      {% endstylesheets %}  
     {% endblock %}
         
 
@@ -63,11 +62,12 @@
     </div><!-- end content -->
     
     {% block javascripts %}
-      {% javascripts output='js/main.js' filter='?yui_js'
-        'js/jquery.min.js'
-        'js/bootstrap.min.js'
+      {% javascripts filter='?yui_js' output='js/compiled/main.js'
+        '../vendor/jquery/jquery/jquery-1.10.2.min.js'
+        '../vendor/twitter/bootstrap/dist/js/bootstrap.min.js'
         'js/holder.js'
         'js/nav.js'
+        '@JlfaWebSiteBundle/Resources/public/js/email-protect.js'
       %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
       {% endjavascripts %}

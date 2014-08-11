@@ -75,7 +75,7 @@ class User extends BaseUser {
     protected $email;
 
     /**
-     * @Assert\NotBlank(message="fos_user.password.blank")
+     * @Assert\NotBlank(message="fos_user.password.blank", groups={"Registration", "ResetPassword", "ChangePassword"})
      * @var string 
      */
     protected $plainPassword;
@@ -110,7 +110,7 @@ class User extends BaseUser {
     protected $lng;
     protected $lat;
 
-    // ------------- end persistented data -----------------
+    // ------------- end no persitented data -----------------
     
     
     public function __construct() {

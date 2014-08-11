@@ -3,30 +3,23 @@
 
 namespace Sdz\UserBundle\Form\Type;
 
-use Symfony\Component\Form\AbstractType;
+use FOS\UserBundle\Form\Type\ProfileFormType as BaseType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use Sdz\BlogBundle\Form\ImageType;
 
 
-// error with plainPassword -> delete this field
-class ProfileEditFormType extends AbstractType {
-    
-    private $class;
 
-    /**
-     * @param string $class The User class name
-     */
-    public function __construct($class)
-    {
-        $this->class = $class;
-    }
+class ProfileEditFormType extends BaseType {
     
-    public function buildForm(FormBuilderInterface $builder, array $options) {
-        
-        
-        $this->buildUserForm($builder, $options);
+    
+    
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+       
+        parent::buildForm($builder, $options);
+       
         
         $mail = array(
             true => 'Publier mon adresse e-mail sur ma page de profil.',
@@ -69,25 +62,8 @@ class ProfileEditFormType extends AbstractType {
           
             ->add('image', new ImageType(), array('required' => false) )
         ;
-        
     }
     
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $resolver->setDefaults( array(
-            'data_class' => $this->class,
-            'intention'  => 'profile',
-            ) )
-        ;
-    }
-    
-    protected function buildUserForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
-            ->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
-        ;
-    }
     
     public function getName() {
         return 'sdz_user_edit_profile';

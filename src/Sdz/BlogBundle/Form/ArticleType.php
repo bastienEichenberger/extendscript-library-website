@@ -15,14 +15,14 @@ class ArticleType extends AbstractType
   {
     
     $builder
-      ->add('titre',       'text')
-      ->add('titreEn',       'text')
-      ->add('titreDe',       'text')
-      ->add('contenu',     'textarea')
-      ->add('contenuEn',     'textarea')
-      ->add('contenuDe',     'textarea')
+      ->add('titre', 'text', array('label' => 'page_content.blog.add_post.form.title'))
+      ->add('titreEn',       'text', array('label' => 'page_content.blog.add_post.form.titleEn'))
+      ->add('titreDe',       'text', array('label' => 'page_content.blog.add_post.form.titleDe'))
+      ->add('contenu',     'textarea', array('label' => 'page_content.blog.add_post.form.content'))
+      ->add('contenuEn',     'textarea', array('label' => 'page_content.blog.add_post.form.contentEn'))
+      ->add('contenuDe',     'textarea', array('label' => 'page_content.blog.add_post.form.contentDe'))
       ->add('image',       new ImageType(), array('required' => false))
-      ->add('author', 'fos_user_username', array('read_only' => true, 'required' => false) )
+      ->add('author', 'fos_user_username', array('read_only' => true, 'required' => false, 'label' => 'page_content.blog.add_post.form.author') )
     ;
 
     // On ajoute une fonction qui va écouter l'évènement PRE_SET_DATA

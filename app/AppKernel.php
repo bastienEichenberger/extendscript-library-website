@@ -33,6 +33,7 @@ class AppKernel extends Kernel
             new Jlfa\ForumBundle\JlfaForumBundle(),
             new CCDNForum\ForumBundle\CCDNForumForumBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Jlfa\TwigBundle\JlfaTwigBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

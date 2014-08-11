@@ -83,7 +83,15 @@
                         <div class="control-group">
                             <div id="map-canvas"></div>
                         </div>
-
+                        
+                        <div class="control-group">
+                            {{ form_label(form.current_password, label|default(null), {'label_attr': {'class': 'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.current_password) }}
+                                {{ form_errors(form.current_password) }}
+                            </div>
+                        </div
+                        
                         {{ form_rest(form) }}
                         <div class="form-actions">
                             <a class="btn btn-default" href="{{ path('sdzblog_accueil') }}">Cancel</a>

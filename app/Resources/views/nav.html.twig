@@ -19,29 +19,29 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="{{ path('jlfa_web_site_homepage') }}">Home</a></li>
+                <li><a href="{{ path('jlfa_web_site_homepage') }}">{{ 'page_content.navbar.home' | trans }}</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Get started<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ 'page_content.navbar.get_started.title' | trans }}<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ path('jlfa_web_site_startpage') }}">Start</a></li>
+                        <li><a href="{{ path('jlfa_web_site_startpage') }}">{{ 'page_content.navbar.get_started.start' | trans }}</a></li>
                         <li class="divider"></li>
                         <li class="dropdown-header">Documentation</li>
-                        <li><a href="{{ asset('bundles/jlfawebsite/jsdoc/index.html') }}" target="_blank">View html doc</a></li>
+                        <li><a href="{{ asset('bundles/jlfawebsite/jsdoc/index.html') }}" target="_blank">{{ 'page_content.navbar.get_started.documentation' | trans }}</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Get involved<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ 'page_content.navbar.get_involved.title' | trans }}<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ path('jlfa_web_site_participatepage') }}">Participate</a></li>
-                        <li><a href="{{ path('forum_jlfa_homepage') }}">Forum</a></li>
+                        <li><a href="{{ path('jlfa_web_site_participatepage') }}">{{ 'page_content.navbar.get_involved.participate' | trans }}</a></li>
+                        <li><a href="{{ path('forum_jlfa_homepage') }}">{{ 'page_content.navbar.get_involved.forum' | trans }}</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ path('sdzblog_accueil') }}">News</a></li>
+                <li><a href="{{ path('sdzblog_accueil') }}">{{ 'page_content.navbar.news' | trans }}</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">About<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ 'page_content.navbar.about.title' | trans }}<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ path('jlfa_web_site_contributorspage') }}">Contributors</a></li>
-                        <li><a href="{{ path('jlfa_web_site_licencespage') }}">Licences</a></li>
+                        <li><a href="{{ path('jlfa_web_site_contributorspage') }}">{{ 'page_content.navbar.about.contributors' | trans }}</a></li>
+                        <li><a href="{{ path('jlfa_web_site_licencespage') }}">{{ 'page_content.navbar.about.licences' | trans }}</a></li>
                     </ul>
                 </li>
             </ul>
@@ -52,14 +52,14 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ app.user.username }}<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
-                    <li><a href="{{ path('fos_user_profile_show') }}">Profile</a></li>
+                    <li><a href="{{ path('fos_user_profile_show') }}">{{ 'page_content.navbar.user.profile' | trans }}</a></li>
                 </ul>
               </li>
             </ul>
             {# if user not connected link to connection page #}
             {% else %}
               <ul class="nav navbar-nav navbar-right">
-                  <li><a href="{{ path('fos_user_security_login') }}">Connection</a></li>
+                  <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
               </ul>
             {% endif %}
         </div><!-- /.navbar-collapse -->

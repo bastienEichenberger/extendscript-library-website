@@ -30,12 +30,12 @@
 
                     <div class="col-lg-6 content">
                         <div class="author">
-                            By
+                            {{ 'page_content.blog.index.article_by' | trans }}
                             <b>
                                 {% if article.author is not empty %}
                                     {{ article.author }}
                                 {% else %}
-                                    Unknow
+                                    {{ 'page_content.blog.index.unknow' | trans }}
                                 {% endif %}
                             </b> |
                             <time datetime="{{ article.date|date('c') }}">{{ article.date|date('d/m/Y à H\\hi') }}</time>
@@ -44,7 +44,9 @@
                         <p>{{ article.contenu | truncate(400, true, '...') }}</p>
 
                         <div>
-                            <a href="{{ path('sdzblog_voir', {'slug': article.slug} ) }}" class="btn btn-warning btn-sm">Read more</a>
+                            <a href="{{ path('sdzblog_voir', {'slug': article.slug} ) }}" class="btn btn-warning btn-sm">
+                                {{ 'page_content.blog.index.read_more' | trans }}
+                            </a>
                         </div>
 
                         {% if is_granted('ROLE_AUTHOR') %}
@@ -73,7 +75,7 @@
                 {% endif %}
                 
             {% else %}
-                <p>Pas (encore !) d'articles</p>
+                <p>{{ 'page_content.blog.index.no_article' | trans }}</p>
             {% endfor %}
             
             

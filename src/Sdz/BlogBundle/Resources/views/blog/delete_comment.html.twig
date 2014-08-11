@@ -5,10 +5,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Delete comment</h4>
+        <h4 class="modal-title" id="myModalLabel">
+            {{ 'page_content.blog.delete_comment.title' | trans }}
+        </h4>
       </div>
       <div class="modal-body">
-        Do you really want to delete the comment {{ commentaire.contenu }}
+        {{ 'page_content.blog.delete_comment.content' | trans }} 
+        <i>{{ commentaire.contenu | markdown }}</i>
       </div>
       <div class="modal-footer">
         <form action="{{ path('sdzblog_supprimer_commentaire', {'id': commentaire.id}) }}" method="post">

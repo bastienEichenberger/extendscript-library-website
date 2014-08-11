@@ -19,10 +19,10 @@
                 
                 <h2>{{ 'page_content.start.download.title' | trans }}</h2>
                 
-                <p>{{ 'page_content.start.download.content' | trans }}</p>
+                <p>{{ 'page_content.start.download.content' | trans | markdown }}</p>
                 
                 <p>
-                    <a class="btn btn-large btn-primary" href="https://github.com/bastienEichenberger/extendscript-library.org" target="_blank">
+                    <a class="btn btn-large btn-primary" href="{{ url.git.home }}" target="_blank">
                         {{ 'page_content.start.download.button' | trans }}
                    </a>
                 </p>
@@ -51,4 +51,3 @@
   <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}
 {% endblock %}
-  

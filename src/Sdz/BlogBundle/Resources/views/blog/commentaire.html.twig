@@ -2,9 +2,8 @@
    * Soit le nom de l'auteur anonyme de l'auteur
    * Soit son nom et un lien vers son profil s'il était identifié #}
 {% import "SdzUserBundle::userHelpers.html.twig" as userHelpers %}
-{% form_theme form '::form/jlfa-theme.html.twig' %}
 
-<h3>Commentaires</h3>
+<h3>{{ 'page_content.blog.add_comment.title' | trans }}</h3>
 
   {% for commentaire in commentaires %}
     <div id="comment{{ commentaire.id }}" itemscope itemtype="http://schema.org/Comment">
@@ -17,19 +16,20 @@
         </div> 
     {% endif %}
     <em>
-      Le <time datetime="{{ commentaire.date|date('c') }}" itemprop="datePublished">{{ commentaire.date|date('d/m/Y à H\\hi') }}</time>,
-      <span itemprop="author">{{ userHelpers.link(commentaire.user, commentaire.auteur) }}</span> a écrit :
+      {{ 'page_content.blog.add_comment.description.date' | trans }} 
+      <time datetime="{{ commentaire.date|date('c') }}" itemprop="datePublished">{{ commentaire.date|date('d/m/Y : H\\hi') }}</time>,
+      <span itemprop="author">{{ userHelpers.link(commentaire.user, commentaire.auteur) }}</span> {{ 'page_content.blog.add_comment.description.wrote' | trans }} 
     </em>
     <br />
     {{ commentaire.contenu|markdown }}
   </div>
   {% else %}
-    <p>Pas encore de commentaire.</p>
+    <p>{{ 'page_content.blog.add_comment.no_comment' | trans }}</p>
   {% endfor %}
   <hr />
   
   <!------------------- ADD COMMENTS ------------------------->
-  <h3>Poster un nouveau commentaire</h3>
+  <h3>{{ 'page_content.blog.add_comment.title_add' | trans }}</h3>
   <form id="comments" method="post" action="{{ path('sdzblog_ajouter_commentaire', {'id': article.id}) }}">
         
         
@@ -52,7 +52,7 @@
         </div>
         {{ form_rest(form) }}
         <div class="form-actions">
-            <input type="submit" value="Ajouter" class="btn btn-primary" />
+            <input type="submit" value="{{ 'page_content.blog.add_comment.button' | trans }}" class="btn btn-primary" />
         </div> 
   </form>
 

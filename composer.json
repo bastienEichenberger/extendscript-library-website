@@ -33,16 +33,32 @@
         "gedmo/doctrine-extensions":      "dev-master",
         "codeconsortium/ccdn-forum-bundle": "dev-master",
         "creof/doctrine2-spatial": "dev-master",
-        "twbs/bootstrap": "v3.0.0",
         "friendsofsymfony/jsrouting-bundle": "dev-master",
-        "liip/imagine-bundle": "dev-master"
-
+        "jquery/jquery": "1.10.2",
+        "twitter/bootstrap": "dev-master#727a91de1c",
+        "leafo/lessphp": "0.4.0"
     },
+            
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "jquery/jquery",
+                "version": "1.10.2",
+                "dist": {
+                    "url": "http://code.jquery.com/jquery-1.10.2.min.js",
+                    "type": "file"
+                }
+            }
+        }
+    ],
+            
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
         "bin-dir": "bin"
     },
+            
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web"

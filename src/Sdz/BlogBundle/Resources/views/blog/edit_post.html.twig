@@ -1,5 +1,4 @@
 {% extends "SdzBlogBundle::form_layout.html.twig" %}
-{% form_theme form '::form/jlfa-theme.html.twig' %}
 
 
 {% block content %}
@@ -73,8 +72,12 @@
                     </div>
                     {{ form_rest(form) }}
                     <div>
-                        <a class="btn btn-default" href="{{ path('sdzblog_accueil') }}">Cancel</a>
-                        <button id="sdz_blogbundle_articleedittype" type="submit" class="btn btn-primary btn-large">Edit</button>
+                        <a class="btn btn-default" href="{{ path('sdzblog_accueil') }}">
+                            {{ 'page_content.blog.buttons.cancel' | trans }}
+                        </a>
+                        <button id="sdz_blogbundle_articleedittype" type="submit" class="btn btn-primary btn-large">
+                            {{ 'page_content.blog.buttons.edit' | trans }}
+                        </button>
                     </div>
                 </fieldset>
             </form>
