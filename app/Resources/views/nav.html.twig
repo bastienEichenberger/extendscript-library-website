@@ -1,5 +1,5 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="col-lg-10">
+    <div class="col-xs-12">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -45,50 +45,47 @@
                     </ul>
                 </li>
             </ul>
-            {# if user connected display is name and disconnect menu #}
-            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            
             <ul class="nav navbar-nav navbar-right">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ app.user.username }}<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
-                    <li><a href="{{ path('fos_user_profile_show') }}">{{ 'page_content.navbar.user.profile' | trans }}</a></li>
-                </ul>
-              </li>
-            </ul>
-            {# if user not connected link to connection page #}
-            {% else %}
-              <ul class="nav navbar-nav navbar-right">
-                  <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
-              </ul>
-            {% endif %}
+                {# if user connected display is name and disconnect menu #}
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ app.user.username }}<b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                          <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+                          <li><a href="{{ path('fos_user_profile_show') }}">{{ 'page_content.navbar.user.profile' | trans }}</a></li>
+                      </ul>
+                    </li>
+                {# if user not connected link to connection page #}
+                {% else %}
+                    <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
+                {% endif %}
+                
+                
+            
+                <li id="language-screen" class="dropdown">     
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon {{ 'flag-' ~ app.request.locale }}">
+                        </span>
+                        <b class="caret"></b>
+                    </a>
+                  
+                    <ul class="dropdown-menu">
+                        {% for locale in ['fr', 'en', 'de'] %}
+                            <li>
+                                {# when we use render controller route params not set and display an error #}
+                                {% if app.request.get('_route_params') %} 
+                                    <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : locale})) }}">
+                                      <span class="glyphicon flag-{{ locale }}"></span></a>
+                                    </a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+              
+              </ul> <!-- end navbar-right -->
         </div><!-- /.navbar-collapse -->
+        
     </div><!-- /.container -->
-      <div class="col-lg-1 navbar-collapse pull-right">
-        <ul id="language-screen" class="language nav navbar-nav">
-              <li class="dropdown">
-                      
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      <span class="glyphicon {{ 'flag-' ~ app.request.locale }}">
-                      </span>
-                      <b class="caret"></b>
-                  </a>
-                  
-                  <ul class="dropdown-menu">
-                      {% for locale in ['fr', 'en', 'de'] %}
-                          <li>
-                              {# when we use render controller route params not set and display an error #}
-                              {% if app.request.get('_route_params') %} 
-                                  <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : locale})) }}">
-                                    <span class="glyphicon flag-{{ locale }}"></span></a>
-                                  </a>
-                              {% endif %}
-                          </li>
-                      {% endfor %}
-                  </ul>
-                  
-                  
-              </li>
-          </ul>
-      </div>
 </nav>

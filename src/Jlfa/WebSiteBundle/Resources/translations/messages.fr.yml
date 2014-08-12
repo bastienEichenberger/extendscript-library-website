@@ -70,7 +70,7 @@ page_content:
       title: "Télécharger ExtendScript-Library"
       content: | 
         Télécharge ExtendScript-Library depuis le dépôt <i>Github</i>. Si tu souhaites apprendre à utiliser les scripts, lis l'article sur le forum <a href="#">comment débuter avec les script</a>.<br>
-        Si tu souhaites en apprendre plus sur les fonctionnalités disponibles, prends connaissance de la <a href="#">documentation html</a>.
+        Pour connaître les fonctionnalités disponibles, prends connaissance de la <a href="#">documentation html</a>.
       button: "Git repository"
     samples:
       title: "Exemples"
@@ -79,19 +79,19 @@ page_content:
   get_involved:
     title: "Comment puis-je participer?"
     community:
-      title: "Communauté"
+      title: "Participe à la communauté"
       content: "Profite du forum pour poser des questions, aider les autres ou proposer de nouvelles fonctionnalités!"
       button: "Forum"
     write_code:
-      title: "Participer au développement"
+      title: "Prends part au développement"
       content: "Tu es un programmeur intéressé? Participe au développement de cette librairie et améliore tes connaissances en ExtendScript."
       button: "Git repository"
     debug:
-      title: "Signaler un bug"
+      title: "Signale un bug"
       content: "Afin d'améliorer ce produit, il est important que chacun participe a sa manière. Si tu découvres une erreur, merci de la signaler sur github dans la section <i>Issues</i>"
       button: "Issues"
     other:
-      title: "Nous cherchons des volontaires"
+      title: "Deviens volontaire"
       content: "Si tu souhaites participer au projet et que tu as des compétences cachées (développement web, rédaction de documentation ou d'articles etc.), tu es le bienvenu à bord."
       button: "contacte-nous"
       

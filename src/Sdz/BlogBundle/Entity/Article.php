@@ -5,7 +5,6 @@ namespace Sdz\BlogBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Validator\ExecutionContextInterface;
 use Gedmo\Translatable\Translatable;
 
 /**
@@ -32,7 +31,7 @@ class Article implements Translatable
 
   /**
    * @Gedmo\Translatable
-   * @Assert\NotBlank(message="blog..article.title.blank")
+   * @Assert\NotBlank(message="blog.article.title.blank")
    * @ORM\Column(name="titre", type="string", length=255)
    */
   private $titre;
@@ -269,17 +268,6 @@ class Article implements Translatable
     $this->locale = $locale;
   }
 
-  public function contenuValide(ExecutionContextInterface $context)
-  {
-    $mots_interdits = array('échec', 'abandon');
-
-    // On vérifie que le contenu ne contient pas l'un des mots
-    if (preg_match('#'.implode('|', $mots_interdits).'#', $this->getContenu())) {
-      // La règle est violée, on définit l'erreur et son message
-      // 1er argument : on dit quel attribut l'erreur concerne, ici « contenu »
-      // 2e argument : le message d'erreur
-      $context->addViolationAt('contenu', 'Contenu invalide car il contient un mot interdit.', array(), null);
-    }
-  }
+  
 
 }

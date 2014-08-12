@@ -7,50 +7,52 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-9">
-        <h2>{{ 'page_content.get_involved.community.title' | trans }}</h2>
-        <p>{{ 'page_content.get_involved.community.content' | trans }}</p>
-        <p><a class="btn btn-large btn-primary" href="{{ path('forum_jlfa_homepage') }}">{{ 'page_content.get_involved.community.button' | trans }}</a></p>
-    </div>
-    <div class="col-md-3">
-        <img class="img" src="{{ asset('bundles/jlfawebsite/img/forum.png') }}" alt="{{ 'page_content.get_involved.community.title' | trans }}">
-    </div>
+        
+        <div class="col-md-3">
+            <h2>{{ 'page_content.get_involved.other.title' | trans }}</h2>
+            <p>{{ 'page_content.get_involved.other.content' | trans }}</p>
+            <p>
+                <i class="glyphicon glyphicon-envelope"></i>
+                <a href="mailto:{{ email.info|rot13 }}">{{ email.info|replace_at }}</a>
+            </p>
+        </div>
+        <div class="col-md-3">
+            <img class="img" src="{{ asset('bundles/jlfawebsite/img/search.png') }}" alt="{{ 'page_content.get_involved.other.title' | trans }}">
+        </div>
+        
+        <div class="col-lg-3">
+            <h2>{{ 'page_content.get_involved.write_code.title' | trans }}</h2>
+            <p>{{ 'page_content.get_involved.write_code.content' | trans }}</p>
+            <p><a class="btn btn-large btn-primary" href="{{ url.git.home }}" target="_blank">{{ 'page_content.get_involved.write_code.button' | trans }}</a></p>
+        </div>
+        <div class="col-md-3">
+            <img class="img" src="{{ asset('bundles/jlfawebsite/img/computing.png') }}" alt="{{ 'page_content.get_involved.write_code.title' | trans }}">
+        </div>
 </div>
+
 <hr class="featurette-divider">
+
+
 <div class="row">
-    <div class="col-lg-9">
-        <h2>{{ 'page_content.get_involved.write_code.title' | trans }}</h2>
-        <p>{{ 'page_content.get_involved.write_code.content' | trans }}</p>
-        <p><a class="btn btn-large btn-primary" href="{{ url.git.home }}" target="_blank">{{ 'page_content.get_involved.write_code.button' | trans }}</a></p>
-    </div>
-    <div class="col-md-3">
-        <img class="img" src="{{ asset('bundles/jlfawebsite/img/computing.png') }}" alt="{{ 'page_content.get_involved.write_code.title' | trans }}">
-    </div>
+        <div class="col-md-3">
+            <h2>{{ 'page_content.get_involved.debug.title' | trans }}</h2>
+            <p>{{ 'page_content.get_involved.debug.content' | trans | raw }}</p>
+            <p><a class="btn btn-large btn-primary" href="{{ url.git.issues }}" target="_blank">{{ 'page_content.get_involved.debug.button' | trans }}</a></p>
+        </div>
+        <div class="col-md-3">
+            <img class="img" src="{{ asset('bundles/jlfawebsite/img/bug.png') }}" alt="{{ 'page_content.get_involved.debug.title' | trans }}">
+        </div>
+        
+        <div class="col-lg-3">
+            <h2>{{ 'page_content.get_involved.community.title' | trans }}</h2>
+            <p>{{ 'page_content.get_involved.community.content' | trans }}</p>
+            <p><a class="btn btn-large btn-primary" href="{{ path('forum_jlfa_homepage') }}">{{ 'page_content.get_involved.community.button' | trans }}</a></p>
+        </div>
+        <div class="col-md-3">
+            <img class="img" src="{{ asset('bundles/jlfawebsite/img/forum.png') }}" alt="{{ 'page_content.get_involved.community.title' | trans }}">
+        </div>
+        
 </div>
-<hr class="featurette-divider">
-<div class="row">
-    <div class="col-lg-9">
-        <h2>{{ 'page_content.get_involved.debug.title' | trans }}</h2>
-        <p>{{ 'page_content.get_involved.debug.content' | trans | raw }}</p>
-        <p><a class="btn btn-large btn-primary" href="{{ url.git.issues }}" target="_blank">{{ 'page_content.get_involved.debug.button' | trans }}</a></p>
-    </div>
-    <div class="col-md-3">
-        <img class="img" src="{{ asset('bundles/jlfawebsite/img/bug.png') }}" alt="{{ 'page_content.get_involved.debug.title' | trans }}">
-    </div>
-</div>
-<hr class="featurette-divider">
-<div class="row">
-    <div class="col-lg-9">
-        <h2>{{ 'page_content.get_involved.other.title' | trans }}</h2>
-        <p>{{ 'page_content.get_involved.other.content' | trans }}</p>
-        <p>
-            <i class="glyphicon glyphicon-envelope"></i>
-            <a href="mailto:{{ email.info|rot13 }}">{{ email.info|replace_at }}</a>
-        </p>
-    </div>
-    <div class="col-md-3">
-        <img class="img" src="{{ asset('bundles/jlfawebsite/img/search.png') }}" alt="{{ 'page_content.get_involved.other.title' | trans }}">
-    </div>
-</div>
+
 {% endblock %}
 
