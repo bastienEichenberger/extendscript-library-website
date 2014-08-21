@@ -2,3 +2,17 @@ page_content :
   login:
     button:
       home: "Retour à l'accueil"
+
+form:
+  display_email: 
+    yes: "Publier mon email sur ma page de profil."
+    no: "Non, je préfère garder mon email anonyme."
+  display_adresse:
+    yes: "Publier mon adresse sur ma page de profil."
+    no: "Non, je préfère garder mon adresse anonyme."
+  about_me: "Biographie"
+  adresse: "Adresse"
+  no_spam: "Aucun spam ne sera envoyé depuis ce site web"
+  using_adresse: "L'adresse sera utilisé pour définir une carte des utilisateurs par région"
+  
+      

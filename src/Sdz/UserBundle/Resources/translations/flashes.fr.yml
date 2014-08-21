@@ -1,4 +1,4 @@
 sdzuserbundle:
   register:
-    error: "il y a eu une erreur"
+    error: "Le formulaire d'enregistrement contient une ou plusieurs erreurs"
     

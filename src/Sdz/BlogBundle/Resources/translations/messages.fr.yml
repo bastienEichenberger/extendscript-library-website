@@ -1,6 +1,7 @@
 # translate blog content FR
 page_content:
   blog:
+    title: "Blog"
     buttons:
       add: "Ajouter"
       cancel: "Annuler"

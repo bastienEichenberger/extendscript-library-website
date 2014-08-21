@@ -75,9 +75,9 @@ $(document).ready(function() {
     };
     // method that we will use to update the control based on feature properties passed
     info.update = function(props) {
-        this._div.innerHTML = '<h4>Total users: ' + total_user + '</h4>'
+        this._div.innerHTML = '<h4>'+ Translator.get('page_content.contributors.map.total_user') + total_user + '</h4>'
                 + (props ? '<b>' + props.country + '</b><br />'
-                + props.density + ' people' : 'Hover over a state');
+                + props.density + Translator.get('page_content.contributors.map.people') : Translator.get('page_content.contributors.map.over_country'));
     };
     info.addTo(map);
     
@@ -150,7 +150,14 @@ $(document).ready(function() {
         // hover on a marker display user infos
         onEachFeature: function(feature, layer) {
             var title = $('<h1/>').html(feature.properties.username);
-            var link = $('<a/>').html('see my profile').attr('href', Routing.generate('fos_user_profile_show_by_username', { '_locale' : Translator.locale, 'username' : feature.properties.username } ) );
+            var link = $('<a/>').html(
+                        Translator.get('page_content.contributors.map.see_profile')
+                    )
+                    .attr('href', 
+                        Routing.generate('fos_user_profile_show_by_username', 
+                            { '_locale' : Translator.locale, 'username' : feature.properties.username } 
+                        ) 
+                     );
             var feature_container = $('<div/>').html(title).append(link);
             layer.bindPopup(feature_container.html());
         }

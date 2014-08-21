@@ -1,5 +1,9 @@
 {% extends "::backbone.html.twig" %}
 
+{% block title %}
+    {{ parent() }} | {{ 'page_content.home.title' | trans }}
+{% endblock %}
+
 {% block carousel %}
 <!-- Carousel
     ================================================== -->
@@ -15,7 +19,7 @@
           <img src="{{ asset('img/extendscript-library.svg') }}" onerror="this.onerror=null; this.src='{{ asset('img/extendscript-library.png') }}'">
           <div class="container">
             <div class="carousel-caption">
-              <h1>{{ 'page_content.home.carrousel.welcome.title' | trans }}</h1>
+              <h2>{{ 'page_content.home.carrousel.welcome.title' | trans }}</h2>
               <p>{{ 'page_content.home.carrousel.welcome.content' | trans }}</p>
               <p><a class="btn btn-large btn-ai" href="{{ path('jlfa_web_site_startpage') }}">{{ 'page_content.home.carrousel.welcome.button' | trans }}</a></p>
             </div>
@@ -25,7 +29,7 @@
           <img src="{{ asset('img/become-member.svg') }}" onerror="this.onerror=null; this.src='{{ asset('img/become-member.png') }}'">
           <div class="container">
             <div class="carousel-caption">
-              <h1>{{ 'page_content.home.carrousel.become_member.title' | trans }}</h1>
+              <h2>{{ 'page_content.home.carrousel.become_member.title' | trans }}</h2>
               <p>{{ 'page_content.home.carrousel.become_member.content' | trans }}</p>
               <p><a class="btn btn-large btn-indd" href="{{ path('fos_user_registration_register')}}">{{ 'page_content.home.carrousel.become_member.button' | trans }}</a></p>
             </div>
@@ -35,7 +39,7 @@
           <img src="{{ asset('img/open-source.svg') }}" onerror="this.onerror=null; this.src='{{ asset('img/open-source.png') }}'">
           <div class="container">
             <div class="carousel-caption">
-              <h1>{{ 'page_content.home.carrousel.open_source.title' | trans }}</h1>
+              <h2>{{ 'page_content.home.carrousel.open_source.title' | trans }}</h2>
               <p>{{ 'page_content.home.carrousel.open_source.content' | trans }}</p>
               <p><a class="btn btn-large btn-primary" href="{{ path('jlfa_web_site_licencespage') }}">{{ 'page_content.home.carrousel.open_source.button' | trans }}</a></p>
             </div>

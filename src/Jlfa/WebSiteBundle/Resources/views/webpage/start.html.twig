@@ -11,7 +11,10 @@
   {% endstylesheets %}
 {% endblock %}
 
-
+{% block title %}
+    {{ parent() }} | {{ 'page_content.start.title' | trans }}
+{% endblock %}
+    
 {% block content %}
     <div class="row">
         <div class="col-lg-12">

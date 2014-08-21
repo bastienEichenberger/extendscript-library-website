@@ -70,6 +70,10 @@
       %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
       {% endjavascripts %}
+        
+      <script>
+        {% include 'tracking-code.js.twig' %}
+      </script>
     {% endblock %}
   </body>
 </html>

@@ -1,5 +1,10 @@
 {% extends "::backbone.html.twig" %}
 
+{% block title %}
+    {{ parent() }} | {{ 'page_content.get_involved.title' | trans }}
+{% endblock %}
+    
+    
 {% block content %}
 <div class="row">
     <div class="col-lg-12">
@@ -17,7 +22,7 @@
             </p>
         </div>
         <div class="col-md-3">
-            <img class="img" src="{{ asset('bundles/jlfawebsite/img/search.png') }}" alt="{{ 'page_content.get_involved.other.title' | trans }}">
+            <img class="img center-block" src="{{ asset('bundles/jlfawebsite/img/search.png') }}" alt="{{ 'page_content.get_involved.other.title' | trans }}">
         </div>
         
         <div class="col-lg-3">
@@ -26,7 +31,7 @@
             <p><a class="btn btn-large btn-primary" href="{{ url.git.home }}" target="_blank">{{ 'page_content.get_involved.write_code.button' | trans }}</a></p>
         </div>
         <div class="col-md-3">
-            <img class="img" src="{{ asset('bundles/jlfawebsite/img/computing.png') }}" alt="{{ 'page_content.get_involved.write_code.title' | trans }}">
+            <img class="img center-block" src="{{ asset('bundles/jlfawebsite/img/computing.png') }}" alt="{{ 'page_content.get_involved.write_code.title' | trans }}">
         </div>
 </div>
 
@@ -40,7 +45,7 @@
             <p><a class="btn btn-large btn-primary" href="{{ url.git.issues }}" target="_blank">{{ 'page_content.get_involved.debug.button' | trans }}</a></p>
         </div>
         <div class="col-md-3">
-            <img class="img" src="{{ asset('bundles/jlfawebsite/img/bug.png') }}" alt="{{ 'page_content.get_involved.debug.title' | trans }}">
+            <img class="img center-block" src="{{ asset('bundles/jlfawebsite/img/bug.png') }}" alt="{{ 'page_content.get_involved.debug.title' | trans }}">
         </div>
         
         <div class="col-lg-3">
@@ -49,7 +54,7 @@
             <p><a class="btn btn-large btn-primary" href="{{ path('forum_jlfa_homepage') }}">{{ 'page_content.get_involved.community.button' | trans }}</a></p>
         </div>
         <div class="col-md-3">
-            <img class="img" src="{{ asset('bundles/jlfawebsite/img/forum.png') }}" alt="{{ 'page_content.get_involved.community.title' | trans }}">
+            <img class="img center-block" src="{{ asset('bundles/jlfawebsite/img/forum.png') }}" alt="{{ 'page_content.get_involved.community.title' | trans }}">
         </div>
         
 </div>

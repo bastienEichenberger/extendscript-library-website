@@ -431,29 +431,7 @@ if (typeof define === "function" && define.amd) {
 
 })(Holder, window);
 
-$(document).ready(function() {
-    
-    /**
-     * function to change the flag on the language menu
-     */
-    $(".language .dropdown-menu li").click(function(){
-      var current_span = $(this).find('a').find('span');
-      var clone = current_span.clone();
-      current_span.parents('.language').find('.dropdown-toggle').find('span').replaceWith(clone);
-    });
-    
-    /**
-     * function to generate te iphone menu (display none on normal screen)
-     */
-    var iphone_ul = $('<ul>')
-    iphone_ul.addClass('language nav navbar-nav pull-left');
-    iphone_ul.attr('id', 'language-iphone');
-    $('#language-screen .dropdown .dropdown-menu li').each(function (index, elem){
-        $(elem).clone().appendTo(iphone_ul);
-    });
-    iphone_ul.insertAfter('#language-screen');
-});
-$(document).ready(function() {
+
 
     //+ Jonas Raoni Soares Silva
     //@ http://jsfromhell.com/string/rot13 [rev. #1]
@@ -468,11 +446,5 @@ $(document).ready(function() {
     $('a[href^="mailto:"]').each(function() {
         // remove mailto:
         var str_without_mailto = this.href.substr(7).rot13();
-        
-        this.href = 'mailto' + str_without_mailto;
-
-        this.innerHTML = this.innerHTML.rot13();
+        this.href = 'mailto:' + str_without_mailto;
     });
-
-
-});

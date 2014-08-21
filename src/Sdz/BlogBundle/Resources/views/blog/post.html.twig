@@ -11,6 +11,10 @@
   {% endstylesheets %}
 {% endblock %}
 
+{% block title %}
+    {{ parent() ~ article.titre }}
+{% endblock %}
+    
 {% block body_content %}
     {% if article.image is not null %}
         <div class="row">

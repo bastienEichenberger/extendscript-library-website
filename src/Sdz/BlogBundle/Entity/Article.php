@@ -12,8 +12,6 @@ use Gedmo\Translatable\Translatable;
  *
  * @ORM\Table(name="tut_article")
  * @ORM\Entity(repositoryClass="Sdz\BlogBundle\Entity\ArticleRepository")
- * @ORM\HasLifecycleCallbacks()
- * @Assert\Callback(methods={"contenuValide"})
  */
 class Article implements Translatable
 {

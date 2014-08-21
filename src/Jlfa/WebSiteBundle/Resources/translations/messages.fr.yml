@@ -29,6 +29,7 @@ page_content:
     
   # home content
   home:
+    title: "Accueil"
     # carrousel content
     carrousel:
       welcome:
@@ -120,6 +121,7 @@ page_content:
         
   #contibutors
   contributors:
+    title: "Contributeurs"
     map:
       total_user: "Nombres de membre(s) "
       people: " Personne(s)"
