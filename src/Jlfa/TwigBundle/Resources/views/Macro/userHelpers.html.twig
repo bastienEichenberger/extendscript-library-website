@@ -1,0 +1,14 @@
+{# Macro to link a fosuser with is profile page #}
+{% macro link(user, username) %}
+  {% spaceless %}
+
+  {% if user is not null %}
+    <a href="{{ path('fos_user_profile_show_by_username', {'username': user.username}) }}">
+        {{ user.username }}
+    </a>
+  {% else %}
+    {{ username }}
+  {% endif %}
+
+  {% endspaceless %}
+{% endmacro %}
