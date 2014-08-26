@@ -3,12 +3,10 @@
 
 namespace Sdz\UserBundle\Form\Type;
 
-use FOS\UserBundle\Form\Type\ProfileFormType as BaseType;
 use Symfony\Component\Form\FormBuilderInterface;
+use FOS\UserBundle\Form\Type\ProfileFormType as BaseType;
+use Sdz\UserBundle\Form\Type\VignetteType;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
-use Sdz\BlogBundle\Form\ImageType;
-
 
 
 class ProfileEditFormType extends BaseType {
@@ -21,49 +19,42 @@ class ProfileEditFormType extends BaseType {
         parent::buildForm($builder, $options);
        
         
-        $mail = array(
-            true => 'Publier mon adresse e-mail sur ma page de profil.',
-            false => 'Non, je préfère garder mon adresse e-mail anonyme.'
-        );
-        $adresse = array(
-            true => 'Publier mon adresse sur ma page de profil.',
-            false => 'Non, je préfère garder mon adresse anonyme. '
-        );
+        $builder->add('displayMail', 'choice', array(
+            'choices' => array(
+                true => 'form.display_email.yes',
+                false => 'form.display_email.no'
+            ),
+            'expanded' => true,
+            'multiple' => false,
+            'data' => false
+        ));
         
-        $builder
-            ->add('birthDate', 'birthday', array('required' => false) )
-            ->add('ownwebsite', 'text', array('required' => false) )
-            ->add('displayMail', 'choice', array(
-                'choices' => $mail,
-                'expanded' => true,
-                'multiple' => false,
-                'data' => false
-            ) )
-            ->add('displayAdresse', 'choice', array(
-                'choices' => $adresse,
-                'expanded' => true,
-                'multiple' => false,
-                'data' => true
-            ) )
-            ->add('lat', 'hidden', array(
-                'attr' => array('data-geo' => 'lat')
-            ) )
-            ->add('lng', 'hidden', array(
-                'attr' => array('data-geo' => 'lng')
-            ) )
-            ->add('formateAdresse', 'hidden', array(
-                'attr' => array('data-geo' => 'formatted_address')
-            ) )
-                
-            ->add('adresse', null, array('label' => 'form.adresse', 'translation_domain' => 'FOSUserBundle') )
-            
-                
-            ->add('aboutMe', 'textarea')
-          
-            ->add('image', new ImageType(), array('required' => false) )
-        ;
+        $builder->add('aboutMe', 'textarea', array( 'label' => 'form.about_me'));
+        
+        
+        $builder->add('displayAdresse', 'choice', array(
+            'choices' => array(
+                true => 'form.display_adresse.yes',
+                false => 'form.display_adresse.no'
+            ),
+            'expanded' => true,
+            'multiple' => false,
+            'data' => true
+        ));
+        
+        $builder->add('location', new LocationType(), array( 'label' => false ) );
+
+        $builder->add('birthDate', 'birthday', array('required' => false, 'label' => 'form.birthday') );
+        $builder->add('ownWebSite', 'text', array('required' => false, 'label' => 'form.ownwebsite') );
+        $builder->add('vignette', new VignetteType(), array('required' => false) );
     }
     
+    public function setDefaultOptions(OptionsResolverInterface $resolver) {
+        $resolver->setDefaults(array(
+            'data_class' => 'Sdz\UserBundle\Entity\User',
+            'cascade_validation' => true,
+        ));
+    }
     
     public function getName() {
         return 'sdz_user_edit_profile';

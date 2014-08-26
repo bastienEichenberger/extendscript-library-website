@@ -3,8 +3,7 @@
 namespace Jlfa\WebSiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+
 
 class WebSiteController extends Controller
 {

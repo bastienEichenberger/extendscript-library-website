@@ -150,21 +150,6 @@ fos_user:
         type: sdz_user_edit_profile
     
 
-# Ornicar\AksimetBundle
-ornicar_akismet:
-    api_key: %akismet_key%
-    url:     %akismet_url%
-
-
-apy_js_form_validation:
-    enabled: true
-    yui_js: false
-    check_modes: [submit, blur]
-    javascript_framework: jquery
-    validation_bundle: APYJsFormValidationBundle
-    script_directory: bundles/jsformvalidation/js/
-    identifier_field: jsfv_identifier
-    translation_group: validators
 
 
     

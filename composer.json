@@ -27,7 +27,6 @@
         "doctrine/data-fixtures": "@dev",
         "friendsofsymfony/user-bundle": "2.0.*@dev",
         "knplabs/knp-markdown-bundle": "1.2.*@dev",
-        "ornicar/akismet-bundle": "dev-master",
         "willdurand/expose-translation-bundle": ">=0.2.1",
         "apy/jsfv-bundle":"dev-master",
         "gedmo/doctrine-extensions":      "dev-master",
@@ -35,7 +34,6 @@
         "creof/doctrine2-spatial": "dev-master",
         "friendsofsymfony/jsrouting-bundle": "dev-master",
         "jquery/jquery": "1.10.2",
-        "twitter/bootstrap": "dev-master#727a91de1c",
         "leafo/lessphp": "0.4.0"
     },
             

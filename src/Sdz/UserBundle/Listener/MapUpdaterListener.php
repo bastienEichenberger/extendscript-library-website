@@ -3,15 +3,14 @@
 
 namespace Sdz\UserBundle\Listener;
 
-use Doctrine\ORM\Event\LifecycleEventArgs;
-use Sdz\UserBundle\Entity\User;
-
+use FOS\UserBundle\FOSUserEvents;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * This service udpate the map when the fos_user.registration.confirmed event occured
  * The user must active his account
  */
-class MapUpdater {
+class MapUpdaterListener implements EventSubscriberInterface {
     
     private $container;
     
@@ -27,6 +26,15 @@ class MapUpdater {
         $geojsonbuilder->updateMembersJSON();
         
     }
+
+    public static function getSubscribedEvents()
+    {
+      return array( 
+          FOSUserEvents::PROFILE_EDIT_COMPLETED => 'updateMap',
+          FOSUserEvents::REGISTRATION_CONFIRMED => 'updateMap'
+      );
+    }
+    
     
 }
 

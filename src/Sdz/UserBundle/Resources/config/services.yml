@@ -1,7 +1,5 @@
 services:
-    
-    
-
+    # custom forms for userbundle
     sdz_user.registration.form.type:
         class: Sdz\UserBundle\Form\Type\RegistrationFormType
         arguments: [%fos_user.model.user.class%]
@@ -14,22 +12,19 @@ services:
         tags:
             - { name: form.type, alias: sdz_user_edit_profile }
             
-            
+    # cutsom contrain to valid the adresse
     sdzblog.validator.sdzblog_isAdresseValid:    
         class:     Sdz\UserBundle\Validator\IsAdresseValidValidator
         tags:
             - { name: validator.constraint_validator, alias: sdzblog_isAdresseValid }
+    
             
             
+    # FOS SUBSCRIBER
+    # update the map when user edit profile and when the registration process is confirmed
     sdzblog.updatemap:
-        class: Sdz\UserBundle\Listener\MapUpdater
+        class: Sdz\UserBundle\Listener\MapUpdaterListener
         arguments: ["@service_container"]
         tags:
-            - { name: doctrine.event_listener, event: fos_user.registration.confirmed, method: updateMap }
-            - { name: doctrine.event_listener, event: fos_user.profile.edit.success, method: updateMap }
+            - { name: kernel.event_subscriber }
             
-    sdzblog.postcreate:
-        class: Sdz\UserBundle\Listener\UserACL
-        arguments: ["@service_container"]
-        tags:
-            - { name: doctrine.event_listener, event: fos_user.registration.success, method: addACL }

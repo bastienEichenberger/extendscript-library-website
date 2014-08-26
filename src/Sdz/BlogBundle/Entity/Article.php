@@ -10,7 +10,7 @@ use Gedmo\Translatable\Translatable;
 /**
  * Sdz\BlogBundle\Entity\Article
  *
- * @ORM\Table(name="tut_article")
+ * @ORM\Table(name="jlfa_article")
  * @ORM\Entity(repositoryClass="Sdz\BlogBundle\Entity\ArticleRepository")
  */
 class Article implements Translatable

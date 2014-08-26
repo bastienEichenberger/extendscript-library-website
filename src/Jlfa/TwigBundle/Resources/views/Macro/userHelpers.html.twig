@@ -2,10 +2,9 @@
   {% spaceless %}
 
   {% if user is not null %}
-    {# J'ai désactivé le lien car on n'a pas de page de profil pour le moment #}
-    {#<a href="{{ path('sdzuser_voir', {'username': user.username}) }}">#}
+    <a href="{{ path('fos_user_profile_show_by_username', {'username': user.username}) }}">
         {{ user.username }}
-    {#</a>#}
+    </a>
   {% else %}
     {{ username }}
   {% endif %}

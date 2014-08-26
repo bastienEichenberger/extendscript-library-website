@@ -1,1 +1,1 @@
-var members ={"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[2.213749,46.227638]},"id":1,"properties":{"username":"admin"}}],"properties":null}
+var members ={"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[7.1455683,46.8016663]},"id":1,"properties":{"username":"admin"}}],"properties":null}

@@ -46,14 +46,14 @@
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="{{ form.adresse.vars.id }}">{{ form.adresse.vars.label|trans }}<span title ="{{ 'form.using_adresse'|trans }}" class="glyphicon glyphicon-exclamation-sign"></span></label>
+                        <label class="control-label" for="{{ form.location.adresse.vars.id }}">{{ form.location.adresse.vars.label|trans }}<span title ="{{ 'form.using_adresse'|trans }}" class="glyphicon glyphicon-exclamation-sign"></span></label>
                         <div class="input-group controls">
-                            {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_widget(form.location.adresse, {'attr': {'class': 'form-control'}}) }}
                             <span class="input-group-btn">
                                 <button id="go" class="btn btn-default" type="button">Go</button>
                             </span>
                         </div>
-                        {{ form_errors(form.adresse) }}
+                        {{ form_errors(form.location.adresse) }}
                             
                         <div class="radio-group">
                             {{ form_widget(form.displayAdresse) }}

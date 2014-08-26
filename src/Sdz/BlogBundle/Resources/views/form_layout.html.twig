@@ -10,15 +10,3 @@
 {% endblock %}
 
  
-    
-{% block javascripts %}
-    {{ parent() }}
-        {% javascripts output='js/main.js' filter='?yui_js'
-            '@BazingaExposeTranslationBundle/Resources/public/js/translator.min.js'
-        %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-        
-    <script type="text/javascript" src="{{ url('bazinga_exposetranslation_js', { 'domain_name': 'validators' }) }}"></script>
-    {{ JSFV(form) }}
-{% endblock %}

@@ -26,4 +26,8 @@ fos_user:
         long: "[-Inf,Inf]Le nom est trop long"
     adresse:
         blank: Veuillez entrer une adresse
-        not_valid: L'adresse n'existe pas
+        not_valid: "L'adresse n'est pas valide"
+        lat: "La latitude est inexistante"
+        lng: "La longitude est inexistante"
+    ownwebsite:
+        not_valid: "L'url saisie n'est pas valide"

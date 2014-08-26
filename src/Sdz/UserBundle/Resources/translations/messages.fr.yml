@@ -14,5 +14,10 @@ form:
   adresse: "Adresse"
   no_spam: "Aucun spam ne sera envoyé depuis ce site web"
   using_adresse: "L'adresse sera utilisé pour définir une carte des utilisateurs par région"
+  thumbnail: "Vignette"
+  birthday: "Date de naissance"
+  ownwebsite: "Site internet personnel"
+  
+  
   
       

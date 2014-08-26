@@ -1,17 +1,16 @@
 <?php
-// src/Sdz/Blog/Bundle/Entity/Commentaire.php
 
 namespace Sdz\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Sdz\BlogBundle\Akismet\Akismet;
-use Sdz\BlogBundle\Validator\AntiFlood;
+
+use Sdz\BlogBundle\Validator\AntiFlood; // use to validate the comment
+use Sdz\BlogBundle\Validator\AntiSpam; // use to validate the comment
 
 /**
- * @ORM\Table(name="tut_commentaire")
+ * @ORM\Table(name="jlfa_commentaire")
  * @ORM\Entity(repositoryClass="Sdz\BlogBundle\Entity\CommentaireRepository")
- * @Akismet
  */
 class Commentaire
 {
@@ -24,14 +23,14 @@ class Commentaire
 
     /**
      * @ORM\Column(name="auteur", type="string", length=255, nullable=true)
-     * Je mets cette colonne à nullable=true car maintenant on a aussi l'attribut $user
      */
     private $auteur;
 
     /**
      * @ORM\Column(name="contenu", type="text")
      * @Assert\NotBlank()
-     * @AntiFlood(message="blog.comment.content.wait", secondes="45")
+     * @AntiFlood
+     * @AntiSpam
      */
     private $contenu;
 

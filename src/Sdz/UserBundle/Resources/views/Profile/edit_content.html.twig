@@ -1,7 +1,6 @@
-{% trans_default_domain 'FOSUserBundle' %}
-
 {% block content %}
-    <div class="row">
+
+<div class="row">
     <div class="col-lg-12">
         
         <ul id="editnav" class="nav nav-tabs">
@@ -16,7 +15,7 @@
                     <fieldset>
                         <legend>Edit Profile</legend>
                         <div class="control-group">
-                            <label class="control-label" for="{{ form.email.vars.id }}">{{ form.email.vars.label|trans }}<span title ="{{ 'registration.email_no_spam'|trans }}" class="glyphicon glyphicon-exclamation-sign"></span></label>
+                            <label class="control-label" for="{{ form.email.vars.id }}">{{ form.email.vars.label| trans({}, 'FOSUserBundle') }}<span title ="{{ 'registration.email_no_spam'|trans }}" class="glyphicon glyphicon-exclamation-sign"></span></label>
                             <div class="controls">
                                 {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
                                 {{ form_errors(form.email) }}
@@ -51,27 +50,27 @@
                             </div>
                         </div>
                         <div class="control-group">
-                            {{ form_label(form.ownwebsite, label|default(null), {'label_attr': {'class': 'control-label'} } ) }}
+                            {{ form_label(form.ownWebSite, label|default(null), {'label_attr': {'class': 'control-label'} } ) }}
                             <div class="controls">
-                                {{ form_widget(form.ownwebsite, {'attr': {'class': 'form-control'} } ) }}
-                                {{ form_errors(form.ownwebsite) }}
+                                {{ form_widget(form.ownWebSite, {'attr': {'class': 'form-control'} } ) }}
+                                {{ form_errors(form.ownWebSite) }}
                             </div>
                         </div>
                         <div class="control-group">
-                            {{ form_label(form.image.file, label|default(null), {'label_attr': {'class': 'control-label'} } ) }}
+                            {{ form_label(form.vignette.file, label|default(null), {'label_attr': {'class': 'control-label'} } ) }}
                             <div class="controls">
-                                {{ form_widget(form.image.file) }}
-                                {{ form_errors(form.image.file) }}
+                                {{ form_widget(form.vignette.file) }}
+                                {{ form_errors(form.vignette.file) }}
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label" for="{{ form.adresse.vars.id }}">{{ form.adresse.vars.label|trans }}<span title ="{{ 'registration.adresse_using'|trans }}" class="glyphicon glyphicon-exclamation-sign"></span></label>
+                            <label class="control-label" for="{{ form.location.adresse.vars.id }}">{{ form.location.adresse.vars.label|trans }}<span title ="{{ 'registration.adresse_using'|trans }}" class="glyphicon glyphicon-exclamation-sign"></span></label>
                             <div class="input-group controls">
-                                {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
-                                {{ form_errors(form.adresse) }}
+                                {{ form_widget(form.location.adresse, {'attr': {'class': 'form-control'}}) }}
                                 <span class="input-group-btn">
                                     <button id="go" class="btn btn-default" type="button">Go</button>
                                 </span>
+                                {{ form_errors(form.location.adresse) }}
                             </div>
 
                             <div class="radio-group">
@@ -90,9 +89,10 @@
                                 {{ form_widget(form.current_password) }}
                                 {{ form_errors(form.current_password) }}
                             </div>
-                        </div
+                        </div>
                         
                         {{ form_rest(form) }}
+                        
                         <div class="form-actions">
                             <a class="btn btn-default" href="{{ path('sdzblog_accueil') }}">Cancel</a>
                             <button id="sdz_blogbundle_articleedittype" type="submit" class="btn btn-primary btn-large">
@@ -101,14 +101,15 @@
                         </div>
                     </fieldset>
                 </form>
-            </div>
-
-            <div id="parameters" class="well tab-pane fade">
-                {% render controller("FOSUserBundle:ChangePassword:changePassword" ) %}
-            </div>
+                </div> <!-- end tab active -->
+            
+                <div id="parameters" class="well tab-pane fade">
+                    {% render controller("FOSUserBundle:ChangePassword:changePassword" ) %}
+                </div>
+            
+           </div> <!-- end tab content -->
                 
         </div>
-   </div>
-</div>
+
 
 {% endblock %}

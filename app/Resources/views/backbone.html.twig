@@ -8,7 +8,6 @@
     <meta NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
     
     <link rel="shortcut icon" href="{{ asset('icon/favicon.png') }}" /> 
-
     <title>{% block title %}Extendscript-library{% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
@@ -23,8 +22,8 @@
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="{{ asset('js/html5shiv.js') }}"></script>
-      <script src="{{ asset('js/respond.min.js') }}"></script>
+      <script src="{{ asset('bundles/jlfatwig/twitter/bootstrap/js/html5shiv.js') }}"></script>
+      <script src="{{ asset('bundles/jlfatwig/twitter/bootstrap/js/respond.min.js') }}"></script>
     <![endif]-->
 
     
@@ -64,8 +63,7 @@
     {% block javascripts %}
       {% javascripts filter='?yui_js' output='js/compiled/main.js'
         '../vendor/jquery/jquery/jquery-1.10.2.min.js'
-        '../vendor/twitter/bootstrap/dist/js/bootstrap.min.js'
-        'js/holder.js'
+        '@JlfaTwigBundle/Resources/public/twitter/bootstrap/dist/js/bootstrap.min.js'
         '@JlfaWebSiteBundle/Resources/public/js/email-protect.js'
       %}
         <script type="text/javascript" src="{{ asset_url }}"></script>

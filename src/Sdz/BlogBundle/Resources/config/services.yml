@@ -1,25 +1,18 @@
 services:
   
-    sdzblog.antispam:
-        class: Sdz\BlogBundle\Antispam\SdzAntispam
-        arguments: ["@mailer", 3]
-        calls:
-            - [ setLocale, [%locale%] ]
-        tags:
-            -  { name: twig.extension }
-        
-
-    sdzblog.validator.akismet:
-        class:     Sdz\BlogBundle\Akismet\AkismetValidator
-        arguments: ["@ornicar_akismet", "@security.context"]
-        scope:     request
-        tags:
-            - { name: validator.constraint_validator, alias: akismet }
-
+    # validators
+    
+    # check if the user post more than one comment each 45 secondes
     sdzblog.validator.antiflood:                                
         class:     Sdz\BlogBundle\Validator\AntiFloodValidator  
         arguments: ["@request", "@doctrine.orm.entity_manager"] 
         scope:     request                                      
         tags:
-            - { name: validator.constraint_validator, alias: sdzblog_antiflood }  # C'est avec l'alias qu'on retrouvera le service
+            - { name: validator.constraint_validator, alias: sdzblog_antiflood }  # alias to find the service
+    
+    # check if the comment content has more than 3 links
+    sdzblog.validator.antispam:                                
+        class:     Sdz\BlogBundle\Validator\AntiSpamValidator  
+        tags:
+            - { name: validator.constraint_validator, alias: sdzblog_antispam }
  

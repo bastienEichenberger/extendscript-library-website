@@ -29,7 +29,6 @@ class BlogController extends Controller {
         // articles per page
         $nbParPage = $this->container->getParameter('sdzblog.nombre_par_page');
         $em = $this->getDoctrine()->getManager();
-        
         // get articles of current page
         $articles = $em->getRepository('SdzBlogBundle:Article')
                 ->getArticles($nbParPage, $page);
@@ -148,8 +147,11 @@ class BlogController extends Controller {
             }
         }
         
-        // this part have to been rewrite. Asumme we can use a query walker
-        // https://github.com/l3pp4rd/DoctrineExtensions/blob/master/doc/translatable.md#using-orm-query-hint
+        /**
+         * @todo update this lines
+         * this part have to been rewrite. Asumme we can use a query walker
+         */
+        
         $article->setTranslatableLocale('en');
         $em->refresh($article);
         $content_en = $article->getContenu();
@@ -251,13 +253,13 @@ class BlogController extends Controller {
             $objectIdentity = ObjectIdentity::fromDomainObject($commentaire);
             $acl = $aclProvider->createAcl($objectIdentity);
             
-            // if user is logged allow him to delete his post
+            // if a user is logged allow him to delete his post
             if (null != $this->getUser() ) {
                 $user = $this->getUser();
                 $securityIdentity = UserSecurityIdentity::fromAccount($user);
                 $acl->insertObjectAce($securityIdentity, MaskBuilder::MASK_OWNER);
             }
-            // the admin have is authorised to delete post
+            // the admin is always authorised to delete all posts
             $roleSecurityIdentity = new RoleSecurityIdentity('ROLE_ADMIN');
 	    $acl->insertObjectAce($roleSecurityIdentity, MaskBuilder::MASK_MASTER);
 	    $aclProvider->updateAcl($acl);
@@ -268,7 +270,7 @@ class BlogController extends Controller {
         // if the comment is not added -> display error, this function control IP with antifloodvalidator
         $this->get('session')->getFlashBag()->add('danger', 'blog.comment.error');
 
-        // not redirect to keep params, call the BlogController
+        // no redirection to keep params, call the BlogController
         return $this->forward('SdzBlogBundle:Blog:voir', array(
                     'article' => $article,
                     'form' => $form,
@@ -306,7 +308,7 @@ class BlogController extends Controller {
         $request = $this->getRequest();
         $securityContext = $this->get('security.context');
         
-        // check if the user have rights
+        // check if the user has rights
         if (false === $securityContext->isGranted('EDIT', $commentaire) 
             && false === $securityContext->isGranted('ROLE_ADMIN')) {
             throw new AccessDeniedException();

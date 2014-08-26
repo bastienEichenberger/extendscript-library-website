@@ -4,6 +4,8 @@ namespace Sdz\UserBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use FOS\UserBundle\Form\Type\RegistrationFormType as BaseType;
+use Sdz\UserBundle\Form\Type\LocationType;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class RegistrationFormType extends BaseType
 {
@@ -11,43 +13,37 @@ class RegistrationFormType extends BaseType
     {
         parent::buildForm($builder, $options);
         
-        
-        $mail = array(
-            true => 'Publier mon adresse e-mail sur ma page de profil.',
-            false => 'Non, je préfère garder mon adresse e-mail anonyme.'
-        );
-        $adresse = array(
-            true => 'Publier mon adresse sur ma page de profil.',
-            false => 'Non, je préfère garder mon adresse anonyme. '
-        );
-        
         $builder->add('displayMail', 'choice', array(
-            'choices' => $mail,
+            'choices' => array(
+                true => 'form.display_email.yes',
+                false => 'form.display_email.no'
+            ),
             'expanded' => true,
             'multiple' => false,
             'data' => false
         ));
-        $builder->add('aboutMe', 'textarea');
         
-        $builder->add('adresse', null, array('label' => 'form.adresse', 'translation_domain' => 'FOSUserBundle'));
+        $builder->add('aboutMe', 'textarea', array( 'label' => 'form.about_me' ));
+        
         
         $builder->add('displayAdresse', 'choice', array(
-            'choices' => $adresse,
+            'choices' => array(
+                true => 'form.display_adresse.yes',
+                false => 'form.display_adresse.no'
+            ),
             'expanded' => true,
             'multiple' => false,
             'data' => true
-        ));;
-        
-        
-        $builder->add('lat', 'hidden', array(
-             'attr' => array('data-geo' => 'lat')
         ));
-        $builder->add('lng', 'hidden', array(
-             'attr' => array('data-geo' => 'lng')
-        ));
-       
-        $builder->add('formateAdresse', 'hidden', array(
-             'attr' => array('data-geo' => 'formatted_address')
+        
+        $builder->add('location', new LocationType(), array( 'label' => false ) );
+        
+    }
+    
+    public function setDefaultOptions(OptionsResolverInterface $resolver) {
+        $resolver->setDefaults(array(
+            'data_class' => 'Sdz\UserBundle\Entity\User',
+            'cascade_validation' => true,
         ));
     }
 

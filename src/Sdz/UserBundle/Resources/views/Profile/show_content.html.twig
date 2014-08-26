@@ -1,9 +1,9 @@
 <div class="row profile">
     <div class="col-lg-12">
         
-        {% if user.image is not null %}
+        {% if user.vignette is not null %}
             <div class="col-xs-4">
-                <img src="{{ asset(user.image.webPath) }}" alt="{{ user.image.alt }}" class="img-responsive" />
+                <img src="{{ asset(user.vignette.webPath) }}" alt="{{ user.vignette.alt }}" class="img-responsive" />
             </div>
             <div class="col-xs-8">
         {% else %}
@@ -15,8 +15,8 @@
                 <h4>{{ user.username }}</h4>
                 {% if user.displayAdresse == true %}
                     <small>
-                        <cite title="{{ user.adresse }}">
-                            {{ user.adresse }}
+                        <cite title="{{ user.location.adresse }}">
+                            {{ user.location.adresse }}
                             <i class="glyphicon glyphicon-map-marker"></i>
                         </cite>
                     </small>

@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Table(name="tut_image")
- * @ORM\Entity(repositoryClass="Sdz\BlogBundle\Entity\ImageRepository")
+ * @ORM\Entity
+ * @ORM\Table(name="jlfa_image")
  * @ORM\HasLifecycleCallbacks
  */
 class Image

@@ -6,11 +6,11 @@ use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
-use Sdz\UserBundle\Validator\IsAdresseValid;
+
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="tut_user")
+ * @ORM\Table(name="jlfa_user")
  * @UniqueEntity(fields="email", message="fos_user.email.already_used")
  * @UniqueEntity(fields="username", message="fos_user.username.already_used")
  */
@@ -34,26 +34,16 @@ class User extends BaseUser {
     protected $aboutMe;
 
     /**
-     * @Assert\NotBlank(message="fos_user.adresse.blank")
-     * @IsAdresseValid(message="fos_user.adresse.not_valid") 
-     * @ORM\Column(type="string", length=255)
-     */
-    protected $adresse;
-
-    /**
      * @ORM\Column(type="boolean")
      */
     protected $displayAdresse;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    protected $formateAdresse;
+    
 
     /**
-     * @ORM\Column(type="point")
+     * @ORM\OneToOne(targetEntity="Sdz\UserBundle\Entity\Location", cascade={"persist", "remove"})
      */
-    protected $location;
+    private $location;
 
 
     /**
@@ -75,6 +65,7 @@ class User extends BaseUser {
     protected $email;
 
     /**
+     * This fields use group to allow blank password during the editing process
      * @Assert\NotBlank(message="fos_user.password.blank", groups={"Registration", "ResetPassword", "ChangePassword"})
      * @var string 
      */
@@ -96,25 +87,23 @@ class User extends BaseUser {
     protected $ownWebSite;
 
     /**
-     * @ORM\OneToOne(targetEntity="Sdz\BlogBundle\Entity\Image", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="Sdz\UserBundle\Entity\Vignette", cascade={"persist", "remove"})
      */
-    protected $image;
+    protected $vignette;
 
 
-    // --------------- END OPTIONALS FIELDS -------------------------
-    
-    
-    
-    // ------------- no persistented data -----------------
-
-    protected $lng;
-    protected $lat;
-
-    // ------------- end no persitented data -----------------
-    
+    // --------------- END OPTIONALS FIELDS -------------------------    
     
     public function __construct() {
         parent::__construct();
+    }
+    
+    public function getId() {
+        return $this->id;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
     }
 
     public function getDisplayMail() {
@@ -133,14 +122,6 @@ class User extends BaseUser {
         $this->aboutMe = $aboutMe;
     }
 
-    public function getAdresse() {
-        return $this->adresse;
-    }
-
-    public function setAdresse($adresse) {
-        $this->adresse = $adresse;
-    }
-
     public function getDisplayAdresse() {
         return $this->displayAdresse;
     }
@@ -149,44 +130,44 @@ class User extends BaseUser {
         $this->displayAdresse = $displayAdresse;
     }
 
-    public function getFormateAdresse() {
-        return $this->formateAdresse;
-    }
-
-    public function setFormateAdresse($formateAdresse) {
-        $this->formateAdresse = $formateAdresse;
-    }
-
     public function getLocation() {
         return $this->location;
     }
 
-    public function setLocation(\CrEOF\Spatial\PHP\Types\Geography\Point $point) {
-        $this->location = $point;
+    public function setLocation($location) {
+        $this->location = $location;
     }
 
-    public function getLng() {
-        return $this->lng;
+    public function getUsername() {
+        return $this->username;
     }
 
-    public function setLng($lng) {
-        $this->lng = $lng;
+    public function setUsername($username) {
+        $this->username = $username;
     }
 
-    public function getLat() {
-        return $this->lat;
+    public function getEmail() {
+        return $this->email;
     }
 
-    public function setLat($lat) {
-        $this->lat = $lat;
+    public function setEmail($email) {
+        $this->email = $email;
+    }
+
+    public function getPlainPassword() {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword($plainPassword) {
+        $this->plainPassword = $plainPassword;
     }
 
     public function getBirthDate() {
         return $this->birthDate;
     }
 
-    public function setBirthDate($birthDay) {
-        $this->birthDate = $birthDay;
+    public function setBirthDate($birthDate) {
+        $this->birthDate = $birthDate;
     }
 
     public function getOwnWebSite() {
@@ -196,16 +177,15 @@ class User extends BaseUser {
     public function setOwnWebSite($ownWebSite) {
         $this->ownWebSite = $ownWebSite;
     }
+
+    public function getVignette() {
+        return $this->vignette;
+    }
+
+    public function setVignette($vignette) {
+        $this->vignette = $vignette;
+    }
     
-    public function getImage() {
-        return $this->image;
-    }
-
-    public function setImage($image) {
-        $this->image = $image;
-    }
-
-
     
 
 }

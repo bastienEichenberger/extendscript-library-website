@@ -5,7 +5,7 @@ use Symfony\Component\Validator\Constraint;
 
 /**
  * @Annotation
- * this class is not implemented yet but we needed it to create js with APYJSformvalidtionbundle
+ * 
  */
 class IsAdresseValid extends Constraint
 {
@@ -13,7 +13,7 @@ class IsAdresseValid extends Constraint
     
     public function validatedBy()
     {
-        return 'sdzblog_isAdresseValid';
+        return get_class($this).'Validator';
     }
 }
 

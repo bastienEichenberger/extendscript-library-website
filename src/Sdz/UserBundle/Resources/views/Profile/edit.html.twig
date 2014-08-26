@@ -11,13 +11,12 @@
     
     {% javascripts output='js/main.js' filter='?yui_js'
       '@SdzUserBundle/Resources/public/js/jquery.geocomplete.min.js'
-      '@BazingaExposeTranslationBundle/Resources/public/js/translator.min.js'
+      '@SdzUserBundle/Resources/public/js/edit-form.js'
+      '@SdzUserBundle/Resources/public/js/edit-form-validation.js'
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
     
-    <script type="text/javascript" src="{{ url('bazinga_exposetranslation_js', { 'domain_name': 'validators' }) }}"></script>
-    {{ JSFV(form) }}
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-    <script type="text/javascript" src="{{ asset('bundles/sdzuser/js/edit-form.js') }}"></script>
+    
 {% endblock %}

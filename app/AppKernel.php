@@ -24,7 +24,6 @@ class AppKernel extends Kernel
             new Sdz\UserBundle\SdzUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
-            new Ornicar\AkismetBundle\OrnicarAkismetBundle(),
             new Jlfa\WebSiteBundle\JlfaWebSiteBundle(),
             new Bazinga\ExposeTranslationBundle\BazingaExposeTranslationBundle(),
             new APY\JsFormValidationBundle\APYJsFormValidationBundle(),

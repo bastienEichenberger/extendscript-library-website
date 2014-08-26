@@ -7,6 +7,7 @@ use Sdz\UserBundle\Lib\Geo\FeatureCollection;
 
 /**
  * GeooJsonBuilder, class to generate a geojson file
+ * This class is ised to generate the js files used to powered the contributors map
  */
 class GeoJsonBuilder {
 
@@ -112,12 +113,14 @@ class GeoJsonBuilder {
      */
     public function updateCountryJSON() {
 
-        $sql = "SELECT gid, name, ST_AsGeoJSON(world.geom) as geom, count(tut_user.location) AS density,
-                (SELECT count(*) FROM tut_user) as total
-                FROM world LEFT JOIN tut_user
-                ON st_contains(world.geom, tut_user.location)
+        $sql = "SELECT gid, name, ST_AsGeoJSON(world.geom) as geom, count(jlfa_user.id) AS density,
+                (SELECT count(*) FROM jlfa_user) as total
+                FROM world, jlfa_user
+                INNER JOIN jlfa_location
+                ON jlfa_user.location_id = jlfa_location.id
+                WHERE st_contains(world.geom, jlfa_location.geom)
                 GROUP BY world.gid
-                HAVING count(tut_user.location) > 0";
+                HAVING count(jlfa_location) > 0;";
 
         $statement = $this->execute_statement($sql);
         $fc = new FeatureCollection();
@@ -148,8 +151,10 @@ class GeoJsonBuilder {
      */
     public function updateMembersJSON() {
 
-        $sql = "SELECT id, username, aboutme, ST_AsGeoJSON(location) AS geom
-                FROM tut_user
+        $sql = "SELECT jlfa_user.id, jlfa_user.username, jlfa_user.aboutme, ST_AsGeoJSON(jlfa_location.geom) AS geom
+                FROM jlfa_user
+                INNER JOIN jlfa_location
+                ON jlfa_user.location_id = jlfa_location.id
                 WHERE displayadresse IS TRUE
                 AND enabled IS TRUE;";
 
