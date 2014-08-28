@@ -1,0 +1,52 @@
+
+
+<!-- add form --> 
+<div class="row">
+    <div class="col-lg-12">
+        <div class="well">            
+            <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" id="contact-form" class="form-inline" novalidate>
+                <fieldset>
+                    <legend>{{ 'layout.register' | trans({}, 'FOSUserBundle')  }}</legend>
+                    
+                    <div class="control-group">
+                        {{ form_label(form.email, label|default(null), {'tooltip': 'form.no_spam'}) }}
+                        <div class="controls">
+                            {{ form_widget(form.email) }}
+                            {{ form_errors(form.email) }}
+                        </div>
+                        {{ form_row(form.displayMail) }}
+                    </div>
+                    
+                    {{ form_row(form.username) }}
+                    {{ form_row(form.plainPassword.first) }}
+                    {{ form_row(form.plainPassword.second) }}
+                    {{ form_row(form.aboutMe) }}
+                    
+                   
+                    <div class="control-group">
+                        {{ form_label(form.location.adresse, label|default(null), {'tooltip': 'form.using_adresse'}) }}
+                        <div class="input-group controls">
+                            {{ form_widget(form.location.adresse) }}
+                            <span class="input-group-btn">
+                                <button id="go" class="btn   btn-default" type="button">Go</button>
+                            </span>
+                        </div>
+                        {{ form_errors(form.location.adresse) }}
+                        {{ form_row(form.displayAdresse) }}
+                    </div>
+
+                    <div class="control-group">
+                        <div id="map-canvas"></div>
+                    </div>
+                    
+                    {{ form_rest(form) }}
+                    <div class="form-actions">
+                        <a type="reset" class="btn btn-default" href="{{ path('fos_user_security_login') }}" >Cancel</a>
+                        <button id="fos_user_registration_form" type="submit" class="btn btn-primary btn-large">{{ 'registration.submit' | trans ( {}, 'FOSUserBundle' ) }}</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>            
+    </div>
+</div>
+
