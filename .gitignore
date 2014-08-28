@@ -5,6 +5,7 @@ cache/
 vendor/
 vendor/*
 web/bundles/
+private-doc/
 
 
 *.log
