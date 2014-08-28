@@ -5,5 +5,5 @@ blog:
     edit: "The article has been successfully modified"
     delete: "The article has been successfully deleted"
   comment:
-    error: "The comment couldn't not been added"
-    delete: "The comment has been successfully deleted"
+    error: "The comment couldn't be added"
+    delete: "The comment has been deleted successfully"

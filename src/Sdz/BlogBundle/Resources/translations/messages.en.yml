@@ -1,0 +1,46 @@
+# translate blog content FR
+page_content:
+  blog:
+    title: "Blog"
+    buttons:
+      add: "Add"
+      cancel: "Cancel"
+      edit: "Modify"
+    sidebar:
+      recent_comments: "Recent comments"
+      no_comment: "No comment"
+      add_post: "Add an article"
+    index:
+      article_by: "Article posted by "
+      unknow: "Unkknown author"
+      no_article: "No articles yet"
+      read_more: "Read more"
+      delete_post:
+        title: "Delete artcile"
+        content: "Do you really want to delete the article? "
+    add_post:
+      legend: "Add an article"
+      titre_fr: "Article title FR"
+      form:
+        title: "Title"
+        titleEn: "Title EN"
+        titleDe: "Title DE"
+        content: "Content"
+        contentEn: "Content EN"
+        contentDe: "Content DE"
+        file: "Tag"
+        author: "Author"
+    add_comment:
+      title: "Comment(s)"
+      title_add: "Add a comment"
+      content_add: "Content"
+      button: "Add"
+      no_comment: "No comment yet"
+      description:
+        date: "The"
+        time: "at"
+        wrote: "said"
+    delete_comment:
+      title: "Delete comment"
+      content: "Do you really want to delete the article? "
+    

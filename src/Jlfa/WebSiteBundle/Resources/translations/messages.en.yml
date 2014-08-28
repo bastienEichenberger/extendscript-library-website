@@ -1,0 +1,135 @@
+# EN translations for the website content
+page_content:
+  
+  # navbar
+  navbar:
+    home: "Home"
+    get_started:
+      title: "Download"
+      start: "ExtendScript-Library"
+      documentation: "HTML documentation"
+    get_involved:
+      title: "Community"
+      participate: "Contribute"
+      forum: "Forum"
+    news: "Blog"
+    about:
+      title: "About us"
+      contributors: "Contributors"
+      licences: "Licenses"
+    user:
+      profile: "My profile"
+    
+    
+    
+  # footer
+  footer:
+    title: "© 2013 ExtendScript-library.org"
+    button: "Back to the top"
+    
+  # home content
+  home:
+    title: "Home"
+    # carrousel content
+    carrousel:
+      welcome:
+        title: "ExtendScript-library"
+        content: "ExtendScript-library is a JavaScript library. This library has been created in order to support people who'd like write automation scripts for Adobe Creative Suite."
+        button: "download"
+      become_member:
+        title: "Become member"
+        content: "Become member and take advantage of the forum to ask your questions and get answers from the ExtendScipt community."
+        button: "registration"
+      open_source:
+        title: "Open source"
+        content: "This project is free and distributed under BSD license. The goal is to share knowledge and invent new features between users around the world!"
+        button: "Licenses"
+    # goals feature
+    our_goals:
+      feature_one:
+        title: "Blog"
+        content: "Discover the new articles on ExtendScript"
+        button: "News»"
+      feature_two:
+        title: "Involve yourself!"
+        content: "Be part of the project and help us to improve the library."
+        button: "Contribuer»"
+      feature_three:
+         title: "Interactive map"
+         content: "Get to know the main actors of the project"
+         button: "Contributors»"
+    # why_use
+    why_use:
+      title: "Why the use of a script?"
+      subtitle: "To automate !"
+      content: "Publication of content with Adobe Creative Suite offers you plenty of possibilities. However, certain tasks are redundant. The ExtendScript is a simple and performant way to automate those repetitive tasks. With a script, it becomes possible develop a low cost and efficient solution that uses the features of the Adobe Creative Suite"
+  
+  #start
+  start:
+    title: "Start"
+    download:
+      title: "Download ExtendScript-Library"
+      content: | 
+        Download ExtendScript-Library from the repository <i>Github</i>. If you'd like to learn how to use scripts, read the following article on the forum <a href="#">how to start with scripts</a>.<br>
+        To know more about the available feature, read the <a href="#">html documentation</a>.
+      button: "Git repository"
+    samples:
+      title: "Examples"
+      
+  #get involved
+  get_involved:
+    title: "How can I participate?"
+    community:
+      title: "Be part of the community"
+      content: "Take advantage of the forum to get answers and help other people to improve features."
+      button: "Forum"
+    write_code:
+      title: "Participate in the development"
+      content: "Are you an interested programmer? Participate in the development of this library and improve your knowledge in ExtendScript."
+      button: "Git repository"
+    debug:
+      title: "Report a bug"
+      content: "In order to improve that product, it's important that everybody participate in his own way. If you notice a mistake, we appriciate if you report it on github in the section <i>Issues</i>"
+      button: "Issues"
+    other:
+      title: "Become a volonteer"
+      content: "If you'd like to participate in the project and you have hidden skills like web development, redaction of documentation or articles you are welcome on this website."
+      button: "contact us"
+      
+  #licences
+  licences:
+    title: "Licences"
+    open_source_project:
+      title: "An open source project"
+      content: "ExtendScript-library is an open source project. That basically means that you are allowed to use this program commercially and distribute copies of it. You can read, modify and redistribute modified versions without the agreement of the author."
+    what_you_can_do:
+      title: "What am I allowed to do?"
+      badge_one:
+        title: "Use and modify"
+        content: "It is allowed to use and modify the source code."
+      badge_two:
+        title: "Redistribute"
+        content: "It is allowed to redistribute the source code as it is or under a binary from. If you redistribute a compiled element you have to add a text file containing the licence."
+    what_you_can_not_do:
+      title: "To what do I have to pay attention?"
+      badge_one:
+        title: "Include the license text"
+        content: "The redistributed versions of the code have to contain the BSD license's text and the name of the author(s)."
+      badge_two:
+        title: "Code's quality"
+        content: "The source code is available for free but the user is responsable for its use."
+        
+  #contibutors
+  contributors:
+    title: "Contributors"
+    map:
+      total_user: "Amount of members"
+      people: " People"
+      over_country: "Select a country"
+      see_profile: "See your profile"
+    partners:
+      title: "Our partners"
+      partner_one:
+        title: "Images3"
+        content: "This enterprise is working in the graphic industry and the photo editing sector."
+      

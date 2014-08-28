@@ -1,10 +1,18 @@
+{% extends 'form_div_layout.html.twig' %}
+
+{# Custom error field #}
 {% block form_errors %}
     {% if errors|length > 0 %}
             <label class="error" generated="true">{{ errors[0].message|trans }}</label>
             
     {% endif %}
 {% endblock form_errors %}
-        
+
+
+
+{# --------------------------------  Custom fields -------------- --------------------    #}
+
+{# Custom choice widget for radio button with right attribute #}
 {% block choice_widget %}
         {% spaceless %}
             {% if expanded %}
@@ -29,17 +37,47 @@
     {{ label | trans }}
 {% endblock radio_label %}
 
+{# Custom input field with form-control attribute #}
+{% block form_widget_simple %}
+    {% set type = type|default('text') %}
+    <input class="{% if type != 'file' %} form-control {% endif %}" type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{%- endblock form_widget_simple %}
 
+{# Custom row with div control-group for each field #}
+{% block form_row %}
+    {% spaceless %}
+    <div class="control-group">
+        {{ form_label(form) }}
+        <div class="controls">
+            {{ form_widget(form) }}
+            {{ form_errors(form) }}
+        </div>
+    </div>
+    {% endspaceless %}
+{% endblock form_row %}
 
-{% block checkbox_label %}
-    {{ label }}
-{% endblock checkbox_label %}
+{# Custom textarea widget #}
+{% block textarea_widget -%}
+    <textarea class="form-control" {{ block('widget_attributes') }}>{{ value }}</textarea>
+{%- endblock textarea_widget %}
 
-{% block checkbox_widget %}
-{% spaceless %}
-    <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
-{% endspaceless %}
-{% endblock checkbox_widget %}
-
-
-
+{% block form_label -%}
+    {% if tooltip is defined %}
+        {% if label is not sameas(false) -%}
+            {% if not compound -%}
+                {% set label_attr = label_attr|merge({'for': id}) %}
+            {%- endif %}
+            {% if required -%}
+                {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+            {%- endif %}
+            {% if label is empty -%}
+                {% set label = name|humanize %}
+            {%- endif -%}
+            <label class="control-label" {% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ label|trans({}, translation_domain) }}
+                <span title ="{{ tooltip|trans }}" class="glyphicon glyphicon-exclamation-sign"></span>
+            </label>
+        {%- endif %}
+    {% else %}
+       {{ parent() }}
+    {% endif %}
+{%- endblock %}

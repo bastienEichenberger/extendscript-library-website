@@ -1,0 +1,135 @@
+# DE translations for the website content
+page_content:
+  
+  # navbar
+  navbar:
+    home: "Home"
+    get_started:
+      title: "Herunterladen"
+      start: "ExtendScript-Library"
+      documentation: "HTML Dokumentaiton"
+    get_involved:
+      title: "Community"
+      participate: "Beitragen"
+      forum: "Forum"
+    news: "Blog"
+    about:
+      title: "Über uns"
+      contributors: "Mitgliede"
+      licences: "Lizensen"
+    user:
+      profile: "Mein profil"
+    
+    
+    
+  # footer
+  footer:
+    title: "© 2013 ExtendScript-library.org"
+    button: "Zurück nach oben"
+    
+  # home content
+  home:
+    title: "Home"
+    # carrousel content
+    carrousel:
+      welcome:
+        title: "ExtendScript-library"
+        content: "ExtendScript-library ist eine JavaScript library. Die library hilf ihnen Automatisierungs skripts zu entwickeln für die Adobe Creative Suite."
+        button: "Herunterladen"
+      become_member:
+        title: "Werde Mitglied"
+        content: "Werde Mitglied und profitier von unserem Forum um Fragen zu stellen und um deine Meinung über ExtendScript-library mitzuteilen!"
+        button: "Anmeldung"
+      open_source:
+        title: "Open source"
+        content: "Dieses ist ein Open Source Projekt das unter BSD Lizenz verteilt wird. Das Ziel des Projektes ist das alle users Kommunizieren können und dadurch neue Funktionen entwiklen können."
+        button: "Lizenzen"
+    # goals feature
+    our_goals:
+      feature_one:
+        title: "Blog"
+        content: "Entdecke die neue Artikel betreffend ExtendScript"
+        button: "News»"
+      feature_two:
+        title: "Mach mit uns mit!"
+        content: "Hilf uns die library zu verbessern und damit das Projekt weiterentwickeln."
+        button: "Beitrag"
+      feature_three:
+         title: "Interaktive Map"
+         content: "Die Hauptteilnehmer kennen zu lernen!"
+         button: "Teilnehmer"
+    # why_use
+    why_use:
+      title: "Warum brauch man skripts?"
+      subtitle: "Um zu Automatisieren"
+      content: "Etwas mit Adobe Creative Suite zu publizieren hat viel Vorteile. Jedoch gibt es einige wiederholende Aufgaben. Das ExtendScript ist ein eifacher Mittel um diese Aufgagen zu automatisieren. Mit einem Skript, wird es möglich eine Lösung zu entwickeln die die Features von der Adobe Creative Suite effizient und kostengünstig verwendet."
+  
+  #start
+  start:
+    title: "Start"
+    download:
+      title: "Download ExtendScript-Library"
+      content: | 
+        Download ExtendScript-Library an folgende Quelle <i>Github</i>. Auf diese Seite <a href="#">Start mit Skripts</a> erfährst du wie man diese Skript implementieren kann.<br>
+        Wenn du mehr erfahren willst über die verschiedene Features sehe <a href="#">HTML Dokumentation</a>.
+      button: "Git repository"
+    samples:
+      title: "Beispiele"
+      
+  #get involved
+  get_involved:
+    title: "Wie kann ich teilnehmen?"
+    community:
+      title: "Teilnahme in der Community"
+      content: "Mit dem Forum kannst du fragen stellen und andere Teilnehmer helfen. Dort kannst du auch neue Features vorschlagen."
+      button: "Forum"
+    write_code:
+      title: "Hilf das Projekt weiterzuentwickeln"
+      content: "Bist du ein interessierter Programmierer? Hilf uns das Projekt zu entwickeln und verbessere damit deine Kenntnisse in ExtendScript."
+      button: "Git repository"
+    debug:
+      title: "Ein Fehler melden"
+      content: "Um das Produkt konstant zu verbessern ist es notwendig das jeder Teilnehmer so gut wie er kann mit hilft. Wenn du ein Fehler entdeckt hast danken wir dir wenn du ihn meldest. <i>Issues</i>"
+      button: "Issues"
+    other:
+      title: "Werde Freiwilig"
+      content: "Wenn du im Projekt teilnehmen willst und versteckte Kompetenzen hast wie z.b. Web development, Dokumentation/Artikel Redaktion bist du hier Willkommen."
+      button: "Kontakt"
+      
+  #licences
+  licences:
+    title: "Lizenzen"
+    open_source_project:
+      title: "Ein Open source Projekt"
+      content: "ExtendScript-library ist ein Open Source Projekt. Du kannst es also freiwillig verwenden und verteilen. Auch für kommerziellen Gründen. Du kannst die Skripts lesen, ändern und die neue Versionen weiter verteilen ohne Vereinbarung vom Autor."
+    what_you_can_do:
+      title: "Was darf ich machen?"
+      badge_one:
+        title: "Brauchen und verändern"
+        content: "Es ist erlaubt freiwillig die Skripts zu brauchen und sie zu verändern"
+      badge_two:
+        title: "Weiterverteillen"
+        content: "Es ist erlaubt der Code unverändert oder in eine Binare Form weiter zu verteilen. Wenn du ein kompiliertes Element verteilen willst muss die Lizenz auf einer Textdatei mit gesendet werden."
+    what_you_can_not_do:
+      title: "Auf was muss ich aufpassen?"
+      badge_one:
+        title: "Die Lizenz einzufügen"
+        content: "Wenn du der Code weiter verteilst muss der Text der BSD Lizenz und der Name vom Autor beinhaltet sein."
+      badge_two:
+        title: "Code Qualität"
+        content: "Der Quelle Code muss freiwillig vorhanden sein aber der User ist verantwortlich für sein Verwendung."
+        
+  #contibutors
+  contributors:
+    title: "Teilnehmer"
+    map:
+      total_user: "Anzahl Mietglied "
+      people: " Personen"
+      over_country: "Wählen sie ein Land"
+      see_profile: "Dein Profil sehen"
+    partners:
+      title: "Unsere Partner"
+      partner_one:
+        title: "Images3"
+        content: "Firma aktiv in der Grafik Industrie und der Bildbearbeitung."
+      

@@ -17,6 +17,9 @@ form:
   thumbnail: "Vignette"
   birthday: "Date de naissance"
   ownwebsite: "Site internet personnel"
+  layout:
+    edit: "Profile"
+    change_password: "Paramètres"
   
   
   

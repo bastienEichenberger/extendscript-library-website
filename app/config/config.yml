@@ -22,6 +22,7 @@ twig:
     strict_variables: %kernel.debug%
     form:
         resources:
+            - 'JlfaTwigBundle:Form:form_div_layout.html.twig'
             - 'JlfaTwigBundle:Form:jlfa-theme.html.twig'
     globals:
       email:

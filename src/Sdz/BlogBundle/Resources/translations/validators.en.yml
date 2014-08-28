@@ -1,0 +1,13 @@
+# errors messages
+blog:
+  # article validation messages
+  article:
+    title: 
+        blank: Enter a title please!
+    content:
+        blank: Enter the content please
+  # comment validation messages
+  comment:
+      content:
+        wait: "You already posted a message %secondes% seconds ago, thank you to wait a while."
+        spam: "Your message is likely to be considered SPAM because its contents more than %links% links!"

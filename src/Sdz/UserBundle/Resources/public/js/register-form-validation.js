@@ -82,7 +82,7 @@ function Email(field, params)
             }
             $.ajax({
                 type: 'POST',
-                url: Routing.generate('jlfa_js_form_validation_checkmx', { '_locale' : Translator.locale } ),
+                url: Routing.generate('jlfa_js_form_validation_checkmx', { '_locale' : 'fr' } ),
                 data: {address: value.replace(new RegExp("^.*@"), "")},
                 success: function(data, textStatus) {
                     if (data.status && data.status == 'ok') {
@@ -107,14 +107,22 @@ function Email(field, params)
  */
 function UniqueEntity(field, params)
 {
-    var value = field && field.nodeName ? $(field).val() : field;
-    var cache, url, cacheindex = 'm' + value + '';
+    var cache;
+    var value = field && field.nodeName ? $(field).val() : field; 
+    var cacheindex = 'm' + value + '';
+    var locale = Translator.locale;
+    
+    
+    var url = Routing.generate(
+                'jlfa_js_form_validation_unique_entity', 
+                { '_locale' : locale }
+            );
     
     if (params && params.fields && field.nodeName) {
         //TODO This part is compartible only with jquery
         cache = $(field).data('_uniqueEntityCache');
         if (!cache) cache = {};
-        if (cache[cacheindex] != undefined) {
+        if (cache[cacheindex] !== undefined) {
             if (cache[cacheindex] === false) {
                 return getComputeMessage(params.message);
             } else return true;
@@ -122,7 +130,7 @@ function UniqueEntity(field, params)
         
         $.ajax({
             type: 'POST',
-            url:  Routing.generate('jlfa_js_form_validation_unique_entity', { '_locale' : Translator.locale } ),
+            url:  url,
             data: {
                 'entity': params.entity,
                 'target': params.fields,

@@ -1,0 +1,46 @@
+# translate blog content FR
+page_content:
+  blog:
+    title: "Blog"
+    buttons:
+      add: "Hinzufügen"
+      cancel: "Abbrechen"
+      edit: "Ändern"
+    sidebar:
+      recent_comments: "Letzte Kommentare"
+      no_comment: "Keine Kommentare"
+      add_post: "Ein Artikel hinzfügen"
+    index:
+      article_by: "Artikel wurde hinzugefügt von "
+      unknow: "Unbekannter Autor "
+      no_article: "Es sind noch keine Artikel vorhanden!"
+      read_more: "weiter lesen"
+      delete_post:
+        title: "Artikel löschen"
+        content: "Wollen Sie das Artikel wirklich löschen? "
+    add_post:
+      legend: "Ein Artikel hinzufügen"
+      titre_fr: "Artikel Titel FR"
+      form:
+        title: "Titel"
+        titleEn: "Titel EN"
+        titleDe: "Titel DE"
+        content: "Inhalt"
+        contentEn: "Inhalt EN"
+        contentDe: "Inhalt DE"
+        file: "Tag"
+        author: "Autor"
+    add_comment:
+      title: "Kommentare"
+      title_add: "Ein Kommentar hinzufügen"
+      content_add: "Inhalt"
+      button: "Hinzufügen"
+      no_comment: "Es sind noch keine Artikel vorhanden!"
+      description:
+        date: "Der"
+        time: "am"
+        wrote: "a gesagt"
+    delete_comment:
+      title: "Kommentar löschen"
+      content: "Wollen Sie der Kommentar wirklich löschen? "
+    

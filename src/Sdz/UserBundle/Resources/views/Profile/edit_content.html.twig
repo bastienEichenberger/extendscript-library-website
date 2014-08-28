@@ -13,90 +13,46 @@
             <div id="profile" class="well tab-pane active">
                 <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="form-inline" novalidate>
                     <fieldset>
-                        <legend>Edit Profile</legend>
+                        <legend>{{ 'form.layout.edit' | trans  }}</legend>
                         <div class="control-group">
-                            <label class="control-label" for="{{ form.email.vars.id }}">{{ form.email.vars.label| trans({}, 'FOSUserBundle') }}<span title ="{{ 'registration.email_no_spam'|trans }}" class="glyphicon glyphicon-exclamation-sign"></span></label>
+                            {{ form_label(form.email, label|default(null), {'tooltip': 'form.no_spam'}) }}
                             <div class="controls">
-                                {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_widget(form.email) }}
                                 {{ form_errors(form.email) }}
                             </div>
-
-                            <div class="radio-group">
-                                {{ form_widget(form.displayMail) }}
-                                {{ form_errors(form.displayMail) }}
-                            </div>
+                            {{ form_row(form.displayMail) }}
                         </div>
+                    
+                        {{ form_row(form.username) }}
+                        {{ form_row(form.aboutMe) }}
+                        {{ form_row(form.birthDate) }}
+                        {{ form_row(form.ownWebSite) }}
+                        {{ form_row(form.vignette.file) }}
+                        
+                    
                         <div class="control-group">
-                            {{ form_label(form.username, label|default(null), {'label_attr': {'class': 'control-label'}}) }}
-                            <div class="controls">
-                                {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
-                                {{ form_errors(form.username) }}
-                            </div>
-                        </div>
-
-
-                        <div class="control-group">
-                            {{ form_label(form.aboutMe, label|default(null), {'label_attr': {'class': 'control-label'}}) }}
-                            <div class="controls">
-                                {{ form_widget(form.aboutMe, {'attr': {'class': 'form-control'}}) }}
-                                {{ form_errors(form.aboutMe) }}
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            {{ form_label(form.birthDate, label|default(null), {'label_attr': {'class': 'control-label'} } ) }}
-                            <div class="controls">
-                                {{ form_widget(form.birthDate) }}
-                                {{ form_errors(form.birthDate) }}
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            {{ form_label(form.ownWebSite, label|default(null), {'label_attr': {'class': 'control-label'} } ) }}
-                            <div class="controls">
-                                {{ form_widget(form.ownWebSite, {'attr': {'class': 'form-control'} } ) }}
-                                {{ form_errors(form.ownWebSite) }}
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            {{ form_label(form.vignette.file, label|default(null), {'label_attr': {'class': 'control-label'} } ) }}
-                            <div class="controls">
-                                {{ form_widget(form.vignette.file) }}
-                                {{ form_errors(form.vignette.file) }}
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="{{ form.location.adresse.vars.id }}">{{ form.location.adresse.vars.label|trans }}<span title ="{{ 'registration.adresse_using'|trans }}" class="glyphicon glyphicon-exclamation-sign"></span></label>
+                            {{ form_label(form.location.adresse, label|default(null), {'tooltip': 'form.using_adresse'}) }}
                             <div class="input-group controls">
-                                {{ form_widget(form.location.adresse, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_widget(form.location.adresse) }}
                                 <span class="input-group-btn">
-                                    <button id="go" class="btn btn-default" type="button">Go</button>
+                                    <button id="go" class="btn   btn-default" type="button">Go</button>
                                 </span>
-                                {{ form_errors(form.location.adresse) }}
                             </div>
-
-                            <div class="radio-group">
-                                {{ form_widget(form.displayAdresse) }}
-                                {{ form_errors(form.displayAdresse) }}
-                            </div>
+                            {{ form_errors(form.location.adresse) }}
+                            {{ form_row(form.displayAdresse) }}
                         </div>
 
                         <div class="control-group">
                             <div id="map-canvas"></div>
                         </div>
                         
-                        <div class="control-group">
-                            {{ form_label(form.current_password, label|default(null), {'label_attr': {'class': 'control-label'} } ) }}
-                            <div class="controls">
-                                {{ form_widget(form.current_password) }}
-                                {{ form_errors(form.current_password) }}
-                            </div>
-                        </div>
-                        
+                        {{ form_row(form.current_password) }}
                         {{ form_rest(form) }}
                         
                         <div class="form-actions">
-                            <a class="btn btn-default" href="{{ path('sdzblog_accueil') }}">Cancel</a>
-                            <button id="sdz_blogbundle_articleedittype" type="submit" class="btn btn-primary btn-large">
-                                {{ 'profile.edit.submit'|trans }}
+                            <a class="btn btn-default" href="{{ path('fos_user_profile_show') }}">Cancel</a>
+                            <button type="submit" class="btn btn-primary btn-large">
+                                {{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}
                             </button>
                         </div>
                     </fieldset>

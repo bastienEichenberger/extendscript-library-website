@@ -26,7 +26,8 @@ class ProfileEditFormType extends BaseType {
             ),
             'expanded' => true,
             'multiple' => false,
-            'data' => false
+            'data' => false,
+            'label' => false
         ));
         
         $builder->add('aboutMe', 'textarea', array( 'label' => 'form.about_me'));
@@ -39,7 +40,8 @@ class ProfileEditFormType extends BaseType {
             ),
             'expanded' => true,
             'multiple' => false,
-            'data' => true
+            'data' => true,
+            'label' => false
         ));
         
         $builder->add('location', new LocationType(), array( 'label' => false ) );

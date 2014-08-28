@@ -1,0 +1,13 @@
+# errors messages
+blog:
+  # article validation messages
+  article:
+    title: 
+        blank: Geben Sie bitte ein Titel ein !
+    content:
+        blank: Geben Sie bitte ein Titel ein !
+  # comment validation messages
+  comment:
+      content:
+        wait: "Sie haben die letzte Nachricht seit weniger als %secondes% Sekunden gesendet. Warten Sie bitte ein wenig."
+        spam: "Ihre Nachricht ist als Spam gekennzeichnet, weil sie mehr als %links% Links enthält!"

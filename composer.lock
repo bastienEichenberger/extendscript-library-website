@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "3c59f568005c4f467ccc4ac9debb33fe",
+    "hash": "8a8fcb2274d95fa7b88851b402b9aa87",
     "packages": [
         {
             "name": "apy/jsfv-bundle",
@@ -1038,30 +1038,30 @@
         },
         {
             "name": "friendsofsymfony/jsrouting-bundle",
-            "version": "dev-master",
+            "version": "1.5.3",
             "target-dir": "FOS/JsRoutingBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSJsRoutingBundle.git",
-                "reference": "9b956552a55e180a83824a59cc3aff6dde32b656"
+                "reference": "dade3bb0b21007e5c0fb40f203ed197841eb913c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSJsRoutingBundle/zipball/9b956552a55e180a83824a59cc3aff6dde32b656",
-                "reference": "9b956552a55e180a83824a59cc3aff6dde32b656",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSJsRoutingBundle/zipball/dade3bb0b21007e5c0fb40f203ed197841eb913c",
+                "reference": "dade3bb0b21007e5c0fb40f203ed197841eb913c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
-                "symfony/console": "~2.3",
-                "symfony/framework-bundle": "~2.3",
+                "symfony/console": "~2.0",
+                "symfony/framework-bundle": "~2.0",
                 "symfony/serializer": "~2.0",
                 "willdurand/jsonp-callback-validator": "~1.0"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -1091,7 +1091,7 @@
                 "javascript",
                 "routing"
             ],
-            "time": "2014-05-12 16:12:44"
+            "time": "2014-01-23 21:25:39"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -1921,54 +1921,6 @@
             "time": "2013-07-19 00:03:27"
         },
         {
-            "name": "kriswallsmith/buzz",
-            "version": "v0.12",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kriswallsmith/Buzz.git",
-                "reference": "9d56d36a58c47e2f612f4b856ff9baa0e3375ff6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/Buzz/zipball/9d56d36a58c47e2f612f4b856ff9baa0e3375ff6",
-                "reference": "9d56d36a58c47e2f612f4b856ff9baa0e3375ff6",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "3.7.*"
-            },
-            "suggest": {
-                "ext-curl": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Buzz": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kris Wallsmith",
-                    "email": "kris.wallsmith@gmail.com",
-                    "homepage": "http://kriswallsmith.net/"
-                }
-            ],
-            "description": "Lightweight HTTP client",
-            "homepage": "https://github.com/kriswallsmith/Buzz",
-            "keywords": [
-                "curl",
-                "http client"
-            ],
-            "time": "2014-07-29 23:52:21"
-        },
-        {
             "name": "leafo/lessphp",
             "version": "v0.4.0",
             "source": {
@@ -2076,52 +2028,6 @@
                 "psr-3"
             ],
             "time": "2014-06-04 16:30:04"
-        },
-        {
-            "name": "ornicar/akismet-bundle",
-            "version": "dev-master",
-            "target-dir": "Ornicar/AkismetBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ornicar/OrnicarAkismetBundle.git",
-                "reference": "008cb4503ef79ef82a780fce6763d2f86e1860ec"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ornicar/OrnicarAkismetBundle/zipball/008cb4503ef79ef82a780fce6763d2f86e1860ec",
-                "reference": "008cb4503ef79ef82a780fce6763d2f86e1860ec",
-                "shasum": ""
-            },
-            "require": {
-                "kriswallsmith/buzz": "*",
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Ornicar\\AkismetBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Thibault Duplessis",
-                    "email": "thibault.duplessis@gmail.com",
-                    "homepage": "http://ornicar.github.com"
-                }
-            ],
-            "description": "Akismet Integration for symfony",
-            "homepage": "https://github.com/ornicar/OrnicarAkismetBundle",
-            "keywords": [
-                "Akismet",
-                "package",
-                "spam",
-                "symfony"
-            ],
-            "time": "2013-01-29 16:41:33"
         },
         {
             "name": "phpoption/phpoption",
@@ -2928,57 +2834,6 @@
             "time": "2014-07-05 12:19:05"
         },
         {
-            "name": "twitter/bootstrap",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "727a91de1c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/0140198699a41d299cd2d100e01c12c967b765e4",
-                "reference": "727a91de1c",
-                "shasum": ""
-            },
-            "replace": {
-                "twitter/bootstrap": "self.version"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.2.x-dev"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jacob Thornton",
-                    "email": "jacobthornton@gmail.com"
-                },
-                {
-                    "name": "Mark Otto",
-                    "email": "markdotto@gmail.com"
-                }
-            ],
-            "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-            "homepage": "http://getbootstrap.com",
-            "keywords": [
-                "JS",
-                "css",
-                "framework",
-                "front-end",
-                "less",
-                "mobile-first",
-                "responsive",
-                "web"
-            ],
-            "time": "2013-10-14 00:25:27"
-        },
-        {
             "name": "willdurand/js-translation-bundle",
             "version": "1.2.2",
             "target-dir": "Bazinga/ExposeTranslationBundle",
@@ -3141,13 +2996,11 @@
         "stof/doctrine-extensions-bundle": 20,
         "friendsofsymfony/user-bundle": 20,
         "knplabs/knp-markdown-bundle": 20,
-        "ornicar/akismet-bundle": 20,
         "apy/jsfv-bundle": 20,
         "gedmo/doctrine-extensions": 20,
         "codeconsortium/ccdn-forum-bundle": 20,
         "creof/doctrine2-spatial": 20,
-        "friendsofsymfony/jsrouting-bundle": 20,
-        "twitter/bootstrap": 20
+        "friendsofsymfony/jsrouting-bundle": 0
     },
     "platform": {
         "php": ">=5.3.3"
