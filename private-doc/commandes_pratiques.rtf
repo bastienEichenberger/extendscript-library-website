@@ -1,15 +1,16 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf390
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
 {\fonttbl\f0\fmodern\fcharset0 Courier-Bold;\f1\fmodern\fcharset0 Courier;\f2\fswiss\fcharset0 Helvetica;
 \f3\froman\fcharset0 Times-Roman;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue255;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww18500\viewh13260\viewkind0
 \deftab720
 \pard\pardeftab720
 
 \f0\b\fs32 \cf0 Composer:
 \f1\b0 \
+\pard\pardeftab720
 
-\fs24 php -dmemory_limit=1G composer.phar update\
+\fs24 \cf0 php -dmemory_limit=1G composer.phar update\
 php -dmemory_limit=1G composer.phar update --prefer-source\
 \
 \pard\pardeftab720
@@ -42,7 +43,7 @@ supprimer les fichiers d\'e9j\'e0 commit\'e9 dans le git ignor\
 
 \fs24 \
 Cr\'e9er base de donn\'e9es postGIS\
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardeftab720\pardirnatural
 
 \b0 \cf0 sudo -s -u postgres // connect as postgres
 \b \
@@ -67,14 +68,22 @@ psql mydatabase // connection puis \\d // liste toutes les tables\
 \\q //quitter la base de donn\'e9es\
 \
 
+\b Delete les tables\
+
+\b0 psql mydatabase, puis dropdb databasename\
+\
+
 \b Connaitre version postGIS\
 \pard\pardeftab720
 
 \f3\b0 \cf0 SELECT postgis_full_version();
 \f2 \
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardeftab720\pardirnatural
 \cf0 \
-\
+
+\b Changer d\'92utilisateur\
+
+\b0 su root\
 \
 \
 \

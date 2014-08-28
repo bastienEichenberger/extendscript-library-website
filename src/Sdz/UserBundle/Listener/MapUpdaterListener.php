@@ -30,8 +30,8 @@ class MapUpdaterListener implements EventSubscriberInterface {
     public static function getSubscribedEvents()
     {
       return array( 
-          FOSUserEvents::PROFILE_EDIT_COMPLETED => 'updateMap',
-          FOSUserEvents::REGISTRATION_CONFIRMED => 'updateMap'
+          FOSUserEvents::PROFILE_EDIT_SUCCESS => 'updateMap',
+          FOSUserEvents::REGISTRATION_CONFIRM => 'updateMap'
       );
     }
     
