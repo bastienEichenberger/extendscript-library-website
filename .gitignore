@@ -1,10 +1,11 @@
 app/config/parameters.yml
-app/config/parameters.ini
-logs/
-cache/
+
+
+app/logs/
+app/cache/
 vendor/
-vendor/*
 web/bundles/
+web/uploads/img/*
 private-doc/
 
 
