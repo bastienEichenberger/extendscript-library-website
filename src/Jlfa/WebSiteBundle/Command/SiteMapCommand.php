@@ -16,6 +16,7 @@ use \DOMDocument;
 class SiteMapCommand extends ContainerAwareCommand {
 
     const SAVE_LOCATION = '/../../../../web/sitemap.xml';
+    const URL = "http://www.extendscript-library.org";
 
     private $router;
     private $links;
@@ -154,9 +155,9 @@ class SiteMapCommand extends ContainerAwareCommand {
     
     private function addURL($url, $lastmod, $priority) {
         
-        $url_fr = $this->router->generate($url, array('_locale' => 'fr'), true);
-        $url_de = $this->router->generate($url, array('_locale' => 'de'), true);
-        $url_en = $this->router->generate($url, array('_locale' => 'en'), true);
+        $url_fr = self::URL . $this->router->generate($url, array('_locale' => 'fr') );
+        $url_de = self::URL . $this->router->generate($url, array('_locale' => 'de') );
+        $url_en = self::URL . $this->router->generate($url, array('_locale' => 'en') );
         array_push($this->links, 
                 array(
                     'url_fr' => $url_fr, 
