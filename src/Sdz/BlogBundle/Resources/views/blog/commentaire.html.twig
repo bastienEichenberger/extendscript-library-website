@@ -1,7 +1,4 @@
-{# On utilise une macro Twig pour afficher :
-   * Soit le nom de l'auteur anonyme de l'auteur
-   * Soit son nom et un lien vers son profil s'il était identifié #}
-{% import "SdzUserBundle::userHelpers.html.twig" as userHelpers %}
+{% import "TwigBundle::Macro/userHelpers.html.twig" as userHelpers %}
 
 <h3>{{ 'page_content.blog.add_comment.title' | trans }}</h3>
 

@@ -70,7 +70,7 @@ page_content:
     download:
       title: "Download ExtendScript-Library"
       content: | 
-        Download ExtendScript-Library an folgende Quelle <i>Github</i>. Auf diese Seite <a href="#">Start mit Skripts</a> erfährst du wie man diese Skript implementieren kann.<br>
+        Download ExtendScript-Library an folgende Quelle <i>Github</i>. Auf diese Seite <a href="http://www.extendscript-library.org/en/forum/extendscript-library/topic/1">Start mit Skripts</a> erfährst du wie man diese Skript implementieren kann.<br>
         Wenn du mehr erfahren willst über die verschiedene Features sehe <a href="#">HTML Dokumentation</a>.
       button: "Git repository"
     samples:

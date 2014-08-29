@@ -71,7 +71,7 @@ page_content:
       title: "Download ExtendScript-Library"
       content: | 
         Download ExtendScript-Library from the repository <i>Github</i>. If you'd like to learn how to use scripts, read the following article on the forum <a href="#">how to start with scripts</a>.<br>
-        To know more about the available feature, read the <a href="#">html documentation</a>.
+        To know more about the available feature, read the <a href="http://www.extendscript-library.org/en/forum/extendscript-library/topic/1">html documentation</a>.
       button: "Git repository"
     samples:
       title: "Examples"
