@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xhtml:type="xhtml:namespace">
+  <url>
+    <loc>http://localhost/fr/</loc>
+    <lastmod>daily</lastmod>
+    <changefreq>2014-08-29T12:44:55+02:00</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="http://localhost/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="http://localhost/de/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost/en/"/>
+  </url>
+  <url>
+    <loc>http://localhost/fr/start</loc>
+    <lastmod>daily</lastmod>
+    <changefreq>2014-08-29T12:44:55+02:00</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="http://localhost/fr/start"/>
+    <xhtml:link rel="alternate" hreflang="de" href="http://localhost/de/start"/>
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost/en/start"/>
+  </url>
+  <url>
+    <loc>http://localhost/fr/participate</loc>
+    <lastmod>daily</lastmod>
+    <changefreq>2014-08-29T12:44:55+02:00</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="http://localhost/fr/participate"/>
+    <xhtml:link rel="alternate" hreflang="de" href="http://localhost/de/participate"/>
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost/en/participate"/>
+  </url>
+  <url>
+    <loc>http://localhost/fr/contributors</loc>
+    <lastmod>daily</lastmod>
+    <changefreq>2014-08-29T12:44:55+02:00</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="http://localhost/fr/contributors"/>
+    <xhtml:link rel="alternate" hreflang="de" href="http://localhost/de/contributors"/>
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost/en/contributors"/>
+  </url>
+  <url>
+    <loc>http://localhost/fr/licences</loc>
+    <lastmod>daily</lastmod>
+    <changefreq>2014-08-29T12:44:55+02:00</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="http://localhost/fr/licences"/>
+    <xhtml:link rel="alternate" hreflang="de" href="http://localhost/de/licences"/>
+    <xhtml:link rel="alternate" hreflang="en" href="http://localhost/en/licences"/>
+  </url>
+</urlset>
