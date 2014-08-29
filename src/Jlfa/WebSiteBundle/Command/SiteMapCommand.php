@@ -8,11 +8,10 @@ namespace Jlfa\WebSiteBundle\Command;
  */
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\DependencyInjection\SimpleXMLElement;
-use Symfony\Component\Console\Input\InputArgument;
+
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use \DOMDocument;
 
 class SiteMapCommand extends ContainerAwareCommand {
 
@@ -32,7 +31,7 @@ class SiteMapCommand extends ContainerAwareCommand {
 
     protected function init() {
         $this->router = $this->getContainer()->get('router');
-        //$this->locales = $this->container->getParameter('locales');
+        $this->xmlOutputFile = self::getDir();
         $this->links = array();
     }
 
@@ -42,7 +41,7 @@ class SiteMapCommand extends ContainerAwareCommand {
         $output->writeln('Generating list of URLs...');
         $this->generateLinks();
         $output->writeln('Generating XML file...');
-        $this->writeXML($this->links);
+        $this->updateXmlFile($this->links);
         $output->writeln('Complete!');
        
     }
@@ -92,36 +91,37 @@ class SiteMapCommand extends ContainerAwareCommand {
     }
 
 
-    protected function writeXML($list) {
-        $this->initAppXmlObj();
-        $this->updateXmlFile($list);
-    }
-
     /**
      * Appends a row to a specific xml object
-     *
-     * @param SimpleXMLElement $xmlElement xml object for appending data
-     * @param array $array row to add to the xml element
-     * @return SimpleXMLElement
      */
-    protected function addRow(SimpleXMLElement $xmlElement, array $array) {
-        $record = $xmlElement->addChild('url');
+    protected function addRow(\DOMElement $root, array $array) {
+        // $root = $this->sitemapXml->appendChild($this->sitemapXml->createElement('urlset')); 
+        $urlNode = $root->appendChild($this->sitemapXml->createElement('url'));
         
-        $record->addChild('loc', htmlspecialchars($array['url_fr']));
-        $record->addChild('lastmod', htmlspecialchars($array['lastmod']));
-        $record->addChild('changefreq', htmlspecialchars($array['changefreq']));
-        $record->addChild('priority', htmlspecialchars($array['priority']));
+        $urlNode->appendChild($this->sitemapXml->createElement('loc', htmlspecialchars($array['url_fr']) ) );
+        $urlNode->appendChild($this->sitemapXml->createElement('lastmod', htmlspecialchars($array['lastmod']) ) );
+        $urlNode->appendChild($this->sitemapXml->createElement('changefreq', htmlspecialchars($array['changefreq']) ) );
+        $urlNode->appendChild($this->sitemapXml->createElement('priority', htmlspecialchars($array['priority']) ) );
         
         // set multilingue
-        $link_fr = new SimpleXMLElement('<xhtml:link rel="alternate" hreflang="fr" href="' . htmlspecialchars($array['url_fr']) . '" />');
-        $link_de = new SimpleXMLElement('<xhtml:link rel="alternate" hreflang="de" href="' . htmlspecialchars($array['url_de']) . '" />');
-        $link_en = new SimpleXMLElement('<xhtml:link rel="alternate" hreflang="en" href="' . htmlspecialchars($array['url_en']) . '" />');
+        $link_fr_node = $this->sitemapXml->createElementNS('http://www.w3.org/1999/xhtml', 'xhtml:link', '');
+        $link_fr_node->setAttribute("rel", "alternate");
+        $link_fr_node->setAttribute("hreflang", "fr");
+        $link_fr_node->setAttribute("href", htmlspecialchars($array['url_fr']));
+        $urlNode->appendChild($link_fr_node);
         
-        $this->sxml_append($record, $link_fr);
-        $this->sxml_append($record, $link_de);
-        $this->sxml_append($record, $link_en);
+        $link_de_node = $this->sitemapXml->createElementNS('http://www.w3.org/1999/xhtml', 'xhtml:link', '');
+        $link_de_node->setAttribute("rel", "alternate");
+        $link_de_node->setAttribute("hreflang", "de");
+        $link_de_node->setAttribute("href", htmlspecialchars($array['url_de']));
+        $urlNode->appendChild($link_de_node);
         
-        return $xmlElement;
+        $link_en_node = $this->sitemapXml->createElementNS('http://www.w3.org/1999/xhtml', 'xhtml:link', '');
+        $link_en_node->setAttribute("rel", "alternate");
+        $link_en_node->setAttribute("hreflang", "en");
+        $link_en_node->setAttribute("href", htmlspecialchars($array['url_en']));
+        $urlNode->appendChild($link_en_node);
+        
     }
 
     /**
@@ -130,24 +130,25 @@ class SiteMapCommand extends ContainerAwareCommand {
      * @param $rows array an array of sitemap links
      */
     protected function updateXmlFile(array $rows) {
+        
+        $this->sitemapXml = new DOMDocument('1.0','UTF-8');
+        $this->sitemapXml->formatOutput = true; // display with formating
+        
+        // root urlset
+        $root = $this->sitemapXml->appendChild($this->sitemapXml->createElement('urlset')); 
+        // xmlns
+        $root->appendChild($this->sitemapXml->createAttribute('xmlns'))->appendChild($this->sitemapXml->createTextNode("http://www.sitemaps.org/schemas/sitemap/0.9"));
+        // xmlns:xhtml
+        $root->appendChild($this->sitemapXml->createAttribute('xmlns:xhtml'))->appendChild($this->sitemapXml->createTextNode("http://www.w3.org/1999/xhtml"));
+        
+        // record each links
         foreach ($rows as $rowArray) {
-            $this->addRow($this->sitemapXml, $rowArray);
+            $this->addRow($root, $rowArray);
         }
-        $dom = dom_import_simplexml($this->sitemapXml)->ownerDocument;
-        $dom->formatOutput = true;
-        file_put_contents($this->xmlOutputFile, $dom->saveXML());
+        
+        file_put_contents($this->xmlOutputFile, $this->sitemapXml->saveXML());
     }
 
-    /**
-     * Initiates the appXml object
-     * @param InputInterface $input
-     */
-    private function initAppXmlObj() {
-        $this->sitemapXml = new SimpleXMLElement('<urlset/>');
-        $this->sitemapXml->addAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
-        $this->sitemapXml->addAttribute("xhtml:type", "xhtml:namespace", "http://www.w3.org/1999/xhtml"); // support multilingue
-        $this->xmlOutputFile = self::getDir();
-    }
     
     
     
@@ -171,12 +172,8 @@ class SiteMapCommand extends ContainerAwareCommand {
     private static function getDir() {
         return __DIR__. self::SAVE_LOCATION;
     }
-    
-    private function sxml_append(SimpleXMLElement $to, SimpleXMLElement $from) {
-        $toDom = dom_import_simplexml($to);
-        $fromDom = dom_import_simplexml($from);
-        $toDom->appendChild($toDom->ownerDocument->importNode($fromDom, true));
-    }
+   
+   
     
     
 }
