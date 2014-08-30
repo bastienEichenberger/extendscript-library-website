@@ -4,8 +4,9 @@ app/config/parameters.yml
 app/logs/
 app/cache/
 vendor/
+web/sitemap.xml
 web/bundles/
-web/uploads/img/*
+web/uploads/
 private-doc/
 
 
