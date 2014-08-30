@@ -105,7 +105,7 @@ class Vignette
   public function getUploadDir()
   {
     // On retourne le chemin relatif vers l'image pour un navigateur
-    return 'uploads/img';
+    return 'uploads/img/thumbnails';
   }
 
   protected function getUploadRootDir()

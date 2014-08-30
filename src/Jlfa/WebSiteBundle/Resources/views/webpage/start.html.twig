@@ -22,7 +22,7 @@
                 
                 <h2>{{ 'page_content.start.download.title' | trans }}</h2>
                 
-                <p>{{ 'page_content.start.download.content' | trans | markdown }}</p>
+                <p>{{ 'page_content.start.download.content' | trans | raw }}</p>
                 
                 <p>
                     <a class="btn btn-large btn-primary" href="{{ url.git.home }}" target="_blank">
