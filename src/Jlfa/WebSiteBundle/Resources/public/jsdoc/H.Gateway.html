@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>ExtendScript-library.org Index</title>
+	<title>ExtendScript-library.org Namespace: Gateway</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -150,31 +150,346 @@
 					
 
 
+	<h1 class="page-title">Namespace: Gateway</h1>
+<section>
+
+<header>
+    <h2>
+        <span class="ancestors"><a href="H.html">H</a>.</span>
+    
+    Gateway
+    </h2>
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+
+    
+        
+            <div class="description">Module to dialog between the apps of the Creative Suite. <br>This module allow you to execute a function in Photoshop from InDesign</div>
+        
+
+        
+<dl class="details">
 	
-	<span class="page-title">Index</span>
-	
-	
-
-
-
-
-
-
-
-
-
-
-
 
 	
+
+	
+
+	
+
+	
+
+	
+	<dt class="tag-author">Author:</dt>
+	<dd class="tag-author">
+		<ul>
+			<li>Bastien Eichenberger</li>
+			</ul>
+	</dd>
+	
+
+	
+
+	
+
 	
 
 
 
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="call_app"><span class="type-signature">&lt;static> </span>call_app<span class="signature">(app, function_to_execute, <span class="optional">obj</span>)</span><span class="type-signature"> &rarr; {*}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Function to execute a script in an other software of the Creative Suite
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>app</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">the name of the application [photoshop, illustrator, indesign, … ]</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>function_to_execute</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">the function to process</td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">a JSON object with the parameters of the function</td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
 
 
 
+	
 
+	
+
+	
+
+	
+	<dt class="tag-todo">To Do:</dt>
+	<dd class="tag-todo">
+		<ul>
+			<li>!important replace obj by parameter array</li>
+			</ul>
+	</dd>
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    <h5>Throws:</h5>
+    
+            
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        if an error occurred in the function passed as parameter
+        </div>
+    </dt>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">Error</span>
+
+
+            </dd>
+        </dl>
+    </dt>
+</dl>
+
+
+        
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    the value returned by the function passed as parameter or null
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">*</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">With parametersLib.Gateway.call_app(     &#x27;photoshop&#x27;,     function(obj){ alert(obj.my_parameter) },     {my_parameter : value});Without parametersLib.Gateway.call_app(     &#x27;photoshop&#x27;,     function(){ return 1 + 2 });</pre>
+
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
