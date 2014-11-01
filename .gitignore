@@ -11,6 +11,8 @@ private-doc/
 
 nbproject/
 
+src/Jlfa/WebSiteBundle/Resources/public/data/*.js
+
 *.log
 *.db
 *.DS_Store
