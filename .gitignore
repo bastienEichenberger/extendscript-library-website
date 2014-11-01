@@ -9,6 +9,7 @@ web/bundles/
 web/uploads/
 private-doc/
 
+nbproject/
 
 *.log
 *.db
