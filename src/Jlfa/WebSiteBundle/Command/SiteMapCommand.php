@@ -135,8 +135,10 @@ class SiteMapCommand extends ContainerAwareCommand {
         $this->sitemapXml = new DOMDocument('1.0','UTF-8');
         $this->sitemapXml->formatOutput = true; // display with formating
         
+        
         // root urlset
         $root = $this->sitemapXml->appendChild($this->sitemapXml->createElement('urlset')); 
+        
         // xmlns
         $root->appendChild($this->sitemapXml->createAttribute('xmlns'))->appendChild($this->sitemapXml->createTextNode("http://www.sitemaps.org/schemas/sitemap/0.9"));
         // xmlns:xhtml
@@ -153,7 +155,7 @@ class SiteMapCommand extends ContainerAwareCommand {
     
     
     
-    private function addURL($url, $lastmod, $priority) {
+    private function addURL($url, $changefreq, $priority) {
         
         $url_fr = self::URL . $this->router->generate($url, array('_locale' => 'fr') );
         $url_de = self::URL . $this->router->generate($url, array('_locale' => 'de') );
@@ -161,8 +163,8 @@ class SiteMapCommand extends ContainerAwareCommand {
         array_push($this->links, 
                 array(
                     'url_fr' => $url_fr, 
-                    'lastmod' => $lastmod, 
-                    'changefreq' => date('c',time() ), 
+                    'lastmod' => date('c',time() ), 
+                    'changefreq' => $changefreq, 
                     'priority' => $priority,
                     'url_de' => $url_de,
                     'url_en' => $url_en

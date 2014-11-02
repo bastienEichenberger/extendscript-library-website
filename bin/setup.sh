@@ -6,10 +6,10 @@ git pull https://github.com/bastienEichenberger/extendscript-library-website.git
 
 # Pull symfony components, clear caches and set rights
 # remove the cache prod dir if neccessary
-rm -rf /var/www/extendscript-library-website/app/cache/prod
+rm -rf /var/www/extendscript-library-website/app/cache
 
 # install 
-php app/console cache:clear
+php app/console cache:clear --env=prod
 php app/console assets:install web --symlink
 php app/console assetic:dump --env=prod
 
