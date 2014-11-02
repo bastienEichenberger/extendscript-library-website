@@ -100,7 +100,7 @@ page_content:
   licences:
     title: "Licences"
     open_source_project:
-      title: "An open source project"
+      title: "An open source project | License BSD"
       content: "ExtendScript-library is an open source project. That basically means that you are allowed to use this program commercially and distribute copies of it. You can read, modify and redistribute modified versions without the agreement of the author."
     what_you_can_do:
       title: "What am I allowed to do?"

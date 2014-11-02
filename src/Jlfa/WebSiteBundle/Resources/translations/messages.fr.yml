@@ -101,7 +101,7 @@ page_content:
   licences:
     title: "Licences"
     open_source_project:
-      title: "Un projet Open source"
+      title: "Un projet Open source | License BSD"
       content: "ExtendScript-library est un projet Open source ce qui implique que vous pouvez utilisez ce programme et distribuer des copies du programme y compris à des fins commerciales. Vous pouvez lire, modifier et de redistribuer les versions modifiées sans l'accord de l'auteur."
     what_you_can_do:
       title: "Qu'ai-je le droit de faire?"
@@ -133,4 +133,7 @@ page_content:
       partner_one:
         title: "Images3"
         content: "Entreprise active dans le secteur de l'industrie graphique et de la retouche d'images"
+      partner_two:
+        title: "Gasser Media"
+        content: "Entreprise active dans le secteur des médias de l'impression à la publication dynamique des données"
       
