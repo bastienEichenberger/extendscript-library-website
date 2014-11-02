@@ -7,43 +7,81 @@
   {% stylesheets output='css/main.css' filter='cssrewrite, ?yui_css'
     '@JlfaWebSiteBundle/Resources/public/css//prettify.css'
   %}
-    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+<link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
   {% endstylesheets %}
 {% endblock %}
 
 {% block title %}
     {{ parent() }} | {{ 'page_content.start.title' | trans }}
 {% endblock %}
-    
+
 {% block content %}
-    <div class="row">
-        <div class="col-lg-12">
-                
-                
-                <h2>{{ 'page_content.start.download.title' | trans }}</h2>
-                
-                <p>{{ 'page_content.start.download.content' | trans | raw }}</p>
-                
-                <p>
-                    <a class="btn btn-large btn-primary" href="{{ url.git.home }}" target="_blank">
-                        <span class="glyphicon glyphicon-download"></span>
+<div class="row">
+    <div class="col-lg-12">
+
+
+        <h2>{{ 'page_content.start.download.title' | trans }}</h2>
+
+        <p>{{ 'page_content.start.download.content' | trans | raw }}</p>
+
+        <p>
+            <a class="btn btn-large btn-primary" href="{{ url.git.home }}" target="_blank">
+                <span class="glyphicon glyphicon-download"></span>
                         {{ 'page_content.start.download.button' | trans }}
-                   </a>
-                </p>
-        </div>
+            </a>
+        </p>
     </div>
-    <hr class="featurette-divider">
-    <div class="row">  
-        <div class="col-lg-12">
-            <h2>{{ 'page_content.start.samples.title' | trans }}</h2>
-            <pre class="prettyprint linenums lang-JavaScript">
-                // @todo
-            </pre>
-        </div>  
-    </div>
-           
+</div>
+<hr class="featurette-divider">
+<div class="row">  
+    <div class="col-lg-12">
+        <h2>{{ 'page_content.start.samples.title' | trans }}</h2>
+        <pre class="prettyprint linenums lang-JavaScript">
+            /**
+             * If you use indesign add the target indesign
+             * you can use the @include syntax to use extendscript in an other IDE without error
+             * For common modules use the namespace H
+             * For photoshop modules use the namespace PS
+             * For indesign modules use the namespace IN
+             */
+
+            //@target "indesign"
+            //@include "../lib/indesign/indesign-lib.jsx"
+
+            try {
+                IN.Config.init();
+                /**
+                 * The script folder
+                 * @type {Folder}
+                 */
+                var SCRIPT_FOLDER = new File($.fileName).parent;
+
+                /**
+                 * The log folder
+                 * @type {Folder}
+                 */
+                var LOG_FOLDER = new Folder(SCRIPT_FOLDER + '/log');
+                
+                // the Helper modules are included with PS an IN library
+                H.Log.init(LOG_FOLDER, 0);
+            }
+            catch (ex) {
+                H.Log.errorAlert(
+                        'file: ' + ex.fileName +
+                        '\n name: ' + ex.name +
+                        '\n message: ' + ex.message +
+                        '\n line: ' + ex.line
+                );
+            }
+            finally {
+                IN.Application.restore();
+            }
+        </pre>
+    </div>  
+</div>
+
 {% endblock%}
-    
+
 
 
 {% block javascripts %}
@@ -51,6 +89,6 @@
 {% javascripts output='js/main.js' filter='?yui_js'
   '@JlfaWebSiteBundle/Resources/public/js/google-code-prettify/prettify.js'
 %}
-  <script type="text/javascript" src="{{ asset_url }}"></script>
+<script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}
 {% endblock %}

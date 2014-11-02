@@ -75,6 +75,7 @@ page_content:
       button: "Git repository"
     samples:
       title: "Exemples"
+    
       
   #get involved
   get_involved:
