@@ -70,7 +70,7 @@ page_content:
     download:
       title: "Download ExtendScript-Library"
       content: | 
-        Download ExtendScript-Library an folgende Quelle <i>Github</i>. Auf diese Seite <a href="http://www.extendscript-library.org/en/forum/extendscript-library/topic/1">Start mit Skripts</a> erfährst du wie man diese Skript implementieren kann.<br>
+        Download ExtendScript-Library an folgende Quelle <i>Github</i>. Auf der Forumseite Start mit Skripts, erfährst du wie man diese Skript implementieren kann.<br>
         Wenn du mehr erfahren willst über die verschiedene Features sehe <a href="http://www.extendscript-library.org/bundles/jlfawebsite/jsdoc/index.html">HTML Dokumentation</a>.
       button: "Git repository"
     samples:
@@ -132,4 +132,6 @@ page_content:
       partner_one:
         title: "Images3"
         content: "Firma aktiv in der Grafik Industrie und der Bildbearbeitung."
-      
+      partner_two:
+        title: "Gasser Media"
+        content: "Diese Firma ist in der Medienbranche tätig, von Print zu Dynamic Publishing Daten"

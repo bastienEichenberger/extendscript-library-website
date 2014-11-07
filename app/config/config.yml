@@ -26,7 +26,7 @@ twig:
             - 'JlfaTwigBundle:Form:jlfa-theme.html.twig'
     globals:
       email:
-        info: "bastien.eichenberger@extendscript-library.org"
+        info: "bastien.eichenberger@gmail.com"
       url:
         git:
           home: "https://github.com/bastienEichenberger/extendscript-library.org"

@@ -70,7 +70,7 @@ page_content:
     download:
       title: "Download ExtendScript-Library"
       content: | 
-        Download ExtendScript-Library from the repository <i>Github</i>. If you'd like to learn how to use scripts, read the following article on the forum <a href="http://www.extendscript-library.org/en/forum/extendscript-library/topic/1">how to start with scripts</a>.<br>
+        Download ExtendScript-Library from the repository <i>Github</i>. If you'd like to learn how to use scripts, read the following article on the forum how to start with scripts.<br>
         To know more about the available feature, read the <a href="http://www.extendscript-library.org/bundles/jlfawebsite/jsdoc/index.html">html documentation</a>.
       button: "Git repository"
     samples:
@@ -132,4 +132,6 @@ page_content:
       partner_one:
         title: "Images3"
         content: "This enterprise is working in the graphic industry and the photo editing sector."
-      
+      partner_two:
+        title: "Gasser Media"
+        content: "This Company is active in the media industry, from print to dynamic publishing data"

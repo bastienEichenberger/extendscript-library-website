@@ -70,7 +70,7 @@ page_content:
     download:
       title: "Télécharger ExtendScript-Library"
       content: > 
-        Télécharge ExtendScript-Library depuis le dépôt <i>Github</i>. Si tu souhaites apprendre à utiliser les scripts, lis l'article sur le forum <a href="http://www.extendscript-library.org/en/forum/extendscript-library/topic/1">comment débuter avec les script</a>.<br>
+        Télécharge ExtendScript-Library depuis le dépôt <i>Github</i>. Si tu souhaites apprendre à utiliser les scripts, lis l'article sur le forum comment débuter avec les script.<br>
         Pour connaître les fonctionnalités disponibles, prends connaissance de la <a href="http://www.extendscript-library.org/bundles/jlfawebsite/jsdoc/index.html">documentation html</a>.
       button: "Git repository"
     samples:
@@ -135,5 +135,5 @@ page_content:
         content: "Entreprise active dans le secteur de l'industrie graphique et de la retouche d'images"
       partner_two:
         title: "Gasser Media"
-        content: "Entreprise active dans le secteur des médias de l'impression à la publication dynamique des données"
+        content: "Entreprise active dans le secteur des médias, de l'impression à la publication dynamique des données"
       

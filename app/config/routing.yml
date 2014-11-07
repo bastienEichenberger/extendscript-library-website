@@ -23,6 +23,12 @@ userbundle:
     requirements:
         _locale: %locales%
 
+forumbundle:
+    resource: "@JlfaForumBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}
+    requirements:
+        _locale: %locales%
+
 # Les imports pour FOSUB :
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

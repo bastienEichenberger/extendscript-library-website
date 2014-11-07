@@ -155,24 +155,26 @@ function UniqueEntity(field, params)
 function IsAdresseValid(field, params)
 {
     var value = field && field.nodeName ? $(field).val() : field;
-    /*if (isNotDefined(value)) {
-        // clear lat + lng
-        return true;
-    }*/
     
     var cache, cacheindex = 'm' + value + '';
     if (params && field.nodeName) {
             cache = $(field).data('_adresseValidCache');
             if (!cache) cache = {};
             
-            if (cache[cacheindex] != undefined) {
+            if (cache[cacheindex] !== undefined) {
                 if (cache[cacheindex] === false) {
                     return getComputeMessage(params.message);
-                } else return true;
+                } else {
+                    return true;
+                }
             }
 
         $(field).trigger("geocode");
-
+        
+        
+        // improve this part
+        // @todo
+        // set to error
         $(field).bind("geocode:error", function(event, result) {
             if (!cache) cache = {};
             
@@ -185,7 +187,7 @@ function IsAdresseValid(field, params)
             $(field).data('_adresseValidCache', cache);
             checkError($(field).attr('id'), IsAdresseValid, params);
         });
-
+        // set to ok
         $(field).bind("geocode:result", function(event, result) {
             if (!cache) cache = {};
             
