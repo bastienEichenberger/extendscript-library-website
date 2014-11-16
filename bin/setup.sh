@@ -10,7 +10,7 @@ rm -rf /var/www/extendscript-library-website/app/cache
 
 # install 
 php app/console cache:clear --env=prod
-php app/console assets:install web --symlink
+php app/console assets:install web --symlink --env=prod
 php app/console assetic:dump --env=prod
 
 # commands
