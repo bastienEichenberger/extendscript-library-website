@@ -38,16 +38,15 @@ assetic:
     use_controller: false
     bundles:        
       [JlfaWebSiteBundle, FOSUserBundle, SdzBlogBundle, JlfaForumBundle, CCDNForumForumBundle, SdzUserBundle, JlfaTwigBundle]
-    java: %java_path%
     filters:
         lessphp:
             file: %kernel.root_dir%/../vendor/leafo/lessphp/lessc.inc.php
             apply_to: "\.less$"
         cssrewrite: ~
         yui_js:
-            jar: %kernel.root_dir%/Resources/java/yuicompressor.jar
+            jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
         yui_css:
-            jar: %kernel.root_dir%/Resources/java/yuicompressor.jar
+            jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
 
 # Doctrine Configuration
 doctrine:
