@@ -29,8 +29,8 @@ class AppKernel extends Kernel
             new APY\JsFormValidationBundle\APYJsFormValidationBundle(),
             new Jlfa\APYJsFormValidationBundle\JlfaAPYJsFormValidationBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-            new Jlfa\ForumBundle\JlfaForumBundle(),
-            new CCDNForum\ForumBundle\CCDNForumForumBundle(),
+            //new Jlfa\ForumBundle\JlfaForumBundle(),
+            //new CCDNForum\ForumBundle\CCDNForumForumBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Jlfa\TwigBundle\JlfaTwigBundle(),
         );

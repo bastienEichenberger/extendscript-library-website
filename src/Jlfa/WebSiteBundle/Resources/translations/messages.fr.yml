@@ -37,9 +37,9 @@ page_content:
         content: "ExtendScript-library est une librairie écrite en JavaScript. Cette librairie permet d'écrire facilement des scripts pour automatiser des tâches dans les logiciels de la Creative Suite d'Adobe."
         button: "télécharger"
       become_member:
-        title: "Deviens membre"
-        content: "Deviens membre et profite du forum pour poser des questions et donner ton avis sur ExtendScript-library!"
-        button: "inscription"
+        title: "Soutiens le projet"
+        content: "Extendscript-library est un projet open source. Fait une donnation pour permettre le développement du projet."
+        button: "Soutenir"
       open_source:
         title: "Open source"
         content: "Ce projet libre est distribué sous license BSD. Le principal but est du projet est que les différents utilisateurs partagent et inventent de nouvelles fonctionnalités!"

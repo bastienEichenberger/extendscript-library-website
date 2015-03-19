@@ -20,22 +20,12 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="{{ path('jlfa_web_site_homepage') }}">{{ 'page_content.navbar.home' | trans }}</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ 'page_content.navbar.get_started.title' | trans }}<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ path('jlfa_web_site_startpage') }}">{{ 'page_content.navbar.get_started.start' | trans }}</a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-header">Documentation</li>
-                        <li><a href="{{ asset('bundles/jlfawebsite/jsdoc/index.html') }}" target="_blank">{{ 'page_content.navbar.get_started.documentation' | trans }}</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ 'page_content.navbar.get_involved.title' | trans }}<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ path('jlfa_web_site_participatepage') }}">{{ 'page_content.navbar.get_involved.participate' | trans }}</a></li>
-                        <li><a href="{{ path('ccdn_forum_user_category_index', {'forumName' : 'extendscript-library'}) }}">{{ 'page_content.navbar.get_involved.forum' | trans }}</a></li>
-                    </ul>
-                </li>
+                
+                <li><a href="{{ path('jlfa_web_site_startpage') }}">{{ 'page_content.navbar.get_started.title' | trans }}</a></li>
+                
+                
+                <li><a href="{{ path('jlfa_web_site_participatepage') }}">{{ 'page_content.navbar.get_involved.participate' | trans }}</a></li>
+                
                 <li><a href="{{ path('sdzblog_accueil') }}">{{ 'page_content.navbar.news' | trans }}</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ 'page_content.navbar.about.title' | trans }}<b class="caret"></b></a>
@@ -56,9 +46,6 @@
                           <li><a href="{{ path('fos_user_profile_show') }}">{{ 'page_content.navbar.user.profile' | trans }}</a></li>
                       </ul>
                     </li>
-                {# if user not connected link to connection page #}
-                {% else %}
-                    <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
                 {% endif %}
                 
                 

@@ -6,6 +6,9 @@
     <meta name="description" content="{{ 'seo.description' | trans }}">
     <meta name="author" content="bastien eichenberger">
     
+    {% block metas %}
+    {% endblock %}
+    
     <link rel="shortcut icon" href="{{ asset('icon/favicon.png') }}" /> 
     <title>{% block title %}Extendscript-library{% endblock %}</title>
 
@@ -17,6 +20,8 @@
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
       {% endstylesheets %}  
     {% endblock %}
+        
+    
         
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->

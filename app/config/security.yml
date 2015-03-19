@@ -47,4 +47,6 @@ security:
                 
             remember_me:
                 key:        "%secret%"
-  
+                
+    access_control:
+        - { path: ^/register, role: ROLE_ADMIN }          

@@ -37,9 +37,9 @@ page_content:
         content: "ExtendScript-library is a JavaScript library. This library has been created in order to support people who'd like write automation scripts for Adobe Creative Suite."
         button: "download"
       become_member:
-        title: "Become member"
-        content: "Become member and take advantage of the forum to ask your questions and get answers from the ExtendScipt community."
-        button: "registration"
+        title: "Support"
+        content: "Extendscript-library is an open source projet. Make a donation to help us to improve this project"
+        button: "Support"
       open_source:
         title: "Open source"
         content: "This project is free and distributed under BSD license. The goal is to share knowledge and invent new features between users around the world!"

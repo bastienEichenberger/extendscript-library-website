@@ -37,12 +37,12 @@ assetic:
     debug:          %kernel.debug%
     use_controller: false
     bundles:        
-      [JlfaWebSiteBundle, FOSUserBundle, SdzBlogBundle, JlfaForumBundle, CCDNForumForumBundle, SdzUserBundle, JlfaTwigBundle]
+      [JlfaWebSiteBundle, FOSUserBundle, SdzBlogBundle, SdzUserBundle, JlfaTwigBundle]
     filters:
+        cssrewrite: ~
         lessphp:
             file: %kernel.root_dir%/../vendor/leafo/lessphp/lessc.inc.php
             apply_to: "\.less$"
-        cssrewrite: ~
         yui_js:
             jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
         yui_css:
@@ -82,13 +82,6 @@ doctrine:
             dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
             alias: GedmoTranslatable # this one is optional and will default to the name set for the mapping
             is_bundle: false
-          CCDNForumForumBundle:
-                         mapping:              true
-                         type:                 yml
-                         dir:                  "Resources/config/doctrine"
-                         alias:                ~
-                         prefix:               CCDNForum\ForumBundle\Entity
-                         is_bundle:            true
         dql:
            numeric_functions:
                st_contains:     CrEOF\Spatial\ORM\Query\AST\Functions\PostgreSql\STContains

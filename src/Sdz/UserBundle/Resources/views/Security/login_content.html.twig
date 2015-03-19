@@ -44,7 +44,9 @@
         <hr class="featurette-divider">
         
         <div class="row">
-            <p class="pull-right"><a class="btn btn-large btn-success" href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></p>
+            {% if is_granted('ROLE_ADMIN') %}
+                <p class="pull-right"><a class="btn btn-large btn-success" href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></p>
+            {% endif%}
             <p class="pull-left"><a class="btn btn-default" href="{{ path('jlfa_web_site_homepage') }}">{{ 'page_content.login.button.home' | trans }}</a></p>
         </div>
         <p class="pull-left"><a href="{{ path('fos_user_resetting_request') }}">{{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}</a></p>  

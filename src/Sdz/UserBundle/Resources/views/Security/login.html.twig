@@ -1,5 +1,9 @@
 {% extends "SdzUserBundle::layout.html.twig" %}
 
+{% block metas %}
+  {{ parent() }} 
+    <meta name="googlebot" content="noindex">
+{% endblock %}
 
 {% block stylesheets %}
   {{ parent() }} 
